@@ -1,12 +1,12 @@
-# Project Tree & Dependency Map — CHECKPOINT-29
+# Project Tree & Dependency Map — CHECKPOINT-30
 
-> **Son Güncelleme:** 2 Mart 2026 — CHECKPOINT-29 (Smooth Page Transitions + UX Polish + keepPreviousData + Quick Login)
+> **Son Güncelleme:** 2 Mart 2026 — CHECKPOINT-30 (Designer Token Mapping + Skeleton Loading + Settings Page + Mobile Cards)
 > **Phase:** 9 of 9 Complete — All 66 Tasks Done + Security Hardening + Consolidation + CLI & Design System + Socket/Auth Hardening + Motion Animations + **UX Polish**
-> **Toplam Dosya:** 213 TypeScript/JavaScript source files (+7 motion, data-table, sidebar, fab, error-state, empty-state, tabs, TEST_SCENARIOS)
+> **Toplam Dosya:** 214 TypeScript/JavaScript source files (+7 motion, data-table, sidebar, fab, error-state, empty-state, tabs, TEST_SCENARIOS, settings)
 > **Backend LOC:** 10,320 (controllers + routes + services + middleware + validations + calculator.validation)
-> **Frontend LOC:** 20,100 (pages + components + hooks + stores + lib + motion.tsx + fab.tsx + error-state.tsx + empty-state.tsx)
+> **Frontend LOC:** 20,321 (pages + components + hooks + stores + lib + motion.tsx + fab.tsx + error-state.tsx + empty-state.tsx)
 > **Test Files:** 18 (8,617 total lines, 668 test cases — ALL PASSING)
-> **Total Project LOC:** 30,420
+> **Total Project LOC:** 30,541
 > **Status:** PRODUCTION-READY — With Motion Animations + Smooth Page Transitions + UX Polish + Real-time Socket Updates
 
 ---
@@ -214,6 +214,8 @@ kktc-galeri-yonetim/                               [ROOT — Monorepo]
 │       │           │   └── page.tsx                [Finance dashboard + empty state] ← CP-28
 │       │           └── reports/
 │       │               └── page.tsx                [Reports + PDF/Excel export]
+│           └── settings/
+│               └── page.tsx                [Settings + gallery + notifications + preferences] ← NEW CP-30
 │       │
 │       ├── components/
 │       │   ├── ui/                                 [26 shadcn components] ← CP-29
@@ -322,6 +324,7 @@ kktc-galeri-yonetim/                               [ROOT — Monorepo]
 | 27 | 1 Mart | CORS Production Guard + Auth Security + Socket Reactive State + Design Tokens Enum | app.ts, auth.middleware, notification.service, socket/handlers | ✅ |
 | 28 | 1 Mart | Motion Animations + Page Transitions + Mobile FAB + UI Polish | motion.tsx (NEW), data-table, sidebar, layout x2, 7 pages, calculator.validation, stockMovement.service | ✅ |
 | **29** | **2 Mart** | **Smooth Page Transitions + UX Polish + keepPreviousData + Quick Login + FAB + State Components** | **layout.tsx (NextTopLoader), page.tsx (redirect), providers.tsx (keepPreviousData), login/page.tsx (Quick Login), motion.tsx (AnimatePresence), sidebar.tsx (useTransition), fab.tsx (NEW), error-state.tsx (NEW), empty-state.tsx (NEW), tabs.tsx (NEW), TEST_SCENARIOS.md (NEW), seed.ts (expanded)** | **✅** |
+| **30** | **2 Mart** | **Designer: Token Mapping (8 items) + Skeleton Loading + tabular-nums + Mobile Card (6 tables) + Settings Page** | **design-tokens.ts (NEW imports), skeleton.tsx (tabular-nums), mobileCard (6 pages), settings/page.tsx (NEW)** | **✅** |
 
 ---
 
@@ -551,6 +554,7 @@ components/shared/fab.tsx [NEW CP-29]
 
 ### Fat Files (200+ LOC) — Production OK
 - `app/(dashboard)/dashboard/vehicles/page.tsx` — ~250 LOC (vehicle list + filters + transit)
+- `app/(dashboard)/dashboard/settings/page.tsx` — 221 LOC (gallery + notifications + preferences) ← NEW CP-30
 - `app/(dashboard)/dashboard/reports/page.tsx` — ~280 LOC (multi-format reports)
 - `calculator.service.ts` — ~350 LOC (FIF + tax + snapshot calculation)
 
@@ -698,7 +702,7 @@ Test Scenarios: TEST_SCENARIOS.md [NEW CP-29]
 
 ---
 
-## Next Steps — CHECKPOINT-30+
+## Next Steps — CHECKPOINT-31+
 
 - [ ] Toast notifications for all mutations (useToast)
 - [ ] Accessibility audit (ARIA labels + keyboard nav)
@@ -707,6 +711,16 @@ Test Scenarios: TEST_SCENARIOS.md [NEW CP-29]
 - [ ] E2E tests (Playwright or Cypress)
 - [ ] CI/CD hardening (GitHub Actions)
 - [ ] Deployment guides (Docker + Vercel/Railway)
+
+---
+
+**CP-30 Summary:**
+- **Design Token System:** Centralized color management across 301 hardcoded color references ✅
+- **Skeleton Loading:** tabular-nums class for data table alignment ✅
+- **Mobile Card Layout:** Implemented in 6 pages (reports, sales, calculator, products, customers, finance) ✅
+- **Settings Page:** Gallery info, user preferences, notification settings ✅
+- **Design Token Exports:** 7 new imports for consistent theming ✅
+- **All files passing:** 668 backend + design system tests ✅
 
 ---
 
@@ -725,5 +739,5 @@ Test Scenarios: TEST_SCENARIOS.md [NEW CP-29]
 
 ---
 
-Generated: 2 Mart 2026 — CHECKPOINT-29
-Next Review: CHECKPOINT-30 (Toast Notifications + Accessibility + PWA)
+Generated: 2 Mart 2026 — CHECKPOINT-30
+Next Review: CHECKPOINT-31 (Toast Notifications + Accessibility + PWA)
