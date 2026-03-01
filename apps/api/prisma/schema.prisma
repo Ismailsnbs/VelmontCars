@@ -1,0 +1,529 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ═══════════════════════════════════════════════════════════
+// ENUMS
+// ═══════════════════════════════════════════════════════════
+
+enum UserRole {
+  MASTER_ADMIN
+  GALLERY_OWNER
+  GALLERY_MANAGER
+  SALES
+  ACCOUNTANT
+  STAFF
+}
+
+enum RateType {
+  PERCENTAGE
+  FIXED
+  PER_CC
+}
+
+enum VehicleCategory {
+  PASSENGER
+  COMMERCIAL
+  ALL
+}
+
+enum VehicleStatus {
+  TRANSIT
+  IN_STOCK
+  RESERVED
+  SOLD
+}
+
+enum FuelType {
+  PETROL
+  DIESEL
+  ELECTRIC
+  HYBRID
+  LPG
+}
+
+enum Transmission {
+  MANUAL
+  AUTOMATIC
+  SEMI_AUTO
+}
+
+enum DocumentType {
+  REGISTRATION
+  INVOICE
+  CUSTOMS
+  INSPECTION
+  INSURANCE
+  SHIPPING
+  OTHER
+}
+
+enum ExpenseType {
+  REPAIR
+  PAINT
+  PARTS
+  INSURANCE
+  ADVERTISING
+  OTHER
+}
+
+enum MovementType {
+  IN
+  OUT
+  ADJUSTMENT
+}
+
+enum ProductCategory {
+  CLEANING
+  SPRAY
+  CLOTH
+  BRUSH
+  CHEMICAL
+  OTHER
+}
+
+enum NotificationType {
+  TAX_CHANGE
+  CURRENCY_ALERT
+  GENERAL_ANNOUNCEMENT
+  SYSTEM_MAINTENANCE
+}
+
+enum NotificationPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+enum SubscriptionType {
+  BASIC
+  PROFESSIONAL
+  ENTERPRISE
+}
+
+// ═══════════════════════════════════════════════════════════
+// MASTER PANEL TABLES
+// ═══════════════════════════════════════════════════════════
+
+// Rate convention:
+//   PERCENTAGE → whole number (e.g. 18 = %18, NOT 0.18)
+//   FIXED      → absolute TL amount
+//   PER_CC     → TL per cubic centimetre
+model TaxRate {
+  id            String           @id @default(cuid())
+  code          String           @unique
+  name          String
+  nameEn        String?
+  rate          Decimal          // see convention comment above
+  rateType      RateType
+  vehicleType   VehicleCategory?
+  minEngineCC   Int?
+  maxEngineCC   Int?
+  description   String?
+  isActive      Boolean          @default(true)
+  effectiveFrom DateTime         @default(now())
+  effectiveTo   DateTime?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  createdBy     String
+  history       TaxRateHistory[]
+
+  @@map("tax_rates")
+}
+
+model TaxRateHistory {
+  id        String   @id @default(cuid())
+  taxRateId String
+  taxRate   TaxRate  @relation(fields: [taxRateId], references: [id], onDelete: Cascade)
+  oldValue  Decimal
+  newValue  Decimal
+  changedBy String
+  changedAt DateTime @default(now())
+  reason    String?
+
+  @@index([taxRateId])
+  @@map("tax_rate_history")
+}
+
+model OriginCountry {
+  id              String    @id @default(cuid())
+  code            String    @unique
+  name            String
+  flag            String?
+  customsDutyRate Decimal
+  isEU            Boolean   @default(false)
+  minShippingCost Decimal
+  maxShippingCost Decimal
+  avgShippingDays Int?
+  notes           String?
+  isActive        Boolean   @default(true)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  vehicles        Vehicle[]
+
+  @@map("origin_countries")
+}
+
+model ExchangeRate {
+  id           String   @id @default(cuid())
+  currencyCode String
+  currencyName String
+  buyRate      Decimal
+  sellRate     Decimal
+  source       String
+  fetchedAt    DateTime @default(now())
+  isActive     Boolean  @default(true)
+
+  @@unique([currencyCode, isActive])
+  @@index([currencyCode, fetchedAt])
+  @@map("exchange_rates")
+}
+
+model ExchangeRateSettings {
+  id             String    @id @default(cuid())
+  updateMode     String
+  apiProvider    String?
+  apiKey         String?
+  updateInterval Int       @default(60)
+  lastAutoUpdate DateTime?
+  updatedAt      DateTime  @updatedAt
+
+  @@map("exchange_rate_settings")
+}
+
+model PlatformNotification {
+  id         String               @id @default(cuid())
+  type       NotificationType
+  title      String
+  message    String
+  priority   NotificationPriority @default(NORMAL)
+  targetType String
+  targetIds  String[]
+  sentBy     String
+  sentAt     DateTime             @default(now())
+  reads      NotificationRead[]
+
+  @@map("platform_notifications")
+}
+
+model NotificationRead {
+  id             String               @id @default(cuid())
+  notificationId String
+  notification   PlatformNotification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+  galleryId      String
+  gallery        Gallery              @relation(fields: [galleryId], references: [id], onDelete: Cascade)
+  readAt         DateTime             @default(now())
+  readBy         String
+
+  @@unique([notificationId, galleryId])
+  @@index([galleryId])
+  @@map("notification_reads")
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  action      String
+  entityType  String
+  entityId    String
+  oldValues   Json?
+  newValues   Json?
+  performedBy String
+  performedAt DateTime @default(now())
+  ipAddress   String?
+  userAgent   String?
+
+  @@index([entityType, entityId])
+  @@index([performedBy])
+  @@index([performedAt])
+  @@map("audit_logs")
+}
+
+// ═══════════════════════════════════════════════════════════
+// GALLERY TABLES
+// ═══════════════════════════════════════════════════════════
+
+model Gallery {
+  id                 String              @id @default(cuid())
+  name               String
+  slug               String              @unique
+  address            String?
+  city               String?
+  phone              String?
+  email              String?
+  logo               String?
+  isActive           Boolean             @default(true)
+  subscription       SubscriptionType    @default(BASIC)
+  subscriptionEnds   DateTime?
+  users              User[]
+  vehicles           Vehicle[]
+  products           Product[]
+  customers          Customer[]
+  sales              Sale[]
+  importCalculations ImportCalculation[]
+  notifications      NotificationRead[]
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+
+  @@map("galleries")
+}
+
+model User {
+  id          String    @id @default(cuid())
+  email       String    @unique
+  password    String
+  name        String
+  role        UserRole
+  galleryId   String?
+  gallery     Gallery?  @relation(fields: [galleryId], references: [id], onDelete: SetNull)
+  isActive    Boolean   @default(true)
+  lastLoginAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([galleryId])
+  @@map("users")
+}
+
+model TaxSnapshot {
+  id           String              @id @default(cuid())
+  rates        Json
+  currencies   Json
+  createdAt    DateTime            @default(now())
+  vehicles     Vehicle[]
+  calculations ImportCalculation[]
+
+  @@index([createdAt])
+  @@map("tax_snapshots")
+}
+
+model Vehicle {
+  id           String        @id @default(cuid())
+  brand        String
+  model        String
+  year         Int
+  vin          String?       @unique
+  color        String?
+  mileage      Int?
+  fuelType     FuelType?
+  transmission Transmission?
+  engineCC     Int
+  bodyType     String?
+
+  originCountryId String
+  originCountry   OriginCountry @relation(fields: [originCountryId], references: [id], onDelete: Restrict)
+  fobPrice        Decimal
+  fobCurrency     String        @default("USD")
+
+  shippingCost    Decimal?
+  insuranceCost   Decimal?
+  cifValue        Decimal?
+  customsDuty     Decimal?
+  kdv             Decimal?
+  fif             Decimal?
+  generalFif      Decimal?
+  gkk             Decimal?
+  wharfFee        Decimal?
+  bandrol         Decimal?
+  otherFees       Decimal?
+  totalImportCost Decimal?
+
+  additionalExpenses Decimal  @default(0)
+  totalCost          Decimal?
+  salePrice          Decimal?
+  profit             Decimal?
+  profitMargin       Decimal?
+
+  status           VehicleStatus @default(TRANSIT)
+  estimatedArrival DateTime?
+  arrivalDate      DateTime?
+  soldDate         DateTime?
+  description      String?
+
+  galleryId    String
+  gallery      Gallery             @relation(fields: [galleryId], references: [id], onDelete: Cascade)
+  images       VehicleImage[]
+  documents    VehicleDocument[]
+  expenses     VehicleExpense[]
+  calculations ImportCalculation[]
+  sale         Sale?
+
+  taxSnapshotId String?
+  taxSnapshot   TaxSnapshot? @relation(fields: [taxSnapshotId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([galleryId])
+  @@index([status])
+  @@index([brand, model])
+  @@index([originCountryId])
+  @@map("vehicles")
+}
+
+model VehicleImage {
+  id        String  @id @default(cuid())
+  url       String
+  publicId  String?
+  isMain    Boolean @default(false)
+  order     Int     @default(0)
+  vehicleId String
+  vehicle   Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+
+  @@index([vehicleId])
+  @@map("vehicle_images")
+}
+
+model VehicleDocument {
+  id         String       @id @default(cuid())
+  type       DocumentType
+  fileName   String
+  fileUrl    String
+  fileSize   Int?
+  vehicleId  String
+  vehicle    Vehicle      @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  uploadedAt DateTime     @default(now())
+  uploadedBy String?
+
+  @@index([vehicleId])
+  @@map("vehicle_documents")
+}
+
+model VehicleExpense {
+  id          String      @id @default(cuid())
+  type        ExpenseType
+  amount      Decimal
+  description String?
+  date        DateTime    @default(now())
+  vehicleId   String
+  vehicle     Vehicle     @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  createdBy   String?
+
+  @@index([vehicleId])
+  @@map("vehicle_expenses")
+}
+
+model ImportCalculation {
+  id        String   @id @default(cuid())
+  vehicleId String?
+  vehicle   Vehicle? @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+
+  galleryId String
+  gallery   Gallery @relation(fields: [galleryId], references: [id], onDelete: Cascade)
+
+  fobPrice      Decimal
+  fobCurrency   String
+  originCountry String
+  engineCC      Int
+  vehicleType   String
+  modelYear     Int
+
+  exchangeRate  Decimal
+  shippingCost  Decimal
+  insuranceCost Decimal
+  cifValue      Decimal
+  customsDuty   Decimal
+  kdv           Decimal
+  fif           Decimal
+  generalFif    Decimal
+  gkk           Decimal
+  wharfFee      Decimal
+  bandrol       Decimal
+  otherFees     Decimal
+
+  totalTaxes   Decimal
+  totalCostUSD Decimal
+  totalCostTL  Decimal
+
+  taxSnapshotId String
+  taxSnapshot   TaxSnapshot @relation(fields: [taxSnapshotId], references: [id], onDelete: Restrict)
+
+  calculatedAt DateTime @default(now())
+  calculatedBy String
+
+  @@index([vehicleId])
+  @@index([galleryId])
+  @@index([calculatedAt])
+  @@map("import_calculations")
+}
+
+model Product {
+  id             String          @id @default(cuid())
+  name           String
+  category       ProductCategory
+  unit           String
+  currentStock   Decimal         @default(0)
+  minStockLevel  Decimal         @default(0)
+  unitPrice      Decimal
+  barcode        String?
+  description    String?
+  galleryId      String
+  gallery        Gallery         @relation(fields: [galleryId], references: [id], onDelete: Cascade)
+  movements      StockMovement[]
+  lastPurchaseAt DateTime?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  @@index([galleryId])
+  @@map("products")
+}
+
+model StockMovement {
+  id        String       @id @default(cuid())
+  type      MovementType
+  quantity  Decimal
+  note      String?
+  productId String
+  product   Product      @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdBy String?
+  createdAt DateTime     @default(now())
+
+  @@index([productId])
+  @@map("stock_movements")
+}
+
+model Customer {
+  id         String   @id @default(cuid())
+  name       String
+  phone      String?
+  email      String?
+  identityNo String?
+  address    String?
+  notes      String?
+  galleryId  String
+  gallery    Gallery  @relation(fields: [galleryId], references: [id], onDelete: Cascade)
+  sales      Sale[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([galleryId])
+  @@map("customers")
+}
+
+model Sale {
+  id           String   @id @default(cuid())
+  vehicleId    String   @unique
+  vehicle      Vehicle  @relation(fields: [vehicleId], references: [id], onDelete: Restrict)
+  customerId   String
+  customer     Customer @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  galleryId    String
+  gallery      Gallery  @relation(fields: [galleryId], references: [id], onDelete: Cascade)
+  salePrice    Decimal
+  totalCost    Decimal
+  profit       Decimal
+  profitMargin Decimal
+  saleDate     DateTime @default(now())
+  paymentType  String?
+  notes        String?
+  createdBy    String
+
+  @@index([customerId])
+  @@index([galleryId])
+  @@index([saleDate])
+  @@map("sales")
+}

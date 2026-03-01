@@ -1,0 +1,746 @@
+# Project Tree & Dependency Map
+
+> **Son Güncelleme:** 1 Mart 2026 — CHECKPOINT-13  
+> **Phase:** 4 of 9 Complete  
+> **Toplam Dosya:** 146 TypeScript/JavaScript + Config (+7 yeni dosya)  
+> **LOC Backend:** 11,427 (services, controllers, middleware, validations, tests, PDF servisi)  
+> **LOC Frontend:** 13,542 (pages, components, hooks, stores, lib — calculator page eklendi)  
+> **Test Files:** 13 (5,888 lines, 481+ test cases — calculator tests +78)  
+> **Uyarılar:** 1
+
+---
+
+## Dosya Yapısı
+
+```
+kktc-galeri-yonetim/                          [ROOT — Monorepo]
+├── apps/
+│   ├── web/                                   [Next.js 14+ Frontend — 13,542 LOC]
+│   │   ├── app/
+│   │   │   ├── page.tsx                       [HOME] Landing page
+│   │   │   ├── layout.tsx                     [ROOT_LAYOUT] Global styles, fonts, providers
+│   │   │   ├── providers.tsx                  [PROVIDERS] QueryClientProvider, Toaster, Zustand
+│   │   │   │
+│   │   │   ├── (auth)/
+│   │   │   │   ├── layout.tsx                 [AUTH_LAYOUT] Empty wrapper
+│   │   │   │   ├── login/page.tsx             [LOGIN_PAGE] Form + Zod validation + useAuthStore
+│   │   │   │   └── register/page.tsx          [REGISTER_PAGE] Form + Zod validation + useAuthStore
+│   │   │   │
+│   │   │   ├── (master)/
+│   │   │   │   ├── layout.tsx                 [MASTER_LAYOUT] Master admin panel layout + sidebar
+│   │   │   │   └── master/
+│   │   │   │       ├── page.tsx               [MASTER_DASHBOARD] Master overview, stats
+│   │   │   │       │
+│   │   │   │       ├── tax-rates/
+│   │   │   │       │   ├── page.tsx           [TAX_RATES_PAGE] List, CRUD interface
+│   │   │   │       │   └── components/
+│   │   │   │       │       ├── tax-rate-form.tsx       [TAX_FORM] Create/Edit form + modal
+│   │   │   │       │       └── tax-rate-history.tsx    [TAX_HISTORY] History table, timeline
+│   │   │   │       │
+│   │   │   │       ├── exchange-rates/
+│   │   │   │       │   ├── page.tsx           [EXCHANGE_PAGE] List, rates, API sync, settings
+│   │   │   │       │   └── components/
+│   │   │   │       │       └── bulk-update-dialog.tsx  [BULK_UPDATE] Batch update modal
+│   │   │   │       │
+│   │   │   │       ├── countries/
+│   │   │   │       │   ├── page.tsx           [COUNTRIES_PAGE] List, CRUD interface
+│   │   │   │       │   └── components/
+│   │   │   │       │       └── country-form.tsx       [COUNTRY_FORM] Create/Edit form + modal
+│   │   │   │       │
+│   │   │   │       ├── galleries/
+│   │   │   │       │   ├── page.tsx           [GALLERIES_PAGE] List all galleries, stats
+│   │   │   │       │   ├── [id]/
+│   │   │   │       │   │   └── page.tsx       [GALLERY_DETAIL] Gallery detail, edit, users
+│   │   │   │       │   └── components/
+│   │   │   │       │       └── gallery-form.tsx       [GALLERY_FORM] Create/Edit form + modal
+│   │   │   │       │
+│   │   │   │       ├── notifications/
+│   │   │   │       │   ├── page.tsx           [NOTIF_PAGE] List, send, broadcast
+│   │   │   │       │   ├── [id]/
+│   │   │   │       │   │   └── page.tsx       [NOTIF_DETAIL] Detail, edit, resend
+│   │   │   │       │   └── components/
+│   │   │   │       │       └── notification-form.tsx  [NOTIF_FORM] Create/Edit form
+│   │   │   │       │
+│   │   │   │       └── audit-logs/
+│   │   │   │           └── page.tsx           [AUDIT_PAGE] Audit log table, filters, search
+│   │   │   │
+│   │   │   └── (dashboard)/
+│   │   │       ├── layout.tsx                 [GALLERY_LAYOUT] Gallery panel layout + sidebar
+│   │   │       └── dashboard/
+│   │   │           ├── page.tsx               [GALLERY_DASHBOARD] Gallery overview, KPIs
+│   │   │           ├── vehicles/
+│   │   │           │   ├── page.tsx           [VEHICLES_PAGE] List, grid/list view, filters, sort
+│   │   │           │   ├── new/
+│   │   │           │   │   └── page.tsx       [VEHICLE_CREATE] Create form + Cloudinary upload
+│   │   │           │   ├── [id]/
+│   │   │           │   │   ├── page.tsx       [VEHICLE_DETAIL] Detail view, images, docs, expenses
+│   │   │           │   │   └── edit/
+│   │   │           │   │       └── page.tsx   [VEHICLE_EDIT] Edit form
+│   │   │           │   └── transit/
+│   │   │           │       └── page.tsx       [TRANSIT_PAGE] Transit tracking (Faz 3)
+│   │   │           ├── calculator/            [CALCULATOR MODULE — NEW Phase 4]
+│   │   │           │   └── page.tsx           [CALC_PAGE] Form, results, history, PDF download (1,193 LOC)
+│   │   │           ├── products/             [PLACEHOLDER] Product stock (Faz 4)
+│   │   │           ├── customers/            [PLACEHOLDER] Customer management (Faz 4)
+│   │   │           ├── sales/                [PLACEHOLDER] Sales records (Faz 4)
+│   │   │           ├── reports/              [PLACEHOLDER] Reporting (Faz 4)
+│   │   │           └── settings/             [PLACEHOLDER] Gallery settings (Faz 4)
+│   │   │
+│   │   ├── components/
+│   │   │   ├── shared/                        [SHARED COMPONENTS]
+│   │   │   │   ├── header.tsx                 [HEADER] Top bar, hamburger, notifications, profile
+│   │   │   │   ├── sidebar.tsx                [SIDEBAR] Navigation menu (master/gallery)
+│   │   │   │   └── data-table.tsx             [DATA_TABLE] Reusable table, pagination, sorting
+│   │   │   │
+│   │   │   ├── ui/                            [shadcn/ui Primitives — 24 Components]
+│   │   │   │   ├── button.tsx                 [BUTTON] Base component
+│   │   │   │   ├── card.tsx                   [CARD] Container component
+│   │   │   │   ├── input.tsx                  [INPUT] Form input
+│   │   │   │   ├── label.tsx                  [LABEL] Form label
+│   │   │   │   ├── avatar.tsx                 [AVATAR] User avatar
+│   │   │   │   ├── separator.tsx              [SEPARATOR] Visual divider
+│   │   │   │   ├── sheet.tsx                  [SHEET] Mobile drawer/modal
+│   │   │   │   ├── dialog.tsx                 [DIALOG] Modal dialog
+│   │   │   │   ├── dropdown-menu.tsx          [DROPDOWN] Dropdown menu
+│   │   │   │   ├── select.tsx                 [SELECT] Select dropdown
+│   │   │   │   ├── textarea.tsx               [TEXTAREA] Multi-line input
+│   │   │   │   ├── tabs.tsx                   [TABS] Tab navigation
+│   │   │   │   ├── table.tsx                  [TABLE] Table component
+│   │   │   │   ├── pagination.tsx             [PAGINATION] Pagination controls
+│   │   │   │   ├── checkbox.tsx               [CHECKBOX] Checkbox input
+│   │   │   │   ├── switch.tsx                 [SWITCH] Toggle switch
+│   │   │   │   ├── badge.tsx                  [BADGE] Badge label
+│   │   │   │   ├── skeleton.tsx               [SKELETON] Loading skeleton
+│   │   │   │   ├── popover.tsx                [POPOVER] Popover component
+│   │   │   │   ├── form.tsx                   [FORM] React Hook Form wrapper
+│   │   │   │   ├── toast.tsx                  [TOAST] Toast notification base
+│   │   │   │   ├── toaster.tsx                [TOASTER] Toast renderer
+│   │   │   │   ├── use-toast.ts               [TOAST_HOOK] useToast hook
+│   │   │   │   ├── alert-dialog.tsx           [ALERT_DIALOG] Alert dialog variant
+│   │   │   │   ├── progress.tsx               [PROGRESS] Progress bar
+│   │   │   │   └── tooltip.tsx                [TOOLTIP] Tooltip component
+│   │   │   │
+│   │   │   ├── forms/                        [PLACEHOLDER] Future form components
+│   │   │   ├── vehicles/                     [PLACEHOLDER] Future vehicle-specific components
+│   │   │   ├── calculator/                   [PLACEHOLDER] Future calculator UI
+│   │   │   ├── products/                     [PLACEHOLDER] Future product components
+│   │   │   ├── dashboard/                    [PLACEHOLDER] Future dashboard widgets
+│   │   │   └── master/                       [PLACEHOLDER] Future master-specific components
+│   │   │
+│   │   ├── stores/
+│   │   │   └── authStore.ts                   [ZUSTAND] User state, auth methods, localStorage persistence
+│   │   │
+│   │   ├── hooks/
+│   │   │   └── use-api.ts                     [CUSTOM_HOOK] useApi() — wrapper around API client
+│   │   │
+│   │   ├── lib/
+│   │   │   ├── api.ts                         [AXIOS] HTTP client + token interceptor + auto-refresh
+│   │   │   └── utils.ts                       [UTILS] shadcn cn() helper
+│   │   │
+│   │   ├── types/                             [PLACEHOLDER] Will import from packages/shared
+│   │   ├── public/                            [STATIC] Static assets
+│   │   ├── next.config.js                     [CONFIG] Next.js configuration
+│   │   ├── tailwind.config.js                 [CONFIG] Tailwind CSS setup
+│   │   ├── postcss.config.js                  [CONFIG] PostCSS plugins
+│   │   ├── components.json                    [CONFIG] shadcn/ui component paths
+│   │   ├── tsconfig.json                      [CONFIG] TypeScript configuration
+│   │   ├── package.json                       [MANIFEST] Dependencies, scripts
+│   │   └── next-env.d.ts                      [TYPES] Auto-generated Next.js types
+│   │
+│   └── api/                                    [Express.js + Prisma Backend — 11,427 LOC]
+│       ├── src/
+│       │   ├── app.ts                         [MAIN] Express setup, middleware stack, route mounting
+│       │   │
+│       │   ├── controllers/                   [REQUEST HANDLERS — 12 controllers]
+│       │   │   ├── auth.controller.ts         [CTRL] register, login, refresh, me
+│       │   │   ├── taxRate.controller.ts      [CTRL] CRUD tax rates + history tracking
+│       │   │   ├── country.controller.ts      [CTRL] CRUD countries, getActive for calculator
+│       │   │   ├── exchangeRate.controller.ts [CTRL] CRUD exchange rates, fetch API, settings, bulk update
+│       │   │   ├── gallery.controller.ts      [CTRL] CRUD galleries, getStats for master panel
+│       │   │   ├── notification.controller.ts [CTRL] CRUD notifications, send, broadcast
+│       │   │   ├── audit.controller.ts        [CTRL] getAll, getById, filter audit logs
+│       │   │   ├── vehicle.controller.ts      [CTRL] Vehicle CRUD, status, stats (NEW Faz 3)
+│       │   │   ├── vehicleImage.controller.ts [CTRL] Image upload/reorder/delete (NEW Faz 3)
+│       │   │   ├── vehicleDocument.controller.ts [CTRL] Document upload/delete (NEW Faz 3)
+│       │   │   ├── vehicleExpense.controller.ts [CTRL] Expense tracking (NEW Faz 3)
+│       │   │   └── calculator.controller.ts   [CTRL] Import cost calculation endpoints (NEW Faz 4)
+│       │   │
+│       │   ├── routes/                        [ENDPOINT MOUNTING — 10 route files]
+│       │   │   ├── index.ts                   [ROUTER] Mounts 10 route groups (+ calculator)
+│       │   │   ├── auth.routes.ts             [AUTH] POST register/login/refresh, GET me
+│       │   │   ├── taxRate.routes.ts          [TAX] CRUD + /active + /:id/history (MASTER_ADMIN only)
+│       │   │   ├── country.routes.ts          [COUNTRY] CRUD (MASTER_ADMIN), /active (GALLERY_ACCESS)
+│       │   │   ├── exchangeRate.routes.ts     [EXCHANGE] CRUD + /settings + /fetch (MASTER_ADMIN)
+│       │   │   ├── gallery.routes.ts          [GALLERY] CRUD + /stats (MASTER_ADMIN only)
+│       │   │   ├── notification.routes.ts     [NOTIFICATION] CRUD + /broadcast (MASTER_ADMIN only)
+│       │   │   ├── audit.routes.ts            [AUDIT] GET /logs, /logs/:id, /logs/filter
+│       │   │   ├── vehicle.routes.ts          [VEHICLE] 23 endpoints (images, documents, expenses)
+│       │   │   └── calculator.routes.ts       [CALCULATOR] 6 endpoints (calculate, rates, history, PDF, etc.)
+│       │   │
+│       │   ├── services/                      [BUSINESS LOGIC — 13 services + 9 test files]
+│       │   │   ├── auth.service.ts            [SERVICE] Register, login, refresh, getMe, JWT + bcrypt
+│       │   │   ├── taxRate.service.ts         [SERVICE] CRUD + history tracking + snapshot mechanism
+│       │   │   ├── country.service.ts         [SERVICE] CRUD countries
+│       │   │   ├── exchangeRate.service.ts    [SERVICE] CRUD + history + API fetch + auto-update
+│       │   │   ├── gallery.service.ts         [SERVICE] CRUD galleries, stats calculation
+│       │   │   ├── notification.service.ts    [SERVICE] CRUD notifications, broadcast, targeting
+│       │   │   ├── audit.service.ts           [SERVICE] Log audit events (master panel only)
+│       │   │   ├── vehicle.service.ts         [SERVICE] Vehicle CRUD, status transitions, audit logging (NEW Faz 3)
+│       │   │   ├── vehicleImage.service.ts    [SERVICE] Image upload/reorder/delete (NEW Faz 3)
+│       │   │   ├── vehicleDocument.service.ts [SERVICE] Document management (NEW Faz 3)
+│       │   │   ├── vehicleExpense.service.ts  [SERVICE] Expense tracking (NEW Faz 3)
+│       │   │   ├── calculator.service.ts      [SERVICE] Import cost calculation engine + tax snapshot (NEW Faz 4)
+│       │   │   ├── pdf.service.ts             [SERVICE] PDF report generation for calculations (NEW Faz 4)
+│       │   │   └── __tests__/
+│       │   │       ├── taxRate.service.test.ts         [TEST] CRUD, history, snapshot
+│       │   │       ├── country.service.test.ts         [TEST] CRUD, active countries
+│       │   │       ├── exchangeRate.service.test.ts    [TEST] CRUD, API fetch, bulk update
+│       │   │       ├── gallery.service.test.ts         [TEST] CRUD, stats calculation
+│       │   │       ├── vehicle.service.test.ts         [TEST] Vehicle CRUD, status
+│       │   │       ├── vehicleDocument.service.test.ts [TEST] Document ops
+│       │   │       ├── vehicleExpense.service.test.ts  [TEST] Expense ops
+│       │   │       ├── vehicleImage.service.test.ts    [TEST] Image upload/stream (47 tests)
+│       │   │       └── calculator.service.test.ts      [TEST] Calculation engine (78 tests) — NEW Faz 4
+│       │   │
+│       │   ├── middleware/                    [REQUEST PROCESSING — 6 files + 2 tests]
+│       │   │   ├── auth.middleware.ts         [MW] authenticate — Bearer token verification (47 tests)
+│       │   │   ├── role.middleware.ts         [MW] RBAC: 6 roles, 5 permission functions (54 tests)
+│       │   │   ├── gallery.middleware.ts      [MW] Multi-tenant isolation — galleryId extraction
+│       │   │   ├── validate.middleware.ts     [MW] Zod validation (body/params/query)
+│       │   │   ├── error.middleware.ts        [MW] Global error handler + custom error classes
+│       │   │   ├── upload.middleware.ts       [MW] Multer + Cloudinary integration
+│       │   │   ├── rateLimit.middleware.ts    [MW] Rate limiting (calculator: 100/hour)
+│       │   │   └── __tests__/
+│       │   │       ├── auth.middleware.test.ts [TEST] 47 test cases, token validation
+│       │   │       └── role.middleware.test.ts [TEST] 54 test cases, permission matrix
+│       │   │
+│       │   ├── validations/                   [ZOD SCHEMAS — 13 schema files]
+│       │   │   ├── auth.validation.ts         [SCHEMA] Register, login, refresh (3 schemas)
+│       │   │   ├── taxRate.validation.ts      [SCHEMA] Create, update tax rates
+│       │   │   ├── country.validation.ts      [SCHEMA] Create, update countries
+│       │   │   ├── exchangeRate.validation.ts [SCHEMA] Bulk update, settings
+│       │   │   ├── gallery.validation.ts      [SCHEMA] Create, update galleries
+│       │   │   ├── notification.validation.ts [SCHEMA] Create, send, broadcast notifications
+│       │   │   ├── audit.validation.ts        [SCHEMA] Audit log filters
+│       │   │   ├── common.validation.ts       [SCHEMA] Shared: id param, code param, pagination
+│       │   │   ├── vehicle.validation.ts      [SCHEMA] Create/update vehicle
+│       │   │   ├── vehicleImage.validation.ts [SCHEMA] Image params
+│       │   │   ├── vehicleDocument.validation.ts [SCHEMA] Document params
+│       │   │   ├── vehicleExpense.validation.ts [SCHEMA] Expense params
+│       │   │   └── calculator.validation.ts   [SCHEMA] Calculate, saveToVehicle, param validation (NEW Faz 4)
+│       │   │
+│       │   ├── utils/                         [UTILITIES — 3 utils + 2 test files]
+│       │   │   ├── jwt.ts                     [JWT] Token generation (15m access + 7d refresh), verification
+│       │   │   ├── hash.ts                    [HASH] Password hash/compare (bcrypt)
+│       │   │   ├── helpers.ts                 [HELPER] sendSuccess, sendError, sendPaginated response formatters
+│       │   │   └── __tests__/
+│       │   │       ├── jwt.test.ts            [TEST] 23 test cases, token lifecycle
+│       │   │       └── hash.test.ts           [TEST] 15 test cases, bcrypt operations
+│       │   │
+│       │   ├── config/
+│       │   │   └── cloudinary.ts              [CONFIG] Cloudinary SDK setup
+│       │   │
+│       │   ├── lib/
+│       │   │   └── prisma.ts                  [PRISMA] Singleton client instance
+│       │   │
+│       │   ├── jobs/
+│       │   │   └── exchangeRate.job.ts        [CRON] Exchange rate auto-update job (every 5 min)
+│       │   │
+│       │   └── socket/                        [PLACEHOLDER] Future Socket.io notifications
+│       │
+│       ├── prisma/
+│       │   ├── schema.prisma                  [SCHEMA] 17 models + 9 enums, 517 lines
+│       │   ├── seed.ts                        [SEED] Sample data generation
+│       │   └── migrations/                    [MIGRATIONS] Auto-generated from schema
+│       │
+│       ├── vitest.config.ts                   [TEST_CONFIG] Vitest configuration
+│       ├── tsconfig.json                      [CONFIG] TypeScript configuration
+│       ├── package.json                       [MANIFEST] Dependencies + pdfkit, @types/pdfkit
+│       └── Dockerfile                         [DOCKER] Multi-stage build
+│
+└── packages/
+    └── shared/                                 [Shared Types & Enums]
+        ├── src/
+        │   ├── types.ts                       [TYPES] API request/response contracts
+        │   ├── enums.ts                       [ENUMS] UserRole, RateType, VehicleStatus, etc.
+        │   └── index.ts                       [EXPORT] Barrel export
+        ├── tsconfig.json                      [CONFIG] TypeScript configuration
+        └── package.json                       [MANIFEST]
+
+[ROOT FILES]
+├── package.json                               [MONOREPO] pnpm workspaces, dev scripts
+├── tsconfig.json                              [CONFIG] Root TypeScript config
+├── docker-compose.yml                         [DOCKER] PostgreSQL 15 + Redis 7
+├── .env                                       [ENV] Local development secrets
+├── .env.example                               [ENV_TEMPLATE] Environment template
+├── .gitignore                                 [GIT] Ignore rules
+├── CLAUDE.md                                  [INSTRUCTIONS] Agent routing, architecture
+├── SPEC.md                                    [SPEC] 100+ pages detailed requirements
+├── ADIMLAR.md                                 [ROADMAP] Step-by-step development plan
+├── ORCHESTRATION.md                           [ORCHESTRATION] Workflow, checkpoints
+├── PROMPTS.md                                 [PROMPTS] Pre-written prompts for agents
+└── PROJECT_TREE.md                            [THIS FILE] Dependency mapping
+```
+
+---
+
+## Summary — File & Test Counts
+
+| Category | Count | LOC | Status |
+|----------|-------|-----|--------|
+| **Backend Source Files** | 53 | 11,427 | ✅ 13 services + 12 controllers + 10 route files + upload MW + pdf.service |
+| **Backend Test Files** | 13 | 5,888 | ✅ 2 middleware + 9 service + 2 utility tests (481+ cases) |
+| **Frontend Source Files** | 31 | 13,542 | ✅ Pages (vehicles + calculator), components, hooks, stores |
+| **Frontend Config Files** | 5 | — | ✅ Next, Tailwind, TS, JSON |
+| **Shared Types** | 3 | — | ✅ types.ts, enums.ts, index.ts |
+| **Root Config Files** | 10 | — | ✅ package.json, docker-compose, env |
+| **Total Source Files** | 146 | 24,969 | ✅ COMPLETE Phase 4 Begin |
+
+---
+
+## Bağımlılık Haritası — Phase 4: Calculator Module (NEW CHECKPOINT-13)
+
+### Calculator Service Dependencies
+```
+calculatorService
+├── Uses: prisma.originCountry, taxRate, exchangeRate, importCalculation
+├── Uses: prisma.taxSnapshot (snapshot mechanism)
+├── Uses: prisma.vehicle.update (saveToVehicle integration)
+├── Implements: getFIFRate(engineCC) → tax rate from 5 bands
+├── Implements: calculateImportCost(inputs) → full calculation with taxes
+├── Implements: getTaxSnapshot() → capture current rates
+├── Used by: calculatorController → calculator.routes
+└── Called from: vehicleController.create (future integration)
+
+pdfService
+├── Uses: PDFKit library (pdfkit v0.17.2)
+├── Implements: generateCalculationPdf(calculation: CalculationForPdf)
+├── Renders: Vehicle info, inputs, CIF, tax breakdown, final result
+├── Used by: calculatorController.generatePdf()
+├── Returns: PDFDocument → piped to response
+
+calculatorController (NEW — 6 endpoints)
+├── POST /calculate — calculatorService.calculate() → create ImportCalculation
+├── GET /rates — calculatorService.getCurrentRates() → active taxes/rates
+├── GET /history — calculatorService.getHistory(galleryId) → paginated list
+├── GET /:id — calculatorService.getById(id, galleryId) → single record
+├── GET /:id/pdf — pdfService.generateCalculationPdf() → download PDF
+└── POST /:id/save-to-vehicle — calculatorService.saveToVehicle() → link to vehicle
+
+FIF Calculation Engine (CRITICAL)
+├── Inputs: engineCC (0-20000)
+├── Rules: 5 tax bands by engine size
+│   ├── 0-1000cc: %15
+│   ├── 1001-1600cc: %18
+│   ├── 1601-2000cc: %22
+│   ├── 2001-2500cc: %25
+│   └── 2500+cc: %30
+├── Formula: FIF = CIF × rate%
+└── Snapshot: Rate captured at calculation time (TaxSnapshot)
+
+Tax Calculation Snapshot (NEW Phase 4)
+├── Captures: TaxRate + ExchangeRate at calculation time
+├── Stores: taxSnapshot record with calculationId
+├── Prevents: Historical rate changes affecting past calculations
+└── Used by: Calculator engine for accurate audit trail
+```
+
+### Gallery Tenant Chain (Calculator)
+```
+Request → authenticate → requireGalleryAccess → galleryTenant → validate(schema)
+          ↓
+    calculatorController.calculate(galleryId=?)
+          ↓
+    calculatorService.calculate(galleryId)
+          ↓
+    prisma.importCalculation.create({ where: { galleryId } })
+```
+
+---
+
+## API Endpoints — Phase 4 Complete (67 Endpoints)
+
+### Authentication (4 endpoints)
+
+| Method | Path | Handler | Auth | Status |
+|--------|------|---------|------|--------|
+| `POST` | `/api/auth/register` | authController.register | — | ✅ |
+| `POST` | `/api/auth/login` | authController.login | — | ✅ |
+| `POST` | `/api/auth/refresh` | authController.refresh | — | ✅ |
+| `GET` | `/api/auth/me` | authController.me | authenticate | ✅ |
+
+### Tax Rates (7 endpoints — MASTER_ADMIN only)
+
+| Method | Path | Handler | Status |
+|--------|------|---------|--------|
+| `GET` | `/api/tax-rates` | taxRateController.getAll | ✅ |
+| `GET` | `/api/tax-rates/active` | taxRateController.getActive | ✅ |
+| `GET` | `/api/tax-rates/:id` | taxRateController.getById | ✅ |
+| `GET` | `/api/tax-rates/:id/history` | taxRateController.getHistory | ✅ |
+| `POST` | `/api/tax-rates` | taxRateController.create | ✅ |
+| `PUT` | `/api/tax-rates/:id` | taxRateController.update | ✅ |
+| `DELETE` | `/api/tax-rates/:id` | taxRateController.delete | ✅ |
+
+### Exchange Rates (7 endpoints — mixed auth)
+
+| Method | Path | Handler | Auth | Status |
+|--------|------|---------|------|--------|
+| `GET` | `/api/exchange-rates` | exchangeRateController.getAll | MASTER_ADMIN | ✅ |
+| `GET` | `/api/exchange-rates/current/:code` | getByCurrency | GALLERY_ACCESS | ✅ |
+| `GET` | `/api/exchange-rates/settings` | getSettings | MASTER_ADMIN | ✅ |
+| `PUT` | `/api/exchange-rates/settings` | updateSettings | MASTER_ADMIN | ✅ |
+| `POST` | `/api/exchange-rates/fetch` | fetchFromAPI | MASTER_ADMIN | ✅ |
+| `GET` | `/api/exchange-rates/history/:code` | getHistory | MASTER_ADMIN | ✅ |
+| `PUT` | `/api/exchange-rates` | bulkUpdate | MASTER_ADMIN | ✅ |
+
+### Countries (6 endpoints — mixed auth)
+
+| Method | Path | Handler | Auth | Status |
+|--------|------|---------|------|--------|
+| `GET` | `/api/countries` | countryController.getAll | MASTER_ADMIN | ✅ |
+| `GET` | `/api/countries/active` | getActive | GALLERY_ACCESS | ✅ |
+| `GET` | `/api/countries/:id` | getById | MASTER_ADMIN | ✅ |
+| `POST` | `/api/countries` | create | MASTER_ADMIN | ✅ |
+| `PUT` | `/api/countries/:id` | update | MASTER_ADMIN | ✅ |
+| `DELETE` | `/api/countries/:id` | delete | MASTER_ADMIN | ✅ |
+
+### Galleries (6 endpoints — MASTER_ADMIN only)
+
+| Method | Path | Handler | Status |
+|--------|------|---------|--------|
+| `GET` | `/api/galleries` | galleryController.getAll | ✅ |
+| `GET` | `/api/galleries/:id` | getById | ✅ |
+| `GET` | `/api/galleries/:id/stats` | getStats | ✅ |
+| `POST` | `/api/galleries` | create | ✅ |
+| `PUT` | `/api/galleries/:id` | update | ✅ |
+| `DELETE` | `/api/galleries/:id` | delete | ✅ |
+
+### Notifications (5 endpoints — MASTER_ADMIN only)
+
+| Method | Path | Handler | Status |
+|--------|------|---------|--------|
+| `GET` | `/api/notifications` | notificationController.getAll | ✅ |
+| `GET` | `/api/notifications/:id` | getById | ✅ |
+| `POST` | `/api/notifications` | create | ✅ |
+| `PUT` | `/api/notifications/:id` | update | ✅ |
+| `POST` | `/api/notifications/:id/broadcast` | broadcast | ✅ |
+
+### Audit Logs (3 endpoints — MASTER_ADMIN only)
+
+| Method | Path | Handler | Status |
+|--------|------|---------|--------|
+| `GET` | `/api/audit-logs` | auditController.getAll | ✅ |
+| `GET` | `/api/audit-logs/:id` | getById | ✅ |
+| `POST` | `/api/audit-logs/filter` | filter | ✅ |
+
+### Vehicles (23 endpoints — GALLERY_ACCESS only)
+
+| Method | Path | Handler | Status |
+|--------|------|---------|--------|
+| `GET` | `/api/vehicles` | vehicleController.getAll | ✅ |
+| `GET` | `/api/vehicles/stats` | vehicleController.getStats | ✅ |
+| `POST` | `/api/vehicles` | vehicleController.create | ✅ |
+| `GET` | `/api/vehicles/:id` | vehicleController.getById | ✅ |
+| `PUT` | `/api/vehicles/:id` | vehicleController.update | ✅ |
+| `PATCH` | `/api/vehicles/:id/status` | vehicleController.updateStatus | ✅ |
+| `PATCH` | `/api/vehicles/:id/move-to-stock` | vehicleController.moveToStock | ✅ |
+| `DELETE` | `/api/vehicles/:id` | vehicleController.delete | ✅ |
+| `GET` | `/api/vehicles/:vehicleId/images` | vehicleImageController.getByVehicleId | ✅ |
+| `POST` | `/api/vehicles/:vehicleId/images` | vehicleImageController.upload | ✅ |
+| `POST` | `/api/vehicles/:vehicleId/images/bulk` | vehicleImageController.bulkUpload | ✅ |
+| `PATCH` | `/api/vehicles/:vehicleId/images/:imageId/main` | vehicleImageController.setMain | ✅ |
+| `PUT` | `/api/vehicles/:vehicleId/images/reorder` | vehicleImageController.reorder | ✅ |
+| `DELETE` | `/api/vehicles/:vehicleId/images/:imageId` | vehicleImageController.delete | ✅ |
+| `GET` | `/api/vehicles/:vehicleId/documents` | vehicleDocumentController.getByVehicleId | ✅ |
+| `POST` | `/api/vehicles/:vehicleId/documents` | vehicleDocumentController.create | ✅ |
+| `DELETE` | `/api/vehicles/:vehicleId/documents/:documentId` | vehicleDocumentController.delete | ✅ |
+| `GET` | `/api/vehicles/:vehicleId/expenses` | vehicleExpenseController.getByVehicleId | ✅ |
+| `POST` | `/api/vehicles/:vehicleId/expenses` | vehicleExpenseController.create | ✅ |
+| `PUT` | `/api/vehicles/:vehicleId/expenses/:expenseId` | vehicleExpenseController.update | ✅ |
+| `DELETE` | `/api/vehicles/:vehicleId/expenses/:expenseId` | vehicleExpenseController.delete | ✅ |
+
+### Calculator (6 endpoints — NEW Phase 4, GALLERY_ACCESS only)
+
+| Method | Path | Handler | Status |
+|--------|------|---------|--------|
+| `POST` | `/api/calculator/calculate` | calculatorController.calculate | ✅ |
+| `GET` | `/api/calculator/rates` | calculatorController.getCurrentRates | ✅ |
+| `GET` | `/api/calculator/history` | calculatorController.getHistory | ✅ |
+| `GET` | `/api/calculator/:id` | calculatorController.getById | ✅ |
+| `GET` | `/api/calculator/:id/pdf` | calculatorController.generatePdf | ✅ |
+| `POST` | `/api/calculator/:id/save-to-vehicle` | calculatorController.saveToVehicle | ✅ |
+
+### Health Check
+
+| Method | Path | Status |
+|--------|------|--------|
+| `GET` | `/health` | ✅ |
+
+**Total Endpoints Implemented: 67** (+6 calculator endpoints)
+
+---
+
+## Test Coverage — 13 Files, 5,888 Lines, 481+ Test Cases (CHECKPOINT-13)
+
+```
+MIDDLEWARE TESTS (2 files, 101 test cases)
+├── auth.middleware.test.ts (47 tests)
+│   ├── authenticate() — token validation
+│   ├── Bearer token extraction & verification
+│   └── Error handling (expired, malformed, missing)
+│
+└── role.middleware.test.ts (54 tests)
+    ├── requireRole() — 9 tests
+    ├── requireMasterAdmin() — 5 tests
+    ├── requireGalleryAccess() — 9 tests
+    ├── requireFinanceAccess() — 9 tests
+    ├── requireUserManagement() — 8 tests
+    └── All 6 roles × permission matrix
+
+UTILITY TESTS (2 files, 38 test cases)
+├── jwt.test.ts (23 tests)
+│   ├── generateAccessToken() — 7 tests
+│   ├── generateRefreshToken() — 7 tests
+│   ├── verifyAccessToken() — 5 tests
+│   └── verifyRefreshToken() — 4 tests
+│
+└── hash.test.ts (15 tests)
+    ├── hashPassword() — 8 tests
+    └── comparePassword() — 7 tests
+
+SERVICE TESTS (9 files, 342+ test cases) ← UPDATED CHECKPOINT-13
+├── taxRate.service.test.ts — CRUD, history, snapshot
+├── country.service.test.ts — CRUD, active filtering
+├── exchangeRate.service.test.ts — CRUD, API fetch, bulk update
+├── gallery.service.test.ts — CRUD, stats calculation
+├── vehicle.service.test.ts — Vehicle CRUD, status transitions
+├── vehicleDocument.service.test.ts — Document upload, delete
+├── vehicleExpense.service.test.ts — Expense CRUD, total calc
+├── vehicleImage.service.test.ts — 47 tests (stream, compression, error)
+└── calculator.service.test.ts (NEW) — 78 tests ← CHECKPOINT-13
+    ├── calculate() — 28 tests (CIF, FIF, taxes, snapshot)
+    ├── getFIFRate() — 15 tests (5 engine bands, edge cases)
+    ├── getCurrentRates() — 10 tests (rate aggregation)
+    ├── getHistory() — 12 tests (pagination, filtering)
+    ├── getById() — 8 tests (not found, tenant isolation)
+    └── saveToVehicle() — 5 tests (vehicle linkage, constraints)
+
+TOTAL: 481+ test cases across 13 files (+78 new calculator tests)
+```
+
+---
+
+## Services Implementation Status
+
+| Service | Methods | Status | Used by | LOC |
+|---------|---------|--------|---------|-----|
+| **authService** | register, login, refresh, getMe | ✅ | authController | 156 |
+| **taxRateService** | getAll, getActive, getById, getHistory, create, update, delete | ✅ | taxRateController | 238 |
+| **countryService** | getAll, getActive, getById, create, update, delete | ✅ | countryController | 201 |
+| **exchangeRateService** | getAll, getByCurrency, getHistory, getSettings, updateSettings, fetchFromAPI, bulkUpdate, autoUpdate | ✅ | exchangeRateController + cron | 487 |
+| **galleryService** | getAll, getById, getStats, create, update, delete | ✅ | galleryController | 218 |
+| **notificationService** | getAll, getById, create, update, broadcast | ✅ | notificationController | 312 |
+| **auditService** | log, getAll, getById, filter | ✅ | All services | 267 |
+| **vehicleService** | getAll, getById, getStats, create, update, updateStatus, moveToStock, delete + audit logging | ✅ | vehicleController | 420 |
+| **vehicleImageService** | getByVehicleId, upload, bulkUpload, setMain, reorder, delete | ✅ | vehicleImageController | 380 |
+| **vehicleDocumentService** | getByVehicleId, create, delete | ✅ | vehicleDocumentController | 220 |
+| **vehicleExpenseService** | getByVehicleId, create, update, delete | ✅ | vehicleExpenseController | 210 |
+| **calculatorService** | calculate, getCurrentRates, getHistory, getById, saveToVehicle, getFIFRate, getTaxSnapshot | ✅ NEW | calculatorController | 485 |
+| **pdfService** | generateCalculationPdf (render sections, format values) | ✅ NEW | calculatorController | 272 |
+
+**Total Backend LOC: 11,427**
+
+---
+
+## Frontend Components & Pages Status
+
+| Layer | Component/Page | Status | LOC | Purpose |
+|-------|----------------|--------|-----|---------|
+| **Shared** | header.tsx | ✅ | 156 | Top navigation |
+| | sidebar.tsx | ✅ | 234 | Navigation menu |
+| | data-table.tsx | ✅ | 189 | Reusable table |
+| **UI** | 24 shadcn components | ✅ | 3,100 | Primitives (+ alert-dialog, progress, tooltip) |
+| **Pages (Master)** | 10 pages | ✅ | 1,920 | Tax, Country, Gallery, Notification, Audit |
+| **Pages (Dashboard)** | 7 pages | ✅ | 3,293 | Vehicles, calculator (NEW) |
+| **Forms** | 4 form components | ✅ | 568 | Tax, Country, Gallery, Notification |
+| **Stores** | authStore.ts | ✅ | 187 | User state |
+| **Hooks** | use-api.ts | ✅ | 89 | API wrapper |
+| **Lib** | api.ts, utils.ts | ✅ | 267 | HTTP + helpers |
+
+**Total Frontend LOC: 13,542** (+1,727 lines from calculator page)
+
+---
+
+## File Breakdown
+
+### Backend Controllers (12 files)
+- `auth.controller.ts` — 4 endpoints (register, login, refresh, me)
+- `taxRate.controller.ts` — 7 endpoints (CRUD + history)
+- `country.controller.ts` — 6 endpoints (CRUD)
+- `exchangeRate.controller.ts` — 7 endpoints (CRUD + settings + fetch)
+- `gallery.controller.ts` — 6 endpoints (CRUD + stats)
+- `notification.controller.ts` — 5 endpoints (CRUD + broadcast)
+- `audit.controller.ts` — 3 endpoints (getAll, getById, filter)
+- `vehicle.controller.ts` — 8 endpoints (CRUD + status + move)
+- `vehicleImage.controller.ts` — 6 endpoints (upload, reorder, delete)
+- `vehicleDocument.controller.ts` — 3 endpoints (get, create, delete)
+- `vehicleExpense.controller.ts` — 4 endpoints (get, create, update, delete)
+- `calculator.controller.ts` — 6 endpoints (calculate, rates, history, detail, PDF, save) [NEW Faz 4]
+
+### Backend Services (13 files + 9 tests)
+- `auth.service.ts` — Authentication logic
+- `taxRate.service.ts` — Tax rate management + history
+- `country.service.ts` — Country management
+- `exchangeRate.service.ts` — Exchange rate + API sync + cron
+- `gallery.service.ts` — Gallery management + stats
+- `notification.service.ts` — Notification system
+- `audit.service.ts` — Audit logging
+- `vehicle.service.ts` — Vehicle CRUD + status management + audit logging
+- `vehicleImage.service.ts` — Image upload + Cloudinary integration
+- `vehicleDocument.service.ts` — Document management
+- `vehicleExpense.service.ts` — Expense tracking
+- `calculator.service.ts` — Import cost calculation + tax snapshot + FIF engine [NEW Faz 4]
+- `pdf.service.ts` — PDF report generation for calculations [NEW Faz 4]
+- **Tests:** 9 service test files (78 new calculator tests) covering calculation engine, rate lookups, history
+
+### Backend Routes (10 files)
+- `auth.routes.ts` — Authentication endpoints
+- `taxRate.routes.ts` — Tax rate CRUD
+- `country.routes.ts` — Country CRUD
+- `exchangeRate.routes.ts` — Exchange rate CRUD + API
+- `gallery.routes.ts` — Gallery CRUD
+- `notification.routes.ts` — Notification CRUD
+- `audit.routes.ts` — Audit log querying
+- `vehicle.routes.ts` — Vehicle + images + documents + expenses
+- `calculator.routes.ts` — Calculator endpoints (6 routes) [NEW Faz 4]
+
+### Backend Middleware (7 files + 2 tests)
+- `auth.middleware.ts` — JWT verification (47 tests)
+- `role.middleware.ts` — RBAC enforcement (54 tests)
+- `gallery.middleware.ts` — Multi-tenant isolation
+- `validate.middleware.ts` — Zod schema validation
+- `error.middleware.ts` — Global error handler
+- `upload.middleware.ts` — Multer + Cloudinary setup
+- `rateLimit.middleware.ts` — Rate limiting per endpoint
+
+### Backend Validations (13 files)
+- `auth.validation.ts` — Register, login, refresh schemas
+- `taxRate.validation.ts` — Create, update tax rates
+- `country.validation.ts` — Create, update countries
+- `exchangeRate.validation.ts` — Bulk update, settings
+- `gallery.validation.ts` — Create, update galleries
+- `notification.validation.ts` — Create, send, broadcast
+- `audit.validation.ts` — Audit log filters
+- `common.validation.ts` — Shared: id param, pagination
+- `vehicle.validation.ts` — Create, update vehicles
+- `vehicleImage.validation.ts` — Image params
+- `vehicleDocument.validation.ts` — Document params
+- `vehicleExpense.validation.ts` — Expense params
+- `calculator.validation.ts` — Calculate, saveToVehicle, param schemas [NEW Faz 4]
+
+### Frontend Pages (19 pages)
+- `(auth)/login/page.tsx` — Login form
+- `(auth)/register/page.tsx` — Registration form
+- `page.tsx` — Home page
+- `(master)/master/page.tsx` — Master dashboard
+- `(master)/master/tax-rates/page.tsx` — Tax rates list
+- `(master)/master/exchange-rates/page.tsx` — Exchange rates list
+- `(master)/master/countries/page.tsx` — Countries list
+- `(master)/master/galleries/page.tsx` — Galleries list
+- `(master)/master/galleries/[id]/page.tsx` — Gallery detail
+- `(master)/master/notifications/page.tsx` — Notifications list
+- `(master)/master/notifications/[id]/page.tsx` — Notification detail
+- `(master)/master/audit-logs/page.tsx` — Audit logs
+- `(dashboard)/layout.tsx` — Gallery panel layout
+- `(dashboard)/dashboard/page.tsx` — Gallery dashboard
+- `(dashboard)/dashboard/vehicles/page.tsx` — Vehicles list
+- `(dashboard)/dashboard/vehicles/new/page.tsx` — Create vehicle
+- `(dashboard)/dashboard/vehicles/[id]/page.tsx` — Vehicle detail
+- `(dashboard)/dashboard/vehicles/[id]/edit/page.tsx` — Edit vehicle
+- `(dashboard)/dashboard/calculator/page.tsx` — Calculator (form + results + history + PDF) [NEW Faz 4]
+
+### Frontend Components (3 shared + 24 UI)
+- `shared/header.tsx` — Top bar with notifications
+- `shared/sidebar.tsx` — Navigation sidebar (master/gallery)
+- `shared/data-table.tsx` — Reusable data table
+- 24x `ui/*.tsx` — shadcn/ui primitives (added: alert-dialog, progress, tooltip)
+
+### Frontend Hooks & Stores
+- `hooks/use-api.ts` — useApi() wrapper for API calls
+- `stores/authStore.ts` — Zustand auth state
+- `lib/api.ts` — Axios client + interceptors
+- `lib/utils.ts` — shadcn utilities
+
+---
+
+## Uyarılar & Improvements (CHECKPOINT-13)
+
+| Type | Severity | Issue | Recommendation | Status |
+|------|----------|-------|-----------------|--------|
+| Multi-Tenant | 🟢 OK | WHERE galleryId = ? on all gallery panel queries | ✅ Fully implemented | Complete |
+| Audit Logging | 🟢 OK | vehicle.service + calculator audit integration | ✅ Implemented | CHECKPOINT-13 |
+| Tax Snapshot | 🟢 OK | TaxSnapshot captured at calculation time | ✅ Prevents rate change issues | Phase 4 Complete |
+| PDF Generation | 🟢 OK | pdfkit integration for calculation exports | ✅ A4 format, all sections | CHECKPOINT-13 |
+| Test Coverage | 🟢 OK | calculator.service (78 tests) — 5 FIF bands, edge cases | ✅ Comprehensive | CHECKPOINT-13 |
+| E2E Tests | 🟡 MEDIUM | E2E tests missing for workflows | Add Cypress/Playwright | Phase 5 |
+| Image Processing | 🟡 MEDIUM | Cloudinary rate limits (100 req/sec) | Implement queue | Phase 5 |
+| Caching | 🟡 MEDIUM | Redis cache for active rates | Implement in calculatorService | Phase 5 |
+
+---
+
+## Özet
+
+| Metric | Value |
+|--------|-------|
+| **Phase** | 4 of 9 Complete |
+| **Total Source Files** | 146 |
+| **Backend Services** | 13 (auth, taxRate, country, exchangeRate, gallery, notification, audit, vehicle, vehicleImage, vehicleDocument, vehicleExpense, calculator, pdf) |
+| **Backend Controllers** | 12 |
+| **Backend Routes** | 10 |
+| **Backend Middleware** | 7 + upload.middleware + rateLimit.middleware |
+| **Backend Validations** | 13 |
+| **API Endpoints** | 67 implemented (61 Phase 3 + 6 calculator Phase 4) |
+| **Frontend Pages** | 19 (+ calculator page) |
+| **Frontend Components** | 27 (3 shared + 24 UI) |
+| **Test Coverage** | 13 files, 5,888 LOC, 481+ test cases |
+| **Lines of Code** | 24,969 total (11,427 backend + 13,542 frontend) |
+| **Prisma Models** | 17 |
+| **Type Safety** | 100% (full TypeScript) |
+| **Multi-tenant** | ✅ Implemented + calculator galleryId filtering |
+| **JWT Auth** | ✅ Implemented (15m access + 7d refresh) |
+| **File Upload** | ✅ Cloudinary integration (vehicle images/documents + PDF generation) |
+| **Cron Jobs** | 1 (exchange rate auto-sync) |
+| **shadcn/ui Components** | 24 |
+| **Middleware Layers** | 7 (auth, role, gallery, validate, error, upload, rateLimit) |
+| **Calculator Engine** | ✅ FIF 5-band calculation, tax snapshot, PDF export |
+
+---
+
+## Checkpoint History
+
+| Checkpoint | Date | Phase | Key Changes |
+|-----------|------|-------|------------|
+| CHECKPOINT-1 | 25 Feb | 1 | Monorepo scaffold, auth, Prisma schema |
+| CHECKPOINT-2 | 26 Feb | 1 | Master panel (tax, exchange, country, gallery) |
+| CHECKPOINT-3 | 26 Feb | 1 | Notifications, audit logs, master pages |
+| CHECKPOINT-4 | 27 Feb | 2 | Frontend master panel UI + all validations |
+| CHECKPOINT-5 | 27 Feb | 2 | Gallery panel layout + vehicle form scaffold |
+| CHECKPOINT-6 | 28 Feb | 2 | Vehicle service + CRUD endpoints |
+| CHECKPOINT-7 | 28 Feb | 2 | Vehicle images + documents + expenses |
+| CHECKPOINT-8 | 28 Feb | 2 | Cloudinary + upload middleware |
+| CHECKPOINT-9 | 28 Feb | 2 | Vehicle pages (list, detail, edit) |
+| CHECKPOINT-10 | 28 Feb | 2 | vehicleImage/Document/Expense services |
+| CHECKPOINT-11 | 28 Feb | 2 | Service tests (7 files, 356+ cases) |
+| CHECKPOINT-12 | 1 Mar | 3 | vehicleImage.service.test.ts (47 tests), calculator.service.ts, audit logging |
+| CHECKPOINT-13 | 1 Mar | 4 | Calculator module complete: 6 endpoints, 78 tests, PDF service, frontend page |
+
+---
+
+**Updated by:** @tree-mapper  
+**Version:** 7.0 — CHECKPOINT-13 Complete  
+**Last Updated:** 1 March 2026, 15:30 UTC  
+**Files Scanned:** 146 source files + 13 test files  
+**Test Files:** 13 (5,888 lines, 481+ test cases)  
+**Total Implementation:** 24,969 LOC  
+**Status:** Phase 4 Calculator Module Complete — Ready for Phase 5 (Products, Customers, Sales)
+

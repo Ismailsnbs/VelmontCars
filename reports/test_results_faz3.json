@@ -1,0 +1,778 @@
+{
+  "pages": [
+    {
+      "route": "/login",
+      "description": "Giris Sayfasi",
+      "status": "ok",
+      "loadTime": 0,
+      "title": "KKTC Galeri Yönetim",
+      "bodyPreview": "Giris Yap\n\nKKTC Galeri Yonetim Sistemi\n\nEmail\nSifre\nGiris Yap\n\nHesabiniz yok mu? Kayit Ol",
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Warning: Cannot update a component (`%s`) while rendering a different component (`%s`). To locate the bad setState() call inside `%s`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render%s HotReload SelectItem SelectItem \n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:984:13)\n    at _c6 (webpack-internal:///(app-pages-browser)/./components/ui/select.tsx:146:11)\n    at div\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-primitive@2.1.3_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18_odkgwwsk7rqtxtajcj6s5thi54/node_modules/@radix-ui/react-primitive/dist/index.mjs:38:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:52:17)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:856:13)\n    at div\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:52:17)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:356:58)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-primitive@2.1.3_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18_odkgwwsk7rqtxtajcj6s5thi54/node_modules/@radix-ui/react-primitive/dist/index.mjs:38:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-portal@1.1.9_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._si5gqg2qtur3gbt6ibkxlv37vi/node_modules/@radix-ui/react-portal/dist/index.mjs:22:24)\n    at SelectPortal\n    at _c4 (webpack-internal:///(app-pages-browser)/./components/ui/select.tsx:105:11)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at CollectionProvider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:36:17)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Popper (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-popper@1.2.8_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._77iomgpzr7j45nth4ka2sx4zcq/node_modules/@radix-ui/react-popper/dist/index.mjs:54:13)\n    at Select (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:109:13)\n    at div\n    at div\n    at GalleriesPage (webpack-internal:///(app-pages-browser)/./app/(master)/master/galleries/page.tsx:45:76)\n    at ClientPageRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/client-page.js:14:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at main\n    at div\n    at div\n    at MasterLayout (webpack-internal:///(app-pages-browser)/./app/(master)/layout.tsx:21:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at QueryClientProvider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@tanstack+react-query@5.90.21_react@18.3.1/node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js:27:11)\n    at Providers (webpack-internal:///(app-pages-browser)/./app/providers.tsx:15:11)\n    at body\n    at html\n    at RootLayout (Server)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at DevRootNotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/dev-root-not-found-boundary.js:33:11)\n    at ReactDevOverlay (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)\n    at HotReload (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:321:11)\n    at Router (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:207:11)\n    at ErrorBoundaryHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:113:9)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at AppRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:585:13)\n    at ServerRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:112:27)\n    at Root (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:117:11)",
+        "The above error occurred in the <NotFoundErrorBoundary> component:\n\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:984:13)\n    at _c6 (webpack-internal:///(app-pages-browser)/./components/ui/select.tsx:146:11)\n    at div\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-primitive@2.1.3_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18_odkgwwsk7rqtxtajcj6s5thi54/node_modules/@radix-ui/react-primitive/dist/index.mjs:38:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:52:17)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:856:13)\n    at div\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:52:17)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:356:58)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-primitive@2.1.3_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18_odkgwwsk7rqtxtajcj6s5thi54/node_modules/@radix-ui/react-primitive/dist/index.mjs:38:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-portal@1.1.9_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._si5gqg2qtur3gbt6ibkxlv37vi/node_modules/@radix-ui/react-portal/dist/index.mjs:22:24)\n    at SelectPortal\n    at _c4 (webpack-internal:///(app-pages-browser)/./components/ui/select.tsx:105:11)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at CollectionProvider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:36:17)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Popper (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-popper@1.2.8_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._77iomgpzr7j45nth4ka2sx4zcq/node_modules/@radix-ui/react-popper/dist/index.mjs:54:13)\n    at Select (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:109:13)\n    at div\n    at div\n    at GalleriesPage (webpack-internal:///(app-pages-browser)/./app/(master)/master/galleries/page.tsx:45:76)\n    at ClientPageRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/client-page.js:14:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at main\n    at div\n    at div\n    at MasterLayout (webpack-internal:///(app-pages-browser)/./app/(master)/layout.tsx:21:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at QueryClientProvider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@tanstack+react-query@5.90.21_react@18.3.1/node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js:27:11)\n    at Providers (webpack-internal:///(app-pages-browser)/./app/providers.tsx:15:11)\n    at body\n    at html\n    at RootLayout (Server)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at DevRootNotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/dev-root-not-found-boundary.js:33:11)\n    at ReactDevOverlay (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)\n    at HotReload (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:321:11)\n    at Router (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:207:11)\n    at ErrorBoundaryHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:113:9)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at AppRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:585:13)\n    at ServerRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:112:27)\n    at Root (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:117:11)\n\nReact will try to recreate this component tree from scratch using the error boundary you provided, ReactDevOverlay.",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Warning: Cannot update a component (`%s`) while rendering a different component (`%s`). To locate the bad setState() call inside `%s`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render%s HotReload SelectItem SelectItem \n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:984:13)\n    at _c6 (webpack-internal:///(app-pages-browser)/./components/ui/select.tsx:146:11)\n    at div\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-primitive@2.1.3_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18_odkgwwsk7rqtxtajcj6s5thi54/node_modules/@radix-ui/react-primitive/dist/index.mjs:38:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:52:17)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:856:13)\n    at div\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:52:17)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:356:58)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-primitive@2.1.3_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18_odkgwwsk7rqtxtajcj6s5thi54/node_modules/@radix-ui/react-primitive/dist/index.mjs:38:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-portal@1.1.9_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._si5gqg2qtur3gbt6ibkxlv37vi/node_modules/@radix-ui/react-portal/dist/index.mjs:22:24)\n    at SelectPortal\n    at _c4 (webpack-internal:///(app-pages-browser)/./components/ui/select.tsx:105:11)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at CollectionProvider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:36:17)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Popper (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-popper@1.2.8_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._77iomgpzr7j45nth4ka2sx4zcq/node_modules/@radix-ui/react-popper/dist/index.mjs:54:13)\n    at Select (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:109:13)\n    at div\n    at div\n    at GalleriesPage (webpack-internal:///(app-pages-browser)/./app/(master)/master/galleries/page.tsx:45:76)\n    at ClientPageRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/client-page.js:14:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at main\n    at div\n    at div\n    at MasterLayout (webpack-internal:///(app-pages-browser)/./app/(master)/layout.tsx:21:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at QueryClientProvider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@tanstack+react-query@5.90.21_react@18.3.1/node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js:27:11)\n    at Providers (webpack-internal:///(app-pages-browser)/./app/providers.tsx:15:11)\n    at body\n    at html\n    at RootLayout (Server)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at DevRootNotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/dev-root-not-found-boundary.js:33:11)\n    at ReactDevOverlay (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)\n    at HotReload (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:321:11)\n    at Router (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:207:11)\n    at ErrorBoundaryHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:113:9)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at AppRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:585:13)\n    at ServerRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:112:27)\n    at Root (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:117:11)",
+        "The above error occurred in the <NotFoundErrorBoundary> component:\n\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:984:13)\n    at _c6 (webpack-internal:///(app-pages-browser)/./components/ui/select.tsx:146:11)\n    at div\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-primitive@2.1.3_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18_odkgwwsk7rqtxtajcj6s5thi54/node_modules/@radix-ui/react-primitive/dist/index.mjs:38:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:52:17)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:856:13)\n    at div\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:52:17)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:356:58)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-primitive@2.1.3_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18_odkgwwsk7rqtxtajcj6s5thi54/node_modules/@radix-ui/react-primitive/dist/index.mjs:38:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-portal@1.1.9_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._si5gqg2qtur3gbt6ibkxlv37vi/node_modules/@radix-ui/react-portal/dist/index.mjs:22:24)\n    at SelectPortal\n    at _c4 (webpack-internal:///(app-pages-browser)/./components/ui/select.tsx:105:11)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at CollectionProvider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:36:17)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Popper (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-popper@1.2.8_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._77iomgpzr7j45nth4ka2sx4zcq/node_modules/@radix-ui/react-popper/dist/index.mjs:54:13)\n    at Select (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:109:13)\n    at div\n    at div\n    at GalleriesPage (webpack-internal:///(app-pages-browser)/./app/(master)/master/galleries/page.tsx:45:76)\n    at ClientPageRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/client-page.js:14:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at main\n    at div\n    at div\n    at MasterLayout (webpack-internal:///(app-pages-browser)/./app/(master)/layout.tsx:21:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at QueryClientProvider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@tanstack+react-query@5.90.21_react@18.3.1/node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js:27:11)\n    at Providers (webpack-internal:///(app-pages-browser)/./app/providers.tsx:15:11)\n    at body\n    at html\n    at RootLayout (Server)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at DevRootNotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/dev-root-not-found-boundary.js:33:11)\n    at ReactDevOverlay (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)\n    at HotReload (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:321:11)\n    at Router (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:207:11)\n    at ErrorBoundaryHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:113:9)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at AppRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:585:13)\n    at ServerRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:112:27)\n    at Root (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:117:11)\n\nReact will try to recreate this component tree from scratch using the error boundary you provided, ReactDevOverlay.",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "networkErrors": [
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/notifications?page=1&limit=10",
+        "500 http://localhost:4000/api/notifications?page=1&limit=10",
+        "500 http://localhost:4000/api/audit-logs?page=1&limit=10",
+        "500 http://localhost:4000/api/audit-logs?page=1&limit=10",
+        "500 http://localhost:4000/api/notifications?page=1&limit=10",
+        "500 http://localhost:4000/api/notifications?page=1&limit=10",
+        "500 http://localhost:4000/api/audit-logs?page=1&limit=10",
+        "500 http://localhost:4000/api/audit-logs?page=1&limit=10",
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "404 http://localhost:3000/dashboard/calculator",
+        "404 http://localhost:3000/dashboard/products",
+        "404 http://localhost:3000/dashboard/customers",
+        "404 http://localhost:3000/dashboard/sales",
+        "404 http://localhost:3000/dashboard/reports",
+        "404 http://localhost:3000/dashboard/settings"
+      ],
+      "clicks": [],
+      "forms": [
+        {
+          "ok": true,
+          "msg": "Login formu dolduruldu"
+        }
+      ],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/login.png",
+      "notes": [
+        "Login BASARILI - redirect: http://localhost:3000/master"
+      ]
+    },
+    {
+      "route": "/master",
+      "description": "Master Dashboard",
+      "status": "ok",
+      "loadTime": 2533,
+      "title": "KKTC Galeri Yönetim",
+      "bodyPreview": "Master Panel\nDashboard\nVergi Oranları\nDöviz Kurları\nÜlkeler\nGaleriler\nBildirimler\nAudit Log\nU\nMaster Dashboard\n\nPlatform yönetim paneli ve istatistikleri\n\nToplam Galeri\n0\n\nAktif galerilerin sayısı\n\nAk",
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+      ],
+      "networkErrors": [
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5"
+      ],
+      "clicks": [],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_master.png",
+      "notes": []
+    },
+    {
+      "route": "/master/tax-rates",
+      "description": "Vergi Oranlari",
+      "status": "ok",
+      "loadTime": 2534,
+      "title": "KKTC Galeri Yönetim",
+      "bodyPreview": "Master Panel\nDashboard\nVergi Oranları\nDöviz Kurları\nÜlkeler\nGaleriler\nBildirimler\nAudit Log\nU\nVergi Oranlari\n\nPlatform genelindeki vergi oranlarini yonetin.\n\nYeni Vergi Orani\nTumu\nKod\tAd\tOran\tOran Tip",
+      "consoleErrors": [],
+      "networkErrors": [],
+      "clicks": [
+        {
+          "ok": true,
+          "msg": "\"Yeni\" butonuna tiklandi"
+        }
+      ],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_master_tax-rates.png",
+      "notes": []
+    },
+    {
+      "route": "/master/countries",
+      "description": "Ulkeler (Mensei Ulkeler)",
+      "status": "ok",
+      "loadTime": 2523,
+      "title": "KKTC Galeri Yönetim",
+      "bodyPreview": "Master Panel\nDashboard\nVergi Oranları\nDöviz Kurları\nÜlkeler\nGaleriler\nBildirimler\nAudit Log\nU\nÜlkeler\n\nKöken ülkelerini ve vergi oranlarını yönetin\n\nYeni Ülke\nÜlke Listesi\n\nTüm kayıtlı ülkeler ve bunl",
+      "consoleErrors": [],
+      "networkErrors": [],
+      "clicks": [
+        {
+          "ok": true,
+          "msg": "\"Yeni\" butonuna tiklandi"
+        }
+      ],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_master_countries.png",
+      "notes": []
+    },
+    {
+      "route": "/master/exchange-rates",
+      "description": "Doviz Kurlari",
+      "status": "ok",
+      "loadTime": 2529,
+      "title": "KKTC Galeri Yönetim",
+      "bodyPreview": "Master Panel\nDashboard\nVergi Oranları\nDöviz Kurları\nÜlkeler\nGaleriler\nBildirimler\nAudit Log\nU\nDoviz Kurlari\n\nPlatform genelinde kullanilan doviz kurlarini yonetin\n\nGuncel Kurlar\nAyarlar\nGecmis\nGuncel ",
+      "consoleErrors": [],
+      "networkErrors": [],
+      "clicks": [
+        {
+          "ok": true,
+          "msg": "Tab: \"Guncel Kurlar\""
+        },
+        {
+          "ok": true,
+          "msg": "Tab: \"Ayarlar\""
+        },
+        {
+          "ok": true,
+          "msg": "Tab: \"Gecmis\""
+        }
+      ],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_master_exchange-rates.png",
+      "notes": []
+    },
+    {
+      "route": "/master/galleries",
+      "description": "Galeriler",
+      "status": "warning",
+      "loadTime": 2529,
+      "title": "",
+      "bodyPreview": "",
+      "consoleErrors": [
+        "Warning: Cannot update a component (`%s`) while rendering a different component (`%s`). To locate the bad setState() call inside `%s`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render%s HotReload SelectItem SelectItem \n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:984:13)\n    at _c6 (webpack-internal:///(app-pages-browser)/./components/ui/select.tsx:146:11)\n    at div\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-primitive@2.1.3_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18_odkgwwsk7rqtxtajcj6s5thi54/node_modules/@radix-ui/react-primitive/dist/index.mjs:38:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:52:17)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:856:13)\n    at div\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:52:17)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:356:58)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-primitive@2.1.3_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18_odkgwwsk7rqtxtajcj6s5thi54/node_modules/@radix-ui/react-primitive/dist/index.mjs:38:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-portal@1.1.9_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._si5gqg2qtur3gbt6ibkxlv37vi/node_modules/@radix-ui/react-portal/dist/index.mjs:22:24)\n    at SelectPortal\n    at _c4 (webpack-internal:///(app-pages-browser)/./components/ui/select.tsx:105:11)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at CollectionProvider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:36:17)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Popper (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-popper@1.2.8_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._77iomgpzr7j45nth4ka2sx4zcq/node_modules/@radix-ui/react-popper/dist/index.mjs:54:13)\n    at Select (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:109:13)\n    at div\n    at div\n    at GalleriesPage (webpack-internal:///(app-pages-browser)/./app/(master)/master/galleries/page.tsx:45:76)\n    at ClientPageRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/client-page.js:14:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at main\n    at div\n    at div\n    at MasterLayout (webpack-internal:///(app-pages-browser)/./app/(master)/layout.tsx:21:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at QueryClientProvider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@tanstack+react-query@5.90.21_react@18.3.1/node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js:27:11)\n    at Providers (webpack-internal:///(app-pages-browser)/./app/providers.tsx:15:11)\n    at body\n    at html\n    at RootLayout (Server)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at DevRootNotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/dev-root-not-found-boundary.js:33:11)\n    at ReactDevOverlay (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)\n    at HotReload (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:321:11)\n    at Router (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:207:11)\n    at ErrorBoundaryHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:113:9)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at AppRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:585:13)\n    at ServerRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:112:27)\n    at Root (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:117:11)",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "The above error occurred in the <NotFoundErrorBoundary> component:\n\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:984:13)\n    at _c6 (webpack-internal:///(app-pages-browser)/./components/ui/select.tsx:146:11)\n    at div\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-primitive@2.1.3_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18_odkgwwsk7rqtxtajcj6s5thi54/node_modules/@radix-ui/react-primitive/dist/index.mjs:38:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:52:17)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:856:13)\n    at div\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:52:17)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:356:58)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:44:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-slot/dist/index.mjs:20:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-primitive@2.1.3_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18_odkgwwsk7rqtxtajcj6s5thi54/node_modules/@radix-ui/react-primitive/dist/index.mjs:38:13)\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-portal@1.1.9_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._si5gqg2qtur3gbt6ibkxlv37vi/node_modules/@radix-ui/react-portal/dist/index.mjs:22:24)\n    at SelectPortal\n    at _c4 (webpack-internal:///(app-pages-browser)/./components/ui/select.tsx:105:11)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at CollectionProvider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-collection@1.1.7_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@1_kbizu73ldn34fowoodlj4hjxja/node_modules/@radix-ui/react-collection/dist/index.mjs:36:17)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Provider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@18.3.28_react@18.3.1/node_modules/@radix-ui/react-context/dist/index.mjs:34:15)\n    at Popper (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-popper@1.2.8_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._77iomgpzr7j45nth4ka2sx4zcq/node_modules/@radix-ui/react-popper/dist/index.mjs:54:13)\n    at Select (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@types+react@18.3.28__@types+react@18.3._w7c5ofadsrsxh4bgf3womst7bq/node_modules/@radix-ui/react-select/dist/index.mjs:109:13)\n    at div\n    at div\n    at GalleriesPage (webpack-internal:///(app-pages-browser)/./app/(master)/master/galleries/page.tsx:45:76)\n    at ClientPageRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/client-page.js:14:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at main\n    at div\n    at div\n    at MasterLayout (webpack-internal:///(app-pages-browser)/./app/(master)/layout.tsx:21:11)\n    at InnerLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:243:11)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at LoadingBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:349:11)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at InnerScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:153:9)\n    at ScrollAndFocusHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:228:11)\n    at RenderFromTemplateContext (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/render-from-template-context.js:16:44)\n    at OuterLayoutRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/layout-router.js:370:11)\n    at QueryClientProvider (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@tanstack+react-query@5.90.21_react@18.3.1/node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js:27:11)\n    at Providers (webpack-internal:///(app-pages-browser)/./app/providers.tsx:15:11)\n    at body\n    at html\n    at RootLayout (Server)\n    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:74:9)\n    at RedirectBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:82:11)\n    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9)\n    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:11)\n    at DevRootNotFoundBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/dev-root-not-found-boundary.js:33:11)\n    at ReactDevOverlay (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)\n    at HotReload (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:321:11)\n    at Router (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:207:11)\n    at ErrorBoundaryHandler (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:113:9)\n    at ErrorBoundary (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:160:11)\n    at AppRouter (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:585:13)\n    at ServerRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:112:27)\n    at Root (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:117:11)\n\nReact will try to recreate this component tree from scratch using the error boundary you provided, ReactDevOverlay."
+      ],
+      "networkErrors": [],
+      "clicks": [],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_master_galleries.png",
+      "notes": [
+        "Sayfa icerigi bos veya cok az"
+      ]
+    },
+    {
+      "route": "/master/notifications",
+      "description": "Bildirimler",
+      "status": "ok",
+      "loadTime": 2528,
+      "title": "KKTC Galeri Yönetim",
+      "bodyPreview": "Master Panel\nDashboard\nVergi Oranları\nDöviz Kurları\nÜlkeler\nGaleriler\nBildirimler\nAudit Log\nU\nBildirimler\n\nPlatform bildirimlerini yönetin\n\nYeni Bildirim\nTüm Tipiler\nTüm Öncelikler\nBaşlık\tTip\tÖncelik\t",
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+      ],
+      "networkErrors": [
+        "500 http://localhost:4000/api/notifications?page=1&limit=10",
+        "500 http://localhost:4000/api/notifications?page=1&limit=10"
+      ],
+      "clicks": [
+        {
+          "ok": true,
+          "msg": "\"Bildirim\" butonuna tiklandi"
+        }
+      ],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_master_notifications.png",
+      "notes": []
+    },
+    {
+      "route": "/master/audit-logs",
+      "description": "Audit Logs",
+      "status": "ok",
+      "loadTime": 2529,
+      "title": "KKTC Galeri Yönetim",
+      "bodyPreview": "Master Panel\nDashboard\nVergi Oranları\nDöviz Kurları\nÜlkeler\nGaleriler\nBildirimler\nAudit Log\nU\nDenetim Günlüğü\n\nPlatform üzerindeki tüm işlem kayıtları\n\nİşlem Ara\nVarlık Türü\nTümü\nİşlem\tVarlık Türü\tVar",
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+      ],
+      "networkErrors": [
+        "500 http://localhost:4000/api/audit-logs?page=1&limit=10",
+        "500 http://localhost:4000/api/audit-logs?page=1&limit=10"
+      ],
+      "clicks": [],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_master_audit-logs.png",
+      "notes": []
+    },
+    {
+      "route": "/dashboard",
+      "description": "Galeri Dashboard",
+      "status": "ok",
+      "loadTime": 2530,
+      "title": "KKTC Galeri Yönetim",
+      "bodyPreview": "Master Panel\nDashboard\nVergi Oranları\nDöviz Kurları\nÜlkeler\nGaleriler\nBildirimler\nAudit Log\nU\nMaster Dashboard\n\nPlatform yönetim paneli ve istatistikleri\n\nToplam Galeri\n0\n\nAktif galerilerin sayısı\n\nAk",
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+      ],
+      "networkErrors": [
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5"
+      ],
+      "clicks": [],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_dashboard.png",
+      "notes": []
+    },
+    {
+      "route": "/dashboard/vehicles",
+      "description": "Araclar Listesi",
+      "status": "ok",
+      "loadTime": 2526,
+      "title": "KKTC Galeri Yönetim",
+      "bodyPreview": "Master Panel\nDashboard\nVergi Oranları\nDöviz Kurları\nÜlkeler\nGaleriler\nBildirimler\nAudit Log\nU\nMaster Dashboard\n\nPlatform yönetim paneli ve istatistikleri\n\nToplam Galeri\n0\n\nAktif galerilerin sayısı\n\nAk",
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+      ],
+      "networkErrors": [
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5"
+      ],
+      "clicks": [],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_dashboard_vehicles.png",
+      "notes": []
+    },
+    {
+      "route": "/dashboard/vehicles/new",
+      "description": "Yeni Arac Formu",
+      "status": "ok",
+      "loadTime": 2526,
+      "title": "KKTC Galeri Yönetim",
+      "bodyPreview": "Master Panel\nDashboard\nVergi Oranları\nDöviz Kurları\nÜlkeler\nGaleriler\nBildirimler\nAudit Log\nU\nMaster Dashboard\n\nPlatform yönetim paneli ve istatistikleri\n\nToplam Galeri\n0\n\nAktif galerilerin sayısı\n\nAk",
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+      ],
+      "networkErrors": [
+        "500 http://localhost:4000/api/audit-logs?limit=5",
+        "500 http://localhost:4000/api/audit-logs?limit=5"
+      ],
+      "clicks": [],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_dashboard_vehicles_new.png",
+      "notes": []
+    },
+    {
+      "route": "/register",
+      "description": "Kayit Sayfasi",
+      "status": "ok",
+      "loadTime": 0,
+      "title": "KKTC Galeri Yönetim",
+      "bodyPreview": "Kayit Ol\n\nYeni hesap olusturun\n\nAd Soyad\nEmail\nSifre\nSifre Tekrar\nKayit Ol\n\nZaten hesabiniz var mi? ",
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "networkErrors": [
+        "404 http://localhost:3000/dashboard/calculator",
+        "404 http://localhost:3000/dashboard/products",
+        "404 http://localhost:3000/dashboard/customers",
+        "404 http://localhost:3000/dashboard/sales",
+        "404 http://localhost:3000/dashboard/reports",
+        "404 http://localhost:3000/dashboard/settings"
+      ],
+      "clicks": [],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/register.png",
+      "notes": []
+    },
+    {
+      "route": "/dashboard/calculator",
+      "description": "Hesaplama Modulu (Faz 4)",
+      "status": "info",
+      "loadTime": 0,
+      "title": "404: This page could not be found.",
+      "bodyPreview": "404\nThis page could not be found.",
+      "consoleErrors": [],
+      "networkErrors": [],
+      "clicks": [],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_dashboard_calculator.png",
+      "notes": [
+        "Henuz implemente edilmemis (planlanan faz)",
+        "URL: http://localhost:3000/dashboard/calculator",
+        "404 - Sayfa mevcut degil"
+      ]
+    },
+    {
+      "route": "/dashboard/products",
+      "description": "Urunler (Faz 5)",
+      "status": "info",
+      "loadTime": 0,
+      "title": "404: This page could not be found.",
+      "bodyPreview": "404\nThis page could not be found.",
+      "consoleErrors": [],
+      "networkErrors": [],
+      "clicks": [],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_dashboard_products.png",
+      "notes": [
+        "Henuz implemente edilmemis (planlanan faz)",
+        "URL: http://localhost:3000/dashboard/products",
+        "404 - Sayfa mevcut degil"
+      ]
+    },
+    {
+      "route": "/dashboard/customers",
+      "description": "Musteriler (Faz 7)",
+      "status": "info",
+      "loadTime": 0,
+      "title": "404: This page could not be found.",
+      "bodyPreview": "404\nThis page could not be found.",
+      "consoleErrors": [],
+      "networkErrors": [],
+      "clicks": [],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_dashboard_customers.png",
+      "notes": [
+        "Henuz implemente edilmemis (planlanan faz)",
+        "URL: http://localhost:3000/dashboard/customers",
+        "404 - Sayfa mevcut degil"
+      ]
+    },
+    {
+      "route": "/dashboard/sales",
+      "description": "Satislar (Faz 7)",
+      "status": "info",
+      "loadTime": 0,
+      "title": "404: This page could not be found.",
+      "bodyPreview": "404\nThis page could not be found.",
+      "consoleErrors": [],
+      "networkErrors": [],
+      "clicks": [],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_dashboard_sales.png",
+      "notes": [
+        "Henuz implemente edilmemis (planlanan faz)",
+        "URL: http://localhost:3000/dashboard/sales",
+        "404 - Sayfa mevcut degil"
+      ]
+    },
+    {
+      "route": "/dashboard/reports",
+      "description": "Raporlar (Faz 6)",
+      "status": "info",
+      "loadTime": 0,
+      "title": "404: This page could not be found.",
+      "bodyPreview": "404\nThis page could not be found.",
+      "consoleErrors": [],
+      "networkErrors": [],
+      "clicks": [],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_dashboard_reports.png",
+      "notes": [
+        "Henuz implemente edilmemis (planlanan faz)",
+        "URL: http://localhost:3000/dashboard/reports",
+        "404 - Sayfa mevcut degil"
+      ]
+    },
+    {
+      "route": "/dashboard/settings",
+      "description": "Ayarlar",
+      "status": "info",
+      "loadTime": 0,
+      "title": "404: This page could not be found.",
+      "bodyPreview": "404\nThis page could not be found.",
+      "consoleErrors": [],
+      "networkErrors": [],
+      "clicks": [],
+      "forms": [],
+      "screenshot": "/Users/ismailsnbs/WebstormProjects/gallery/reports/screenshots_faz3/_dashboard_settings.png",
+      "notes": [
+        "Henuz implemente edilmemis (planlanan faz)",
+        "URL: http://localhost:3000/dashboard/settings",
+        "404 - Sayfa mevcut degil"
+      ]
+    }
+  ],
+  "errors": {
+    "critical": [
+      {
+        "route": "/master",
+        "type": "NETWORK_5XX",
+        "detail": "500 http://localhost:4000/api/audit-logs?limit=5",
+        "source": ""
+      },
+      {
+        "route": "/master",
+        "type": "NETWORK_5XX",
+        "detail": "500 http://localhost:4000/api/audit-logs?limit=5",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_RUNTIME_ERROR",
+        "detail": "PAGE ERROR: A <Select.Item /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.",
+        "source": ""
+      },
+      {
+        "route": "/master/notifications",
+        "type": "NETWORK_5XX",
+        "detail": "500 http://localhost:4000/api/notifications?page=1&limit=10",
+        "source": ""
+      },
+      {
+        "route": "/master/notifications",
+        "type": "NETWORK_5XX",
+        "detail": "500 http://localhost:4000/api/notifications?page=1&limit=10",
+        "source": ""
+      },
+      {
+        "route": "/master/audit-logs",
+        "type": "NETWORK_5XX",
+        "detail": "500 http://localhost:4000/api/audit-logs?page=1&limit=10",
+        "source": ""
+      },
+      {
+        "route": "/master/audit-logs",
+        "type": "NETWORK_5XX",
+        "detail": "500 http://localhost:4000/api/audit-logs?page=1&limit=10",
+        "source": ""
+      },
+      {
+        "route": "/dashboard",
+        "type": "NETWORK_5XX",
+        "detail": "500 http://localhost:4000/api/audit-logs?limit=5",
+        "source": ""
+      },
+      {
+        "route": "/dashboard",
+        "type": "NETWORK_5XX",
+        "detail": "500 http://localhost:4000/api/audit-logs?limit=5",
+        "source": ""
+      },
+      {
+        "route": "/dashboard/vehicles",
+        "type": "NETWORK_5XX",
+        "detail": "500 http://localhost:4000/api/audit-logs?limit=5",
+        "source": ""
+      },
+      {
+        "route": "/dashboard/vehicles",
+        "type": "NETWORK_5XX",
+        "detail": "500 http://localhost:4000/api/audit-logs?limit=5",
+        "source": ""
+      },
+      {
+        "route": "/dashboard/vehicles/new",
+        "type": "NETWORK_5XX",
+        "detail": "500 http://localhost:4000/api/audit-logs?limit=5",
+        "source": ""
+      },
+      {
+        "route": "/dashboard/vehicles/new",
+        "type": "NETWORK_5XX",
+        "detail": "500 http://localhost:4000/api/audit-logs?limit=5",
+        "source": ""
+      }
+    ],
+    "warning": [
+      {
+        "route": "/master",
+        "type": "CONSOLE_ERROR",
+        "detail": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "source": ""
+      },
+      {
+        "route": "/master",
+        "type": "CONSOLE_ERROR",
+        "detail": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "BOSH_SAYFA",
+        "detail": "Sayfa icerigi yetersiz",
+        "source": ""
+      },
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_ERROR",
+        "detail": "The above error occurred in the <NotFoundErrorBoundary> component:\n\n    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@18.3.7_@",
+        "source": ""
+      },
+      {
+        "route": "/master/notifications",
+        "type": "CONSOLE_ERROR",
+        "detail": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "source": ""
+      },
+      {
+        "route": "/master/notifications",
+        "type": "CONSOLE_ERROR",
+        "detail": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "source": ""
+      },
+      {
+        "route": "/master/audit-logs",
+        "type": "CONSOLE_ERROR",
+        "detail": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "source": ""
+      },
+      {
+        "route": "/master/audit-logs",
+        "type": "CONSOLE_ERROR",
+        "detail": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "source": ""
+      },
+      {
+        "route": "/master/tax-rates",
+        "type": "INTERAKSIYON_HATASI",
+        "detail": "searchInput.clear is not a function",
+        "source": ""
+      },
+      {
+        "route": "/dashboard",
+        "type": "CONSOLE_ERROR",
+        "detail": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "source": ""
+      },
+      {
+        "route": "/dashboard",
+        "type": "CONSOLE_ERROR",
+        "detail": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "source": ""
+      },
+      {
+        "route": "/dashboard/vehicles",
+        "type": "CONSOLE_ERROR",
+        "detail": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "source": ""
+      },
+      {
+        "route": "/dashboard/vehicles",
+        "type": "CONSOLE_ERROR",
+        "detail": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "source": ""
+      },
+      {
+        "route": "/dashboard/vehicles/new",
+        "type": "CONSOLE_ERROR",
+        "detail": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "source": ""
+      },
+      {
+        "route": "/dashboard/vehicles/new",
+        "type": "CONSOLE_ERROR",
+        "detail": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "source": ""
+      }
+    ],
+    "info": [
+      {
+        "route": "/master/galleries",
+        "type": "CONSOLE_WARNING",
+        "detail": "Warning: Cannot update a component (`%s`) while rendering a different component (`%s`). To locate the bad setState() call inside `%s`, follow the stack trace as described in https://reactjs.org/link/s",
+        "source": ""
+      },
+      {
+        "route": "/dashboard/calculator",
+        "type": "HENUZ_YAPILMAMIS",
+        "detail": "404 - Hesaplama Modulu (Faz 4)",
+        "source": ""
+      },
+      {
+        "route": "/dashboard/products",
+        "type": "HENUZ_YAPILMAMIS",
+        "detail": "404 - Urunler (Faz 5)",
+        "source": ""
+      },
+      {
+        "route": "/dashboard/customers",
+        "type": "HENUZ_YAPILMAMIS",
+        "detail": "404 - Musteriler (Faz 7)",
+        "source": ""
+      },
+      {
+        "route": "/dashboard/sales",
+        "type": "HENUZ_YAPILMAMIS",
+        "detail": "404 - Satislar (Faz 7)",
+        "source": ""
+      },
+      {
+        "route": "/dashboard/reports",
+        "type": "HENUZ_YAPILMAMIS",
+        "detail": "404 - Raporlar (Faz 6)",
+        "source": ""
+      },
+      {
+        "route": "/dashboard/settings",
+        "type": "HENUZ_YAPILMAMIS",
+        "detail": "404 - Ayarlar",
+        "source": ""
+      }
+    ]
+  },
+  "summary": {
+    "pagesOk": 11,
+    "pagesError": 1,
+    "clicksOk": 7,
+    "clicksError": 0,
+    "formsOk": 8,
+    "formsError": 0
+  }
+}

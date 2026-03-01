@@ -1,0 +1,40 @@
+import { Router } from 'express';
+import authRoutes from './auth.routes';
+import countryRoutes from './country.routes';
+import taxRateRoutes from './taxRate.routes';
+import galleryRoutes from './gallery.routes';
+import exchangeRateRoutes from './exchangeRate.routes';
+import auditLogRoutes from './audit.routes';
+import notificationRoutes from './notification.routes';
+import vehicleRoutes from './vehicle.routes';
+import calculatorRoutes from './calculator.routes';
+import productRoutes from './product.routes';
+import customerRoutes from './customer.routes';
+import stockMovementRoutes from './stockMovement.routes';
+import stockAlertRoutes from './stockAlert.routes';
+import stockCountRoutes from './stockCount.routes';
+import dashboardRoutes from './dashboard.routes';
+import reportRoutes from './report.routes';
+import saleRoutes from './sale.routes';
+
+const router = Router();
+
+router.use('/auth', authRoutes);
+router.use('/countries', countryRoutes);
+router.use('/tax-rates', taxRateRoutes);
+router.use('/galleries', galleryRoutes);
+router.use('/exchange-rates', exchangeRateRoutes);
+router.use('/audit-logs', auditLogRoutes);
+router.use('/notifications', notificationRoutes);
+router.use('/dashboard', dashboardRoutes);
+router.use('/vehicles', vehicleRoutes);
+router.use('/calculator', calculatorRoutes);
+router.use('/products', productRoutes);
+router.use('/customers', customerRoutes);
+router.use('/stock-movements', stockMovementRoutes);
+router.use('/stock-alerts', stockAlertRoutes);
+router.use('/stock-count', stockCountRoutes);
+router.use('/reports', reportRoutes);
+router.use('/sales', saleRoutes);
+
+export default router;
