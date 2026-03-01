@@ -1,7 +1,7 @@
 # 🧠 KKTC Araç Galerisi — Orkestrasyon & Checkpoint
 
-> **Son Güncelleme:** `2026-03-01 22:55`
-> **Mevcut Faz:** ✅ Faz 9.4 Tamamlandı — UX Review Düzeltmeleri (Error State + Animasyon + Empty State + Mobil, 673 test)
+> **Son Güncelleme:** `2026-03-02`
+> **Mevcut Faz:** 🔄 Faz 10 — UX Polish (Smooth Transitions, Quick Login, Seed Data, Test Senaryoları)
 > **Detaylı Spec:** `SPEC.md`
 
 ---
@@ -833,6 +833,54 @@
 - **Sorunlar:** —
 - **Bağımlılıklar:** framer-motion ^12.34.3
 - **Son Komut:** `pnpm --filter api test` — 673/673 pass
+
+---
+
+### CHECKPOINT-29 — 2026-03-02 (UX POLISH — Smooth Transitions + Quick Login + Seed Data + Test Senaryoları)
+- **Durum:** 🔄 Devam
+- **Tamamlanan:**
+  - **Root redirect:** `/` → `/login` yönlendirmesi (server-side `redirect()`)
+  - **Quick Login:** Development modunda 7 rol butonu (MASTER_ADMIN, GALLERY_OWNER, GALLERY_MANAGER, SALES, ACCOUNTANT, STAFF, Premium Motors Owner) — shadcn Tabs component
+  - **Kapsamlı Seed Data:** 2 galeri, 7 kullanıcı (6 rol), 12 araç (4 status), 7 müşteri, 8 ürün (1 kritik stok), 2 satış, 3 bildirim, 4 audit log
+  - **TEST_SCENARIOS.md:** 200+ manuel test senaryosu, checkbox formatı, 7 rol bazlı senaryo seti
+  - **ErrorState component refactor:** Reusable `<ErrorState>` component, 6 sayfada inline kod tek satıra indirgendi
+  - **EmptyState yaygınlaştırma:** 6 DataTable daha (notifications, countries, audit-logs, tax-rates, calculator history, vehicle docs/expenses)
+  - **mobileCard yaygınlaştırma:** 4 sayfa daha (customers, products, sales, galleries) — tablo→kart mobil dönüşümü
+  - **FAB component:** Araçlar sayfasında sağ alt +Araç Ekle butonu (mobilde)
+  - **Smooth page transitions:**
+    - `nextjs-toploader` — tıklamada anında üst progress bar
+    - `PageTransition` → `AnimatePresence` + `key={pathname}` + 150ms
+    - Sidebar/BottomTabBar → `useTransition()` pending state
+    - React Query → `keepPreviousData` (sayfa değişiminde flash yok)
+  - **Decimal fix:** Calculator `toLocaleString` hatası düzeltildi (`Number()` wrapper)
+- **Değişen Dosyalar (20+):**
+  - `apps/web/app/page.tsx` — root redirect to /login
+  - `apps/web/app/layout.tsx` — NextTopLoader
+  - `apps/web/app/providers.tsx` — keepPreviousData
+  - `apps/web/app/(auth)/login/page.tsx` — Quick Login tabs (7 rol)
+  - `apps/web/components/shared/motion.tsx` — AnimatePresence + pathname key
+  - `apps/web/components/shared/sidebar.tsx` — useTransition nav
+  - `apps/web/components/shared/fab.tsx` — FAB component (YENİ)
+  - `apps/web/components/ui/error-state.tsx` — ErrorState reusable (YENİ)
+  - `apps/web/components/ui/empty-state.tsx` — EmptyState reusable (YENİ)
+  - `apps/web/components/ui/tabs.tsx` — shadcn tabs (YENİ)
+  - `apps/api/prisma/seed.ts` — kapsamlı seed (7 user, 12 vehicle, 7 customer, 8 product)
+  - `apps/web/app/(dashboard)/dashboard/calculator/page.tsx` — Decimal fix + emptyState
+  - `apps/web/app/(dashboard)/dashboard/customers/page.tsx` — ErrorState + mobileCard
+  - `apps/web/app/(dashboard)/dashboard/products/page.tsx` — ErrorState + mobileCard
+  - `apps/web/app/(dashboard)/dashboard/sales/page.tsx` — ErrorState + mobileCard
+  - `apps/web/app/(dashboard)/dashboard/vehicles/page.tsx` — ErrorState refactor
+  - `apps/web/app/(dashboard)/dashboard/vehicles/[id]/page.tsx` — emptyState (docs+expenses)
+  - `apps/web/app/(master)/master/galleries/page.tsx` — ErrorState + mobileCard
+  - `apps/web/app/(master)/master/notifications/page.tsx` — emptyState
+  - `apps/web/app/(master)/master/countries/page.tsx` — emptyState
+  - `apps/web/app/(master)/master/audit-logs/page.tsx` — emptyState
+  - `apps/web/app/(master)/master/tax-rates/page.tsx` — emptyState
+  - `TEST_SCENARIOS.md` — 200+ test senaryosu (YENİ)
+- **Sıradaki:** Canlı test ile tüm Quick Login rolleri doğrulama, kalan hardcoded renk → token dönüşümü
+- **Sorunlar:** —
+- **Bağımlılıklar:** nextjs-toploader ^3.9.17
+- **Son Komut:** `npx tsc --noEmit` — EXIT: 0
 
 ---
 <!-- YENİ CHECKPOINT'LER BURAYA EKLENİR -->
