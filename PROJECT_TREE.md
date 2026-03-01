@@ -1,13 +1,13 @@
-# Project Tree & Dependency Map — CHECKPOINT-32
+# Project Tree & Dependency Map — CHECKPOINT-33
 
-> **Son Güncelleme:** 2 Mart 2026 — CHECKPOINT-32 (LOC Recount + Design Tokens Mapping + Fat File Analysis)
-> **Phase:** 9 of 9 Complete — All 66 Tasks Done + Security Hardening + Consolidation + CLI & Design System + Socket/Auth Hardening + Motion Animations + **UX Polish + Audit Consolidation**
-> **Toplam Dosya:** 199 TypeScript/JavaScript source files (controllers: 20, routes: 18, services: 18, validations: 17, components: 26+ ui, pages: 24)
+> **Son Güncelleme:** 2 Mart 2026 — CHECKPOINT-33 (Supervisor v3 Fix: 12 files, validation consolidation)
+> **Phase:** 9 of 9 Complete — All 66 Tasks Done + Security Hardening + Consolidation + CLI & Design System + Socket/Auth Hardening + Motion Animations + UX Polish + Audit Consolidation + **Supervisor V3 Hardening**
+> **Toplam Dosya:** 200 TypeScript/JavaScript source files (controllers: 20, routes: 18, services: 18, validations: 18, components: 26+ ui, pages: 24)
 > **Backend LOC:** 10,320 (controllers + routes + services + middleware + validations + calculator.validation)
 > **Frontend LOC:** 20,321 (pages + components + hooks + stores + lib + motion.tsx + fab.tsx + error-state.tsx + empty-state.tsx)
 > **Test Files:** 18 (8,617 total lines, 673 test cases — ALL PASSING)
 > **Total Project LOC:** 40,796 lines across apps/ + packages/ (Backend: 10,320 + Frontend: 20,321 core + Tests: 10,155)
-> **Status:** PRODUCTION-READY — Audit Closed + All Findings Resolved (Reviewer 3 + Designer 8 + Live-Tester 3 items)
+> **Status:** PRODUCTION-READY — Audit Closed + All Findings Resolved (Reviewer 3 + Designer 8 + Live-Tester 3 items) + **Supervisor v3 Fix Applied**
 
 ---
 
@@ -52,7 +52,7 @@ kktc-galeri-yonetim/                               [ROOT — Monorepo]
 │   │   │   │   ├── exchangeRate.routes.ts          [/api/exchange-rates/*]
 │   │   │   │   ├── country.routes.ts               [/api/countries/*]
 │   │   │   │   ├── gallery.routes.ts               [/api/galleries/*]
-│   │   │   │   ├── notification.routes.ts          [/api/notifications/*]
+│   │   │   │   ├── notification.routes.ts          [/api/notifications/*] ← uses: notification.validation (CP-33)
 │   │   │   │   ├── audit.routes.ts                 [/api/audit-logs/*]
 │   │   │   │   ├── vehicle.routes.ts               [/api/vehicles/*]
 │   │   │   │   ├── customer.routes.ts              [/api/customers/*]
@@ -65,7 +65,7 @@ kktc-galeri-yonetim/                               [ROOT — Monorepo]
 │   │   │   │   ├── vehicleDocument.routes.ts       [/api/vehicle-documents/*]
 │   │   │   │   ├── stockMovement.routes.ts         [/api/stock-movements/*]
 │   │   │   │   ├── stockCount.routes.ts            [/api/stock-counts/*]
-│   │   │   │   ├── stockAlert.routes.ts            [/api/stock-alerts/*]
+│   │   │   │   ├── stockAlert.routes.ts            [/api/stock-alerts/*] ← uses: stockAlert.validation (NEW CP-33)
 │   │   │   │   └── index.ts                        [Router aggregator]
 │   │   │   │
 │   │   │   ├── middleware/                         [9 Middleware]
@@ -89,7 +89,7 @@ kktc-galeri-yonetim/                               [ROOT — Monorepo]
 │   │   │   │   ├── vehicle.service.ts              [Vehicle CRUD + relations]
 │   │   │   │   ├── customer.service.ts             [Customer CRUD]
 │   │   │   │   ├── product.service.ts              [Product CRUD]
-│   │   │   │   ├── sale.service.ts                 [Sale CRUD + profit calc]
+│   │   │   │   ├── sale.service.ts                 [Sale CRUD + profit calc] ← UPDATE CP-33
 │   │   │   │   ├── dashboard.service.ts            [Dashboard stats]
 │   │   │   │   ├── report.service.ts               [PDF/Excel export]
 │   │   │   │   ├── calculator.service.ts           [IMPORT CALCULATION ENGINE]
@@ -102,7 +102,7 @@ kktc-galeri-yonetim/                               [ROOT — Monorepo]
 │   │   │   │   ├── pdf.service.ts                  [PDF generation]
 │   │   │   │   └── __tests__/                      [10 test files]
 │   │   │   │
-│   │   │   ├── validations/                        [17 Zod schemas]
+│   │   │   ├── validations/                        [18 Zod schemas]
 │   │   │   │   ├── auth.validation.ts              [Login, register]
 │   │   │   │   ├── taxRate.validation.ts           [TaxRate schemas]
 │   │   │   │   ├── exchangeRate.validation.ts      [ExchangeRate schemas]
@@ -121,6 +121,7 @@ kktc-galeri-yonetim/                               [ROOT — Monorepo]
 │   │   │   │   ├── vehicleExpense.validation.ts    [Expense schemas]
 │   │   │   │   ├── stockMovement.validation.ts     [StockMovement schemas]
 │   │   │   │   ├── stockCount.validation.ts        [StockCount schemas]
+│   │   │   │   ├── stockAlert.validation.ts        [StockAlert schemas — lowStockQuerySchema, checkAlertSchema] ← NEW CP-33
 │   │   │   │   ├── common.validation.ts            [Shared pagination]
 │   │   │   │   └── audit.validation.ts             [AuditLog filters]
 │   │   │   │
@@ -262,7 +263,7 @@ kktc-galeri-yonetim/                               [ROOT — Monorepo]
 │       │   │   │   ├─ Link href + Plus icon
 │       │   │   │   └─ aria-label accessibility
 │       │   │   ├── header.tsx                      [Top header + user menu]
-│       │   │   ├── sidebar.tsx                     [Master/Gallery nav + BottomTabBar + useTransition] ← CP-28, UPDATE CP-29
+│       │   │   ├── sidebar.tsx                     [Master/Gallery nav + BottomTabBar + useTransition] ← CP-28, UPDATE CP-29, FIX CP-33
 │       │   │   │   ├─ Sidebar component (desktop nav)
 │       │   │   │   ├─ BottomTabBar component (mobile nav — type: "master" | "gallery")
 │       │   │   │   ├─ useTransition() for smooth nav [NEW CP-29]
@@ -325,8 +326,9 @@ kktc-galeri-yonetim/                               [ROOT — Monorepo]
 | 28 | 1 Mart | Motion Animations + Page Transitions + Mobile FAB + UI Polish | motion.tsx (NEW), data-table, sidebar, layout x2, 7 pages, calculator.validation, stockMovement.service | ✅ |
 | **29** | **2 Mart** | **Smooth Page Transitions + UX Polish + keepPreviousData + Quick Login + FAB + State Components** | **layout.tsx (NextTopLoader), page.tsx (redirect), providers.tsx (keepPreviousData), login/page.tsx (Quick Login), motion.tsx (AnimatePresence), sidebar.tsx (useTransition), fab.tsx (NEW), error-state.tsx (NEW), empty-state.tsx (NEW), tabs.tsx (NEW), TEST_SCENARIOS.md (NEW), seed.ts (expanded)** | **✅** |
 | **30** | **2 Mart** | **Designer: Token Mapping (8 items) + Skeleton Loading + tabular-nums + Mobile Card (6 tables) + Settings Page** | **design-tokens.ts (NEW imports), skeleton.tsx (tabular-nums), mobileCard (6 pages), settings/page.tsx (NEW)** | **✅** |
-| **31** | **2 Mart** | **Post-Audit Consolidation: Reviewer 3 bugs (galleryId, Zod), Designer 8/8 items (error-state, framer-motion, empty-state, mobile, color tokens, skeleton, tabular-nums, mobile-card), Live-Tester 3 bugs (Products NaN, Settings 404, Calculator)** | **Controllers + services + pages (673/673 passing)** | **✅** |
-| **32** | **2 Mart** | **Tree Update: LOC recount (40,796 total), design-tokens 26-file import map, fat file analysis (1597 LOC reports.tsx), page inventory complete** | **PROJECT_TREE.md — comprehensive scan, dependencies verified** | **✅** |
+| **31** | **2 Mart** | **Post-Audit Consolidation: Reviewer 3 bugs (galleryId, Zod), Designer 8/8 items, Live-Tester 3 bugs** | **Controllers + services + pages (673/673 passing)** | **✅** |
+| **32** | **2 Mart** | **Tree Update: LOC recount (40,796 total), design-tokens 26-file import map, fat file analysis, page inventory** | **PROJECT_TREE.md — comprehensive scan, dependencies verified** | **✅** |
+| **33** | **2 Mart** | **Supervisor v3 Fix: 12 files, validation consolidation (stockAlert.validation NEW, notification.validation), dependency cleanup** | **stockAlert.validation (NEW), notification.routes, stockAlert.routes, sale.service, vehicleDocument, vehicleImage, vehicleExpense, stockAlert, sidebar (FE), seed.ts, sale.service.test.ts** | **✅** |
 
 ---
 
@@ -378,6 +380,47 @@ export const COLORS = {
 - tax-rate-history.tsx
 
 **Dependencies Impact:** HIGH — Changes to design-tokens.ts affect 26 pages + forms. Recommend versioning token changes to prevent theme drift.
+
+---
+
+### Validation Schemas — StockAlert (NEW CP-33)
+
+**stockAlert.validation.ts** [NEW CP-33]
+```typescript
+// GET /stock-alerts/low-stock — optional pagination
+export const lowStockQuerySchema = z.object({
+  page: z.coerce.number().int().min(1).default(1).optional(),
+  limit: z.coerce.number().int().min(1).max(100).default(50).optional(),
+});
+
+// POST /stock-alerts/check — no body (galleryId from middleware)
+export const checkAlertSchema = z.object({}).strict();
+```
+
+**Imported by:**
+- `stockAlert.routes.ts` — uses: `lowStockQuerySchema`, `checkAlertSchema` in validate middleware
+
+**Dependencies Impact:** MEDIUM — Enables stock alert validation consolidation, prevents schema drift.
+
+---
+
+### Backend Validation Dependencies (CP-33 Update)
+
+**notification.routes.ts → notification.validation.ts**
+```
+imports:
+  ├─ createNotificationSchema
+  ├─ notificationQuerySchema
+  ├─ galleryNotificationQuerySchema
+  └─ idParamSchema (from common.validation)
+```
+
+**stockAlert.routes.ts → stockAlert.validation.ts** [NEW CP-33]
+```
+imports:
+  ├─ lowStockQuerySchema
+  ├─ checkAlertSchema
+```
 
 ---
 
@@ -521,7 +564,7 @@ apps/api/prisma/seed.ts [UPDATE CP-29]
 ### Inventory
 - `GET/POST /api/stock-movements` — Stock movement CRUD
 - `GET/POST /api/stock-counts` — Stock count CRUD
-- `GET/POST /api/stock-alerts` — Stock alert CRUD
+- `GET/POST /api/stock-alerts` — Stock alert CRUD [CP-33]
 
 ---
 
@@ -534,7 +577,7 @@ apps/api/prisma/seed.ts [UPDATE CP-29]
 | **calculator.service.ts** | `ImportCalculation.findMany({ where: { galleryId } })` | ✅ |
 | **stockMovement.service.ts** | `StockMovement JOIN Gallery` [CP-28] | ✅ |
 | **vehicle.service.ts** | `Vehicle WHERE galleryId` | ✅ |
-| **sale.service.ts** | `Sale WHERE galleryId` | ✅ |
+| **sale.service.ts** | `Sale WHERE galleryId` [UPDATE CP-33] | ✅ |
 | **dashboard.service.ts** | All queries filtered by `galleryId` | ✅ |
 
 ### Validation Middleware Applied
@@ -543,6 +586,8 @@ apps/api/prisma/seed.ts [UPDATE CP-29]
 |-------|-----------|--------|
 | `POST /api/calculator/calculate` | `validateSchema(calculateSchema)` | ✅ |
 | `GET /api/calculator/history` | `validateSchema(calculationHistoryQuerySchema)` [CP-28] | ✅ |
+| `GET /api/stock-alerts/low-stock` | `validateSchema(lowStockQuerySchema)` [CP-33] | ✅ |
+| `POST /api/stock-alerts/check` | `validateSchema(checkAlertSchema)` [CP-33] | ✅ |
 | All major CRUD endpoints | `validateSchema()` middleware | ✅ |
 
 ---
@@ -617,7 +662,7 @@ components/shared/fab.tsx [NEW CP-29]
 | `apps/api/services/__tests__/calculator.service.test.ts` | 1,252 | Comprehensive test suite (200+ cases) |
 | `apps/api/services/__tests__/sale.service.test.ts` | 891 | Sale operations test coverage |
 
-**Status:** ACCEPTABLE — Large files serve specific domains. Candidates for modularization in CP-33+:
+**Status:** ACCEPTABLE — Large files serve specific domains. Candidates for modularization in CP-34+:
 - Reports → Multiple export format services
 - Calculator → Separate FIF/tax/KDV engines
 - Sales → CRUD service + profit engine separation
@@ -652,7 +697,7 @@ Server emits → Client listeners (useSocketNotifications hook)
 
 ---
 
-## Test Coverage — CHECKPOINT-29 Status
+## Test Coverage — CHECKPOINT-33 Status
 
 ```
 Backend: 673 test cases — 100% passing ✅
@@ -672,99 +717,53 @@ Test Scenarios: TEST_SCENARIOS.md [NEW CP-29]
 
 ---
 
-## New Files — CHECKPOINT-29
+## New Files — CHECKPOINT-33
 
-### Frontend Components
+### Backend Validation
 
-1. **apps/web/components/shared/fab.tsx**
-   - Floating Action Button component
-   - FAB_ROUTES mapping per pathname
-   - Contextual rendering (e.g., "/dashboard/vehicles" → "Araç Ekle")
-   - Responsive: `lg:hidden` (mobile only)
+1. **apps/api/src/validations/stockAlert.validation.ts** [NEW CP-33]
+   - Zod schemas for stock alert endpoints
+   - `lowStockQuerySchema` — pagination for low stock query
+   - `checkAlertSchema` — strict empty body validation
+   - Imported by: stockAlert.routes.ts
 
-2. **apps/web/components/ui/error-state.tsx**
-   - Reusable error UI component
-   - AlertTriangle icon
-   - Customizable title, message, retry action
-   - Used in calculator, galleries, vehicles pages
+### Modified Files — CP-33
 
-3. **apps/web/components/ui/empty-state.tsx**
-   - Reusable empty state UI component
-   - LucideIcon prop (flexible icons)
-   - Customizable title, description, action
-   - Used in vehicles, customers, products, sales, finance pages
+1. **apps/api/src/routes/notification.routes.ts** [UPDATE CP-33]
+   - Consolidated validation imports from notification.validation.ts
+   - Uses: `createNotificationSchema`, `notificationQuerySchema`, `galleryNotificationQuerySchema`
 
-4. **apps/web/components/ui/tabs.tsx**
-   - Radix UI tabs component (shadcn)
-   - TabsList, TabsTrigger, TabsContent exports
-   - Used in login/page.tsx for "Giriş Yap" + "Hızlı Giriş"
+2. **apps/api/src/routes/stockAlert.routes.ts** [UPDATE CP-33]
+   - New validation imports from stockAlert.validation.ts
+   - Uses: `lowStockQuerySchema`, `checkAlertSchema`
 
-### Documentation
+3. **apps/api/src/services/sale.service.ts** [UPDATE CP-33]
+   - Supervisor v3 compliance review
 
-5. **TEST_SCENARIOS.md** (52.8 KB)
-   - Test users (7 total + 2 extra for future)
-   - Test scenarios (44 detailed flows)
-   - All master + gallery endpoints
-   - Edge cases, validations, multi-tenant checks
-   - Ready for Playwright/Cypress E2E
+4. **apps/api/src/services/__tests__/sale.service.test.ts** [UPDATE CP-33]
+   - Test coverage improvements
 
----
+5. **apps/api/src/controllers/stockAlert.controller.ts** [UPDATE CP-33]
+   - Supervisor v3 compliance review
 
-## Changes Summary — CHECKPOINT-29
+6. **apps/api/src/controllers/vehicleDocument.controller.ts** [UPDATE CP-33]
+   - Supervisor v3 compliance review
 
-### Frontend Enhancements
+7. **apps/api/src/controllers/vehicleExpense.controller.ts** [UPDATE CP-33]
+   - Supervisor v3 compliance review
 
-1. **Smooth Page Transitions**
-   - NextTopLoader added to root layout
-   - Visual feedback during navigation
-   - Color matches primary brand token
+8. **apps/api/src/controllers/vehicleImage.controller.ts** [UPDATE CP-33]
+   - Supervisor v3 compliance review
 
-2. **UX Polish**
-   - keepPreviousData in React Query
-   - Smooth pagination + filter transitions
-   - No white flash on data reload
+9. **apps/web/components/shared/sidebar.tsx** [UPDATE CP-33]
+   - Frontend supervisor v3 compliance review
 
-3. **Navigation Improvements**
-   - useTransition() in sidebar
-   - Non-blocking route changes
-   - Better mobile UX
-
-4. **Quick Login Feature**
-   - Tabs UI in login page
-   - 7 pre-configured test users
-   - One-click demo access (dev/testing)
-   - Color-coded by role
-
-5. **State Components**
-   - ErrorState — consistent error UI
-   - EmptyState — consistent empty UI
-   - FAB — contextual floating button
-   - Reusable across all pages
-
-6. **Design System**
-   - Tabs.tsx added to UI components
-   - 26 total shadcn components
-
-### Backend Enhancements
-
-1. **Expanded Seed Data**
-   - More realistic test scenario
-   - Multi-gallery setup
-   - Role-based user distribution
-   - Sample transactions + relationships
-
-### Documentation
-
-1. **TEST_SCENARIOS.md**
-   - Comprehensive test guide
-   - All workflows documented
-   - Mock data overview
-   - API endpoint reference
-   - Ready for QA/E2E
+10. **apps/api/prisma/seed.ts** [UPDATE CP-33]
+    - Seed data compliance review
 
 ---
 
-## Next Steps — CHECKPOINT-31+
+## Next Steps — CHECKPOINT-34+
 
 - [ ] Toast notifications for all mutations (useToast)
 - [ ] Accessibility audit (ARIA labels + keyboard nav)
@@ -773,6 +772,20 @@ Test Scenarios: TEST_SCENARIOS.md [NEW CP-29]
 - [ ] E2E tests (Playwright or Cypress)
 - [ ] CI/CD hardening (GitHub Actions)
 - [ ] Deployment guides (Docker + Vercel/Railway)
+
+---
+
+**CP-32 Summary:**
+- **Tree Update:** LOC recount (40,796 total), design-tokens 26-file import map, fat file analysis (1597 LOC reports.tsx), page inventory complete ✅
+
+---
+
+**CP-31 Summary:**
+- **Reviewer Audit:** 3 critical bugs fixed (galleryId null checks, Zod validation schemas) ✅
+- **Designer Audit:** 8/8 items completed (error states, motion refinements, empty states, mobile UX, color tokens, skeleton loading, tabular-nums, mobile cards) ✅
+- **Live-Tester Audit:** 3 edge cases fixed (Products NaN handling, Settings 404 redirect, Calculator boundary values) ✅
+- **All tests:** 673/673 passing ✅
+- **Status:** Audit closed — all findings resolved
 
 ---
 
@@ -801,77 +814,30 @@ Test Scenarios: TEST_SCENARIOS.md [NEW CP-29]
 
 ---
 
-Generated: 2 Mart 2026 — CHECKPOINT-31
-Next Review: CHECKPOINT-32 (Toast Notifications + Accessibility + PWA)
+**CP-33 Summary — Supervisor v3 Fix & Validation Consolidation:**
 
-**CP-31 Summary:**
-- **Reviewer Audit:** 3 critical bugs fixed (galleryId null checks, Zod validation schemas) ✅
-- **Designer Audit:** 8/8 items completed (error states, motion refinements, empty states, mobile UX, color tokens, skeleton loading, tabular-nums, mobile cards) ✅
-- **Live-Tester Audit:** 3 edge cases fixed (Products NaN handling, Settings 404 redirect, Calculator boundary values) ✅
-- **All tests:** 673/673 passing ✅
-- **Status:** Audit closed — all findings resolved
+### File Changes (12 total)
+- **NEW:** apps/api/src/validations/stockAlert.validation.ts
+- **MODIFIED:** 11 files (stockAlert.routes, notification.routes, sale.service, 4 controllers, sidebar.tsx, seed.ts, sale.service.test.ts)
 
----
-
-**CP-32 Summary — Comprehensive Tree Update & Analysis:**
-
-### File Statistics
-- **Total TypeScript files:** 199 (controllers: 20, routes: 18, services: 18, validations: 17, components: 26+ ui, pages: 24)
-- **Total codebase LOC:** 40,796 lines
-  - Backend: 10,320 LOC (controllers + routes + services + middleware)
-  - Frontend: 20,321 LOC (pages + components + hooks + stores + lib)
-  - Tests: 10,155 LOC (18 test files, 673 test cases)
-- **Page inventory:** 24 pages complete (including settings/page.tsx)
-
-### Fat Files Analysis
-**Top 10 largest files identified:**
-1. `reports/page.tsx` — 1,597 LOC (PDF/Excel export engine)
-2. `calculator.service.test.ts` — 1,252 LOC (test suite)
-3. `calculator/page.tsx` — 1,271 LOC (FIF UI)
-4. `sales/page.tsx` — 1,193 LOC (CRUD grid)
-5. `products/page.tsx` — 1,111 LOC (inventory)
-6. `vehicle.service.test.ts` — 870 LOC (test suite)
-7. `sale.service.test.ts` — 891 LOC (test suite)
-8. `vehicles/[id]/page.tsx` — 789 LOC (detail view)
-9. `calculator.service.ts` — 642 LOC (calculation engine)
-10. `seed.ts` — 625 LOC (mock data)
-
-**Modularization candidates for CP-33:**
-- Reports page → Split by format (PDF, Excel, CSV services)
-- Calculator page → Separate form + display + logic
-- Sales page → Separate CRUD operations from grid rendering
-- Product page → Separate inventory logic from UI
-
-### Design Tokens Integration (CP-30)
-- **26 files import design-tokens.ts** for centralized color management
-- **Coverage:** 15 dashboard pages + 5 master pages + 6 form components
-- **Benefit:** Consistent theming across entire app, single-point color updates
-- **Impact:** HIGH — any token change affects 26 components
-
-### Dependencies & Imports
-- **No circular dependencies** detected — all imports acyclic
-- **No orphan files** — all 199 files referenced from somewhere
-- **High coupling files** (5+ imports):
-  - calculator.service.ts (7 imports) — ✅ Acceptable as core engine
-  - vehicle.service.ts (6 imports) — ✅ Acceptable as domain service
-- **design-tokens.ts** — New high-impact import hub (26 dependent files)
+### Validation System Improvements
+- **Centralized schemas:** stockAlert validation now follows notification pattern
+- **Consistency:** All routes use validate middleware with Zod schemas
+- **Type safety:** TypeScript inference from Zod schemas
 
 ### Quality Metrics
-- **Test coverage:** 673 test cases, 100% passing
-- **Type safety:** Full TypeScript 5+, strict mode enabled
-- **Validation:** Zod schemas on all API endpoints
-- **Security:** Multi-tenant enforcement (galleryId in all queries)
+- **Test coverage:** 673/673 passing (100%) ✅
+- **Multi-tenant:** All controllers enforce galleryId checks ✅
+- **Validation:** All routes have Zod schemas ✅
+- **Circular dependencies:** None detected ✅
 
-### Next Steps — CP-33+
-1. **Modularize fat files** (reports, calculator, sales, products)
-2. **Add E2E tests** (Playwright/Cypress for workflows)
-3. **Performance profiling** (Core Web Vitals, lighthouse)
-4. **Accessibility audit** (WCAG 2.1 AA compliance)
-5. **Toast notifications** (useToast on all mutations)
-6. **PWA setup** (offline support, install prompt)
-7. **CI/CD hardening** (GitHub Actions optimization)
+### Supervisor v3 Findings Applied
+- galleryId null checks in all affected controllers
+- Validation schema consolidation
+- Import statement cleanup
+- Dependency graph optimization
 
 ---
 
-Generated: 2 Mart 2026 — CHECKPOINT-32
-Next Review: CHECKPOINT-33 (Modularization + Performance Profiling + E2E Tests)
+Generated: 2 Mart 2026 — CHECKPOINT-33
+Next Review: CHECKPOINT-34 (Modularization + Performance Profiling + E2E Tests)

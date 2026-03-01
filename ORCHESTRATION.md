@@ -953,4 +953,25 @@
 - **Son Komut:** `git commit -m "docs: Update PROJECT_TREE.md — full scan"`
 
 ---
+
+### CHECKPOINT-33 — 2026-03-02 (SUPERVISOR V3 MANDATORY FINDINGS FIXED)
+- **Durum:** ✅ Tamam
+- **Tamamlanan:**
+  - **K-1 (KRİTİK):** stockAlert route'larına Zod validation eklendi (lowStockQuerySchema, checkAlertSchema)
+  - **U-1:** 4 controller'da `??` fallback → explicit galleryId null-check (vehicleDocument, vehicleExpense, vehicleImage, stockAlert)
+  - **U-2:** sale.service vehicle.update WHERE clause'a galleryId eklendi (defense-in-depth)
+  - **U-3:** GET /vehicles route'una vehicleQuerySchema validation eklendi
+  - **U-4:** GET /gallery notifications'a galleryNotificationQuerySchema validation eklendi
+  - **U-5:** Prisma schema ExchangeRateSettings.apiKey encryption TODO eklendi
+  - **U-6:** PROJECT_TREE test sayısı 668→673 düzeltildi
+  - **U-7:** Redis blacklist fail-open design decision comment eklendi
+  - **Test fix:** 2 sale.service.test assertion güncellendi (galleryId WHERE pattern)
+  - **673/673 test passing, 0 TS error**
+- **Sıradaki:** Production build doğrulama, kalan supervisor önerileri (S-1~S-13)
+- **Sorunlar:** —
+- **Aktif Dosyalar:** 12 dosya (4 controller, 3 route, 2 validation, sale.service, sale.service.test, sidebar)
+- **Bağımlılıklar:** —
+- **Son Komut:** `git commit -m "fix: Apply supervisor v3 mandatory findings"`
+
+---
 <!-- YENİ CHECKPOINT'LER BURAYA EKLENİR -->
