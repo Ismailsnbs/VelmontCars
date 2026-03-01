@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Skeleton } from "@/components/ui/skeleton"
 import {
   Car,
   Truck,
@@ -29,7 +30,6 @@ import {
   STATUS_LABELS,
   CHART_INFRASTRUCTURE,
   ALERT_COLORS,
-  LOADER_COLORS,
   type VehicleStatus,
 } from "@/lib/design-tokens"
 import {
@@ -211,8 +211,23 @@ export default function GalleryDashboard() {
 
   if (loading) {
     return (
-      <div className="flex h-96 items-center justify-center">
-        <div className={`h-8 w-8 animate-spin rounded-full border-4 ${LOADER_COLORS.primaryBorder} border-t-transparent`} />
+      <div className="space-y-6">
+        <div>
+          <Skeleton className="h-8 w-48 mb-2" />
+          <Skeleton className="h-4 w-64" />
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="rounded-lg border p-6 space-y-3">
+              <Skeleton className="h-4 w-24" />
+              <Skeleton className="h-8 w-16" />
+            </div>
+          ))}
+        </div>
+        <div className="rounded-lg border p-6 space-y-3">
+          <Skeleton className="h-4 w-32 mb-4" />
+          <Skeleton className="h-48 w-full" />
+        </div>
       </div>
     )
   }
@@ -368,8 +383,21 @@ export default function GalleryDashboard() {
 
       {/* ── Charts Section ── */}
       {chartLoading ? (
-        <div className="flex h-48 items-center justify-center">
-          <div className={`h-8 w-8 animate-spin rounded-full border-4 ${LOADER_COLORS.primaryBorder} border-t-transparent`} />
+        <div className="space-y-6">
+          <div>
+            <Skeleton className="h-6 w-48 mb-1" />
+            <Skeleton className="h-4 w-64" />
+          </div>
+          <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-3">
+            <div className="lg:col-span-2 rounded-lg border p-6">
+              <Skeleton className="h-4 w-32 mb-4" />
+              <Skeleton className="h-72 w-full" />
+            </div>
+            <div className="rounded-lg border p-6">
+              <Skeleton className="h-4 w-32 mb-4" />
+              <Skeleton className="h-72 w-full" />
+            </div>
+          </div>
         </div>
       ) : chartData ? (
         <div className="space-y-6">

@@ -8,10 +8,10 @@ import {
   TrendingDown,
   Receipt,
   Percent,
-  Loader2,
   AlertTriangle,
   BarChart3,
 } from "lucide-react"
+import { Skeleton } from "@/components/ui/skeleton"
 import {
   BarChart,
   Bar,
@@ -32,7 +32,6 @@ import {
   STAT_CARD_ACCENTS,
   SEMANTIC_COLORS,
   CHART_INFRASTRUCTURE,
-  LOADER_COLORS,
   ALERT_COLORS,
 } from "@/lib/design-tokens"
 import {
@@ -229,8 +228,54 @@ export default function FinancePage() {
 
   if (isLoading) {
     return (
-      <div className="flex h-96 items-center justify-center">
-        <Loader2 className={`h-8 w-8 animate-spin ${LOADER_COLORS.primary}`} />
+      <div className="space-y-6">
+        <div>
+          <Skeleton className="h-8 w-48 mb-2" />
+          <Skeleton className="h-4 w-64" />
+        </div>
+        <Card className="border-0 shadow-sm">
+          <CardContent className="pt-5">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+              <div className="flex items-center gap-2">
+                <Skeleton className="h-4 w-8" />
+                <Skeleton className="h-10 w-28" />
+              </div>
+              <div className="flex items-center gap-2">
+                <Skeleton className="h-4 w-8" />
+                <Skeleton className="h-10 w-36" />
+              </div>
+              <Skeleton className="h-4 w-48" />
+            </div>
+          </CardContent>
+        </Card>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="rounded-lg border p-6 space-y-3">
+              <Skeleton className="h-4 w-24" />
+              <Skeleton className="h-8 w-32" />
+              <Skeleton className="h-3 w-20" />
+            </div>
+          ))}
+        </div>
+        <div className="grid gap-6 lg:grid-cols-2">
+          {Array.from({ length: 2 }).map((_, i) => (
+            <div key={i} className="rounded-lg border p-6 space-y-3">
+              <Skeleton className="h-4 w-32 mb-4" />
+              <Skeleton className="h-72 w-full" />
+            </div>
+          ))}
+        </div>
+        <div className="rounded-lg border p-6">
+          <Skeleton className="h-4 w-32 mb-4" />
+          <div className="space-y-2">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <div key={i} className="flex gap-4">
+                <Skeleton className="h-4 w-24" />
+                <Skeleton className="h-4 flex-1" />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     )
   }
