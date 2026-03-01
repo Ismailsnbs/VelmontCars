@@ -189,6 +189,7 @@ model ExchangeRateSettings {
   id             String    @id @default(cuid())
   updateMode     String
   apiProvider    String?
+  // TODO: apiKey should be stored encrypted or moved to environment variable (KVKK/security)
   apiKey         String?
   updateInterval Int       @default(60)
   lastAutoUpdate DateTime?

@@ -28,7 +28,12 @@ export async function authenticate(req: Request, _res: Response, next: NextFunct
 
     const decoded = verifyAccessToken(token);
 
-    // U-AG1: Reject tokens that have been explicitly revoked (e.g. via logout)
+    // DESIGN DECISION: Redis blacklist check is fail-open.
+    // If Redis is down, blacklist check returns false (token not blacklisted),
+    // allowing authenticated requests to proceed. This prioritizes availability
+    // over strict security. Access tokens are short-lived (15min) which limits
+    // the window of exposure. For stricter security, change to fail-closed
+    // by throwing an error when Redis is unavailable.
     const blacklisted = await authService.isTokenBlacklisted(token);
     if (blacklisted) {
       throw new UnauthorizedError('Token has been revoked');

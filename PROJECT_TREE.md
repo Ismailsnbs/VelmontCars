@@ -655,7 +655,7 @@ Server emits → Client listeners (useSocketNotifications hook)
 ## Test Coverage — CHECKPOINT-29 Status
 
 ```
-Backend: 668 test cases — 100% passing ✅
+Backend: 673 test cases — 100% passing ✅
   ├─ Controllers: 120 tests
   ├─ Services: 340 tests
   ├─ Middleware: 85 tests
@@ -782,7 +782,7 @@ Test Scenarios: TEST_SCENARIOS.md [NEW CP-29]
 - **Mobile Card Layout:** Implemented in 6 pages (reports, sales, calculator, products, customers, finance) ✅
 - **Settings Page:** Gallery info, user preferences, notification settings ✅
 - **Design Token Exports:** 7 new imports for consistent theming ✅
-- **All files passing:** 668 backend + design system tests ✅
+- **All files passing:** 673 backend + design system tests ✅
 
 ---
 
@@ -795,7 +795,7 @@ Test Scenarios: TEST_SCENARIOS.md [NEW CP-29]
 - **Tabs component:** Radix UI + shadcn styling ✅
 - **Expanded seed data:** Multi-gallery + role-based setup ✅
 - **TEST_SCENARIOS.md:** 44 test flows documented ✅
-- **All tests passing:** 668 backend cases ✅
+- **All tests passing:** 673 backend cases ✅
 
 **Status:** PRODUCTION-READY WITH UX POLISH ✅
 
