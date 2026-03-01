@@ -269,7 +269,7 @@ export class SaleService {
 
         // 6b. Araç durumunu SOLD yap, soldDate ve salePrice güncelle
         await tx.vehicle.update({
-          where: { id: data.vehicleId },
+          where: { id: data.vehicleId, galleryId },
           data: {
             status: 'SOLD',
             soldDate: saleDate,
@@ -461,7 +461,7 @@ export class SaleService {
 
       // Aracı tekrar stoka al — satış bilgilerini temizle
       await tx.vehicle.update({
-        where: { id: foundSale.vehicleId },
+        where: { id: foundSale.vehicleId, galleryId: foundSale.galleryId },
         data: {
           status: 'IN_STOCK',
           soldDate: null,

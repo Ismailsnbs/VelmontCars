@@ -4,7 +4,7 @@ import { authenticate } from '../middleware/auth.middleware';
 import { requireMasterAdmin, requireGalleryAccess } from '../middleware/role.middleware';
 import { galleryTenant } from '../middleware/gallery.middleware';
 import { validate } from '../middleware/validate.middleware';
-import { createNotificationSchema, notificationQuerySchema } from '../validations/notification.validation';
+import { createNotificationSchema, notificationQuerySchema, galleryNotificationQuerySchema } from '../validations/notification.validation';
 import { idParamSchema } from '../validations/common.validation';
 
 const router = Router();
@@ -31,6 +31,7 @@ router.get(
   '/gallery',
   requireGalleryAccess,
   galleryTenant,
+  validate({ query: galleryNotificationQuerySchema }),
   notificationController.getForGallery.bind(notificationController),
 );
 

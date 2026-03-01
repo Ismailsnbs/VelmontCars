@@ -374,7 +374,7 @@ describe('SaleService', () => {
 
       expect(txMock.vehicle.update).toHaveBeenCalledWith(
         expect.objectContaining({
-          where: { id: VEHICLE_ID },
+          where: { id: VEHICLE_ID, galleryId: GALLERY_ID },
           data: expect.objectContaining({ status: 'SOLD' }),
         }),
       );
@@ -713,7 +713,7 @@ describe('SaleService', () => {
 
       expect(txMock.vehicle.update).toHaveBeenCalledWith(
         expect.objectContaining({
-          where: { id: VEHICLE_ID },
+          where: { id: VEHICLE_ID, galleryId: GALLERY_ID },
           data: expect.objectContaining({ status: 'IN_STOCK' }),
         }),
       );

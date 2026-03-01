@@ -10,7 +10,10 @@ export class VehicleImageController {
   async getByVehicleId(req: Request, res: Response, next: NextFunction) {
     try {
       const { vehicleId } = req.params as { vehicleId: string };
-      const galleryId = req.galleryId ?? req.user!.galleryId!;
+      const galleryId = req.galleryId;
+      if (!galleryId) {
+        return res.status(400).json({ success: false, message: 'Gallery context required' });
+      }
 
       const images = await vehicleImageService.getByVehicleId(vehicleId, galleryId);
       sendSuccess(res, images);
@@ -24,7 +27,10 @@ export class VehicleImageController {
   async upload(req: Request, res: Response, next: NextFunction) {
     try {
       const { vehicleId } = req.params as { vehicleId: string };
-      const galleryId = req.galleryId ?? req.user!.galleryId!;
+      const galleryId = req.galleryId;
+      if (!galleryId) {
+        return res.status(400).json({ success: false, message: 'Gallery context required' });
+      }
 
       if (!req.file) {
         throw new BadRequestError('No image file provided. Use the "image" field.');
@@ -51,7 +57,10 @@ export class VehicleImageController {
   async bulkUpload(req: Request, res: Response, next: NextFunction) {
     try {
       const { vehicleId } = req.params as { vehicleId: string };
-      const galleryId = req.galleryId ?? req.user!.galleryId!;
+      const galleryId = req.galleryId;
+      if (!galleryId) {
+        return res.status(400).json({ success: false, message: 'Gallery context required' });
+      }
 
       const files = req.files as Express.Multer.File[] | undefined;
 
@@ -73,7 +82,10 @@ export class VehicleImageController {
   async delete(req: Request, res: Response, next: NextFunction) {
     try {
       const { imageId } = req.params as { vehicleId: string; imageId: string };
-      const galleryId = req.galleryId ?? req.user!.galleryId!;
+      const galleryId = req.galleryId;
+      if (!galleryId) {
+        return res.status(400).json({ success: false, message: 'Gallery context required' });
+      }
 
       const result = await vehicleImageService.delete(imageId, galleryId);
       sendSuccess(res, result);
@@ -87,7 +99,10 @@ export class VehicleImageController {
   async setMain(req: Request, res: Response, next: NextFunction) {
     try {
       const { imageId } = req.params as { vehicleId: string; imageId: string };
-      const galleryId = req.galleryId ?? req.user!.galleryId!;
+      const galleryId = req.galleryId;
+      if (!galleryId) {
+        return res.status(400).json({ success: false, message: 'Gallery context required' });
+      }
 
       const image = await vehicleImageService.setMain(imageId, galleryId);
       sendSuccess(res, image);
@@ -101,7 +116,10 @@ export class VehicleImageController {
   async reorder(req: Request, res: Response, next: NextFunction) {
     try {
       const { vehicleId } = req.params as { vehicleId: string };
-      const galleryId = req.galleryId ?? req.user!.galleryId!;
+      const galleryId = req.galleryId;
+      if (!galleryId) {
+        return res.status(400).json({ success: false, message: 'Gallery context required' });
+      }
 
       const { imageIds } = req.body as { imageIds: string[] };
 

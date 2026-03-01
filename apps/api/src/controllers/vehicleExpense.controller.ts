@@ -7,7 +7,10 @@ export class VehicleExpenseController {
   async getByVehicleId(req: Request, res: Response, next: NextFunction) {
     try {
       const { vehicleId } = req.params as { vehicleId: string };
-      const galleryId = req.galleryId ?? req.user!.galleryId!;
+      const galleryId = req.galleryId;
+      if (!galleryId) {
+        return res.status(400).json({ success: false, message: 'Gallery context required' });
+      }
 
       const expenses = await vehicleExpenseService.getByVehicleId(
         vehicleId,
@@ -23,7 +26,10 @@ export class VehicleExpenseController {
   async create(req: Request, res: Response, next: NextFunction) {
     try {
       const { vehicleId } = req.params as { vehicleId: string };
-      const galleryId = req.galleryId ?? req.user!.galleryId!;
+      const galleryId = req.galleryId;
+      if (!galleryId) {
+        return res.status(400).json({ success: false, message: 'Gallery context required' });
+      }
 
       const expense = await vehicleExpenseService.create(
         req.body,
@@ -40,7 +46,10 @@ export class VehicleExpenseController {
   async update(req: Request, res: Response, next: NextFunction) {
     try {
       const { expenseId } = req.params as { expenseId: string };
-      const galleryId = req.galleryId ?? req.user!.galleryId!;
+      const galleryId = req.galleryId;
+      if (!galleryId) {
+        return res.status(400).json({ success: false, message: 'Gallery context required' });
+      }
 
       const expense = await vehicleExpenseService.update(
         expenseId,
@@ -57,7 +66,10 @@ export class VehicleExpenseController {
   async delete(req: Request, res: Response, next: NextFunction) {
     try {
       const { expenseId } = req.params as { expenseId: string };
-      const galleryId = req.galleryId ?? req.user!.galleryId!;
+      const galleryId = req.galleryId;
+      if (!galleryId) {
+        return res.status(400).json({ success: false, message: 'Gallery context required' });
+      }
 
       const result = await vehicleExpenseService.delete(expenseId, galleryId);
       sendSuccess(res, result);

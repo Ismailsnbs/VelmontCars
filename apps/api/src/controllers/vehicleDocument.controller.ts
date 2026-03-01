@@ -7,7 +7,10 @@ export class VehicleDocumentController {
   async getByVehicleId(req: Request, res: Response, next: NextFunction) {
     try {
       const { vehicleId } = req.params as { vehicleId: string };
-      const galleryId = req.galleryId ?? req.user!.galleryId!;
+      const galleryId = req.galleryId;
+      if (!galleryId) {
+        return res.status(400).json({ success: false, message: 'Gallery context required' });
+      }
 
       const documents = await vehicleDocumentService.getByVehicleId(
         vehicleId,
@@ -23,7 +26,10 @@ export class VehicleDocumentController {
   async create(req: Request, res: Response, next: NextFunction) {
     try {
       const { vehicleId } = req.params as { vehicleId: string };
-      const galleryId = req.galleryId ?? req.user!.galleryId!;
+      const galleryId = req.galleryId;
+      if (!galleryId) {
+        return res.status(400).json({ success: false, message: 'Gallery context required' });
+      }
 
       const document = await vehicleDocumentService.create(
         req.body,
@@ -40,7 +46,10 @@ export class VehicleDocumentController {
   async delete(req: Request, res: Response, next: NextFunction) {
     try {
       const { documentId } = req.params as { documentId: string };
-      const galleryId = req.galleryId ?? req.user!.galleryId!;
+      const galleryId = req.galleryId;
+      if (!galleryId) {
+        return res.status(400).json({ success: false, message: 'Gallery context required' });
+      }
 
       const result = await vehicleDocumentService.delete(documentId, galleryId);
       sendSuccess(res, result);

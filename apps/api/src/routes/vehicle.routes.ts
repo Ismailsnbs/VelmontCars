@@ -12,6 +12,7 @@ import {
   createVehicleSchema,
   updateVehicleSchema,
   updateStatusSchema,
+  vehicleQuerySchema,
 } from '../validations/vehicle.validation';
 import {
   vehicleIdParamSchema,
@@ -36,7 +37,7 @@ const router = Router();
 router.use(authenticate, requireGalleryAccess, galleryTenant);
 
 // GET /vehicles           — paginated list with filters
-router.get('/', vehicleController.getAll.bind(vehicleController));
+router.get('/', validate({ query: vehicleQuerySchema }), vehicleController.getAll.bind(vehicleController));
 
 // GET /vehicles/stats     — summary counts/values (must be before /:id)
 router.get('/stats', vehicleController.getStats.bind(vehicleController));

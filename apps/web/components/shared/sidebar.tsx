@@ -113,7 +113,12 @@ export function Sidebar({ type, className }: SidebarProps) {
             pathname === item.href ||
             (item.href !== "/master" &&
               item.href !== "/dashboard" &&
-              pathname.startsWith(item.href))
+              pathname.startsWith(item.href) &&
+              !items.some(other =>
+                other.href !== item.href &&
+                other.href.length > item.href.length &&
+                pathname.startsWith(other.href)
+              ))
           return (
             <Link
               key={item.href}

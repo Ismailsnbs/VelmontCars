@@ -9,7 +9,10 @@ export class StockAlertController {
    */
   async getLowStockProducts(req: Request, res: Response, next: NextFunction) {
     try {
-      const galleryId = req.galleryId ?? req.user!.galleryId!;
+      const galleryId = req.galleryId;
+      if (!galleryId) {
+        return res.status(400).json({ success: false, message: 'Gallery context required' });
+      }
       const lowStockProducts = await stockAlertService.getLowStockProducts(galleryId);
       sendSuccess(res, {
         data: lowStockProducts,
@@ -25,7 +28,10 @@ export class StockAlertController {
    */
   async checkAndAlert(req: Request, res: Response, next: NextFunction) {
     try {
-      const galleryId = req.galleryId ?? req.user!.galleryId!;
+      const galleryId = req.galleryId;
+      if (!galleryId) {
+        return res.status(400).json({ success: false, message: 'Gallery context required' });
+      }
       const result = await stockAlertService.checkAndAlert(galleryId);
       sendSuccess(res, {
         message: result.alerted

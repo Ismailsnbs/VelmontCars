@@ -26,5 +26,11 @@ export const notificationQuerySchema = z.object({
   sortOrder: z.enum(['asc', 'desc']).optional(),
 });
 
+export const galleryNotificationQuerySchema = z.object({
+  page: z.coerce.number().int().min(1).default(1).optional(),
+  limit: z.coerce.number().int().min(1).max(100).default(20).optional(),
+});
+
 export type CreateNotificationInput = z.infer<typeof createNotificationSchema>;
 export type NotificationQueryInput = z.infer<typeof notificationQuerySchema>;
+export type GalleryNotificationQueryInput = z.infer<typeof galleryNotificationQuerySchema>;
