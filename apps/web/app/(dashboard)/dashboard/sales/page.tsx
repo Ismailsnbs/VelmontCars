@@ -335,7 +335,7 @@ function NewSaleDialog({ open, onClose, onSuccess }: NewSaleDialogProps) {
                   vehicles.map((vehicle) => (
                     <SelectItem key={vehicle.id} value={vehicle.id}>
                       {vehicle.brand} {vehicle.model} ({vehicle.year}) —{" "}
-                      {formatUSD(Number(vehicle.totalCost ?? vehicle.fobPrice))} maliyet
+                      <span className="tabular-nums">{formatUSD(Number(vehicle.totalCost ?? vehicle.fobPrice))}</span> maliyet
                     </SelectItem>
                   ))
                 )}
@@ -591,12 +591,12 @@ function SaleDetailDialog({ open, onClose, saleId }: SaleDetailDialogProps) {
               </div>
               <div className="grid grid-cols-2 gap-2 text-sm">
                 <span className="text-gray-500">Satış Fiyatı</span>
-                <span className="font-bold text-base">{formatUSD(Number(sale.salePrice))}</span>
+                <span className="font-bold tabular-nums text-base">{formatUSD(Number(sale.salePrice))}</span>
                 <span className="text-gray-500">Toplam Maliyet</span>
-                <span>{formatUSD(Number(sale.totalCost))}</span>
+                <span className="tabular-nums">{formatUSD(Number(sale.totalCost))}</span>
                 <span className="text-gray-500">Kar</span>
                 <span
-                  className={`font-semibold flex items-center gap-1 ${
+                  className={`font-semibold tabular-nums flex items-center gap-1 ${
                     Number(sale.profit) >= 0 ? SEMANTIC_COLORS.profit : SEMANTIC_COLORS.loss
                   }`}
                 >
@@ -610,7 +610,7 @@ function SaleDetailDialog({ open, onClose, saleId }: SaleDetailDialogProps) {
                 <span className="text-gray-500">Kar Marjı</span>
                 <Badge
                   variant={Number(sale.profitMargin) >= 0 ? "default" : "destructive"}
-                  className="w-fit"
+                  className="w-fit tabular-nums"
                 >
                   %{Number(sale.profitMargin).toFixed(1)}
                 </Badge>
@@ -807,14 +807,14 @@ export default function SalesPage() {
       key: "salePrice",
       label: "Satış Fiyatı",
       render: (_v, row) => (
-        <span className="text-sm font-semibold">{formatUSD(Number(row.salePrice))}</span>
+        <span className="text-sm font-semibold tabular-nums">{formatUSD(Number(row.salePrice))}</span>
       ),
     },
     {
       key: "totalCost",
       label: "Maliyet",
       render: (_v, row) => (
-        <span className="text-sm text-gray-600">{formatUSD(Number(row.totalCost))}</span>
+        <span className="text-sm tabular-nums text-gray-600">{formatUSD(Number(row.totalCost))}</span>
       ),
     },
     {
@@ -824,7 +824,7 @@ export default function SalesPage() {
         const profit = Number(row.profit)
         return (
           <span
-            className={`text-sm font-semibold flex items-center gap-1 ${
+            className={`text-sm font-semibold tabular-nums flex items-center gap-1 ${
               profit >= 0 ? SEMANTIC_COLORS.profit : SEMANTIC_COLORS.loss
             }`}
           >
@@ -844,7 +844,7 @@ export default function SalesPage() {
       render: (_v, row) => {
         const margin = Number(row.profitMargin)
         return (
-          <Badge variant={margin >= 0 ? "default" : "destructive"}>
+          <Badge variant={margin >= 0 ? "default" : "destructive"} className="tabular-nums">
             %{margin.toFixed(1)}
           </Badge>
         )
@@ -977,7 +977,7 @@ export default function SalesPage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className={`text-2xl font-bold ${SEMANTIC_COLORS.link}`}>
+              <div className={`text-2xl font-bold tabular-nums ${SEMANTIC_COLORS.link}`}>
                 {formatUSD(stats.totalRevenue)}
               </div>
             </CardContent>
@@ -991,7 +991,7 @@ export default function SalesPage() {
             </CardHeader>
             <CardContent>
               <div
-                className={`text-2xl font-bold flex items-center gap-1 ${
+                className={`text-2xl font-bold tabular-nums flex items-center gap-1 ${
                   stats.totalProfit >= 0 ? SEMANTIC_COLORS.profit : SEMANTIC_COLORS.loss
                 }`}
               >
@@ -1002,7 +1002,7 @@ export default function SalesPage() {
                 )}
                 {formatUSD(stats.totalProfit)}
               </div>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs tabular-nums text-gray-500 mt-1">
                 Ort. Marj: %{stats.averageProfitMargin.toFixed(1)}
               </p>
             </CardContent>
@@ -1124,12 +1124,12 @@ export default function SalesPage() {
                 </p>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-muted-foreground">Satış Fiyatı</span>
-                  <span className="font-semibold">{formatUSD(Number(row.salePrice))}</span>
+                  <span className="font-semibold tabular-nums">{formatUSD(Number(row.salePrice))}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-muted-foreground">Kar</span>
                   <span
-                    className={`font-semibold flex items-center gap-1 ${
+                    className={`font-semibold tabular-nums flex items-center gap-1 ${
                       profit >= 0 ? SEMANTIC_COLORS.profit : SEMANTIC_COLORS.loss
                     }`}
                   >

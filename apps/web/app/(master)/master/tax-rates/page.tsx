@@ -363,6 +363,35 @@ export default function TaxRatesPage() {
         onPageChange={setPage}
         rowKey="id"
         emptyState={{ icon: Percent, title: "Henüz vergi oranı eklenmemiş", description: "Vergi oranlarını tanımlayarak hesaplamalara başlayın." }}
+        mobileCard={(row) => (
+          <div className="rounded-lg border p-4 space-y-2">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="font-semibold text-sm">{row.name}</p>
+                <p className="text-xs text-muted-foreground font-mono">{row.code}</p>
+              </div>
+              {row.isActive ? (
+                <Badge variant="success">Aktif</Badge>
+              ) : (
+                <Badge variant="secondary">Pasif</Badge>
+              )}
+            </div>
+            <div className="flex items-center gap-3 text-xs text-muted-foreground">
+              <span className="font-mono font-semibold text-foreground">
+                {formatRate(row.rate, row.rateType)}
+              </span>
+              <span>{RATE_TYPE_LABEL[row.rateType] ?? row.rateType}</span>
+              {row.vehicleType && (
+                <span>{VEHICLE_TYPE_LABEL[row.vehicleType] ?? row.vehicleType}</span>
+              )}
+            </div>
+            {(row.minEngineCC != null || row.maxEngineCC != null) && (
+              <p className="text-xs text-muted-foreground font-mono">
+                Motor: {formatEngineCC(row.minEngineCC, row.maxEngineCC)}
+              </p>
+            )}
+          </div>
+        )}
       />
 
       {/* Create / Edit form dialog */}

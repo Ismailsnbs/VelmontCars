@@ -135,8 +135,8 @@ function StatCard({
   title,
   value,
   icon: Icon,
-  color = "text-blue-500",
-  bgColor = "bg-blue-50",
+  color = STAT_CARD_ACCENTS.totalVehicle.color,
+  bgColor = STAT_CARD_ACCENTS.totalVehicle.bg,
 }: {
   title: string
   value: number | string

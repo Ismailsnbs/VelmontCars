@@ -56,6 +56,9 @@ import {
   STATUS_LABELS as TOKEN_STATUS_LABELS,
   SEMANTIC_COLORS,
   ALERT_COLORS,
+  REPORT_ICON_COLORS,
+  LOW_STOCK_ALERT,
+  CALCULATOR_COLORS,
 } from "@/lib/design-tokens"
 
 // ─── Sabitler ──────────────────────────────────────────────────────────────
@@ -367,42 +370,42 @@ const REPORT_CARDS: ReportCardMeta[] = [
     title: "Araç Envanter Raporu",
     description: "Tüm araçların detaylı listesi, maliyet ve satış bilgileri",
     icon: Car,
-    iconColor: "text-blue-500",
+    iconColor: REPORT_ICON_COLORS.vehicles,
   },
   {
     type: "vehicle-status",
     title: "Araç Durum Özeti",
     description: "Araçların durum dağılımı ve stok değeri",
     icon: BarChart3,
-    iconColor: "text-purple-500",
+    iconColor: REPORT_ICON_COLORS.status,
   },
   {
     type: "costs",
     title: "Maliyet Raporu",
     description: "İthalat hesaplama maliyetleri ve vergi detayları",
     icon: Calculator,
-    iconColor: "text-orange-500",
+    iconColor: REPORT_ICON_COLORS.costs,
   },
   {
     type: "stock",
     title: "Stok Raporu",
     description: "Ürün stok durumu, düşük stok uyarıları ve stok değeri",
     icon: Package,
-    iconColor: "text-green-500",
+    iconColor: REPORT_ICON_COLORS.stock,
   },
   {
     type: "sales",
     title: "Satış Raporu",
     description: "Araç satışları, kar/zarar ve kar marjı analizi",
     icon: DollarSign,
-    iconColor: "text-emerald-500",
+    iconColor: REPORT_ICON_COLORS.sales,
   },
   {
     type: "financial-summary",
     title: "Finansal Özet",
     description: "Aylık gelir, gider ve kar/zarar özeti",
     icon: TrendingUp,
-    iconColor: "text-indigo-500",
+    iconColor: REPORT_ICON_COLORS.financial,
   },
 ]
 
@@ -420,7 +423,7 @@ function SummaryCard({ label, value, highlight, warning }: SummaryCardProps) {
     <div className="rounded-lg border bg-white p-4">
       <p className="text-xs text-gray-500 mb-1">{label}</p>
       <p
-        className={`text-lg font-bold ${
+        className={`text-lg font-bold tabular-nums ${
           highlight
             ? SEMANTIC_COLORS.profit
             : warning
@@ -600,10 +603,10 @@ function VehicleInventoryContent({
                   {v.mileage != null ? v.mileage.toLocaleString("tr-TR") : "-"}
                 </TableCell>
                 <TableCell>{v.originCountry}</TableCell>
-                <TableCell className="text-right font-mono text-sm">
+                <TableCell className="text-right font-mono text-sm tabular-nums">
                   {formatUSD(v.fobPrice)}
                 </TableCell>
-                <TableCell className="text-right font-mono text-sm">
+                <TableCell className="text-right font-mono text-sm tabular-nums">
                   {v.totalCost != null ? formatUSD(v.totalCost) : "-"}
                 </TableCell>
               </TableRow>
@@ -702,10 +705,10 @@ function VehicleStatusContent({ onExportCSV, onPrint }: VehicleStatusContentProp
                     ? formatPercent((item.count / report.summary.total) * 100)
                     : "-"}
                 </TableCell>
-                <TableCell className="text-right font-mono text-sm">
+                <TableCell className="text-right font-mono text-sm tabular-nums">
                   {formatUSD(item.totalFobValue)}
                 </TableCell>
-                <TableCell className="text-right font-mono text-sm">
+                <TableCell className="text-right font-mono text-sm tabular-nums">
                   {formatUSD(item.totalCostValue)}
                 </TableCell>
               </TableRow>
@@ -845,16 +848,16 @@ function CostReportContent({
                 <TableCell>{c.originCountry}</TableCell>
                 <TableCell>{c.engineCC} cc</TableCell>
                 <TableCell className="text-sm text-gray-600">{c.vehicleType}</TableCell>
-                <TableCell className="text-right font-mono text-sm">
+                <TableCell className="text-right font-mono text-sm tabular-nums">
                   {formatUSD(c.cifValue)}
                 </TableCell>
-                <TableCell className="text-right font-mono text-sm text-orange-600">
+                <TableCell className={`text-right font-mono text-sm tabular-nums ${CALCULATOR_COLORS.taxTotalRow}`}>
                   {formatUSD(c.totalTaxes)}
                 </TableCell>
-                <TableCell className="text-right font-mono text-sm font-medium">
+                <TableCell className="text-right font-mono text-sm font-medium tabular-nums">
                   {formatUSD(c.totalCostUSD)}
                 </TableCell>
-                <TableCell className="text-right font-mono text-sm">
+                <TableCell className="text-right font-mono text-sm tabular-nums">
                   {formatTRY(c.totalCostTL)}
                 </TableCell>
                 <TableCell className="text-sm text-gray-500">
@@ -936,16 +939,16 @@ function StockReportContent({ onExportCSV, onPrint }: StockReportContentProps) {
 
       {/* Düşük stok uyarısı */}
       {report && report.lowStockItems.length > 0 && (
-        <div className="rounded-lg border border-orange-200 bg-orange-50 p-3">
+        <div className={`rounded-lg border ${LOW_STOCK_ALERT.wrapper} p-3`}>
           <div className="flex items-center gap-2 mb-2">
-            <AlertTriangle className="h-4 w-4 text-orange-500" />
-            <span className="text-sm font-medium text-orange-700">
+            <AlertTriangle className={`h-4 w-4 ${LOW_STOCK_ALERT.icon}`} />
+            <span className={`text-sm font-medium ${LOW_STOCK_ALERT.text}`}>
               {report.lowStockItems.length} ürün düşük stok seviyesinde
             </span>
           </div>
           <div className="flex flex-wrap gap-2">
             {report.lowStockItems.map((item) => (
-              <Badge key={item.id} variant="outline" className="border-orange-300 text-orange-700">
+              <Badge key={item.id} variant="outline" className={LOW_STOCK_ALERT.badge}>
                 {item.name} ({item.currentStock}/{item.minStockLevel})
               </Badge>
             ))}
@@ -971,7 +974,7 @@ function StockReportContent({ onExportCSV, onPrint }: StockReportContentProps) {
             {report?.allProducts?.map((p) => (
               <TableRow
                 key={p.id}
-                className={p.isLowStock ? "bg-red-50 hover:bg-red-100" : undefined}
+                className={p.isLowStock ? LOW_STOCK_ALERT.row : undefined}
               >
                 <TableCell className="font-medium">
                   <div className="flex items-center gap-2">
@@ -993,10 +996,10 @@ function StockReportContent({ onExportCSV, onPrint }: StockReportContentProps) {
                 <TableCell className="text-right text-sm text-gray-500">
                   {p.minStockLevel}
                 </TableCell>
-                <TableCell className="text-right font-mono text-sm">
+                <TableCell className="text-right font-mono text-sm tabular-nums">
                   {formatTRY(p.unitPrice)}
                 </TableCell>
-                <TableCell className="text-right font-mono text-sm font-medium">
+                <TableCell className="text-right font-mono text-sm font-medium tabular-nums">
                   {formatTRY(p.stockValue)}
                 </TableCell>
               </TableRow>
@@ -1118,14 +1121,14 @@ function SalesReportContent({
                   <span className="text-gray-500">{s.vehicleYear}</span>
                 </TableCell>
                 <TableCell className="text-sm">{s.customerName}</TableCell>
-                <TableCell className="text-right font-mono text-sm">
+                <TableCell className="text-right font-mono text-sm tabular-nums">
                   {formatUSD(s.salePrice)}
                 </TableCell>
-                <TableCell className="text-right font-mono text-sm">
+                <TableCell className="text-right font-mono text-sm tabular-nums">
                   {formatUSD(s.totalCost)}
                 </TableCell>
                 <TableCell
-                  className={`text-right font-mono text-sm font-medium ${
+                  className={`text-right font-mono text-sm font-medium tabular-nums ${
                     s.profit >= 0 ? SEMANTIC_COLORS.profit : SEMANTIC_COLORS.loss
                   }`}
                 >
@@ -1133,7 +1136,7 @@ function SalesReportContent({
                 </TableCell>
                 <TableCell className="text-right text-sm">
                   <span
-                    className={`font-medium ${
+                    className={`font-medium tabular-nums ${
                       s.profitMargin >= 15
                         ? SEMANTIC_COLORS.profit
                         : s.profitMargin >= 5
@@ -1309,14 +1312,14 @@ function FinancialSummaryContent({
                 <TableCell className="font-medium">
                   {MONTH_LABELS[m.month] ?? m.month} {m.year}
                 </TableCell>
-                <TableCell className="text-right font-mono text-sm">
+                <TableCell className="text-right font-mono text-sm tabular-nums">
                   {formatUSD(m.importCost)}
                 </TableCell>
-                <TableCell className={`text-right font-mono text-sm ${SEMANTIC_COLORS.profit}`}>
+                <TableCell className={`text-right font-mono text-sm tabular-nums ${SEMANTIC_COLORS.profit}`}>
                   {formatUSD(m.salesRevenue)}
                 </TableCell>
                 <TableCell
-                  className={`text-right font-mono text-sm font-medium ${
+                  className={`text-right font-mono text-sm font-medium tabular-nums ${
                     m.profit >= 0 ? SEMANTIC_COLORS.profit : SEMANTIC_COLORS.loss
                   }`}
                 >

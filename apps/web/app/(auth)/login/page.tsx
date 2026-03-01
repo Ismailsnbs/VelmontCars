@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useAuthStore } from "@/stores/authStore"
+import { LOGIN_ROLE_COLORS } from "@/lib/design-tokens"
 
 const isDev = process.env.NODE_ENV === "development"
 
@@ -36,56 +37,56 @@ const QUICK_USERS = [
     email: "admin@kktcgaleri.com",
     password: "123456",
     role: "MASTER_ADMIN",
+    colorKey: "MASTER_ADMIN",
     icon: Shield,
-    color: "bg-red-500/10 text-red-600 border-red-200 hover:bg-red-500/20",
   },
   {
     label: "Galeri Sahibi",
     email: "owner@demogaleri.com",
     password: "123456",
     role: "GALLERY_OWNER",
+    colorKey: "GALLERY_OWNER",
     icon: Building2,
-    color: "bg-blue-500/10 text-blue-600 border-blue-200 hover:bg-blue-500/20",
   },
   {
     label: "Galeri Muduru",
     email: "manager@demogaleri.com",
     password: "123456",
     role: "GALLERY_MANAGER",
+    colorKey: "GALLERY_MANAGER",
     icon: UserCog,
-    color: "bg-green-500/10 text-green-600 border-green-200 hover:bg-green-500/20",
   },
   {
     label: "Satis Danismani",
     email: "sales@demogaleri.com",
     password: "123456",
     role: "SALES",
+    colorKey: "SALES",
     icon: ShoppingCart,
-    color: "bg-orange-500/10 text-orange-600 border-orange-200 hover:bg-orange-500/20",
   },
   {
     label: "Muhasebeci",
     email: "accountant@demogaleri.com",
     password: "123456",
     role: "ACCOUNTANT",
+    colorKey: "ACCOUNTANT",
     icon: Calculator,
-    color: "bg-purple-500/10 text-purple-600 border-purple-200 hover:bg-purple-500/20",
   },
   {
     label: "Personel",
     email: "staff@demogaleri.com",
     password: "123456",
     role: "STAFF",
+    colorKey: "STAFF",
     icon: User,
-    color: "bg-gray-500/10 text-gray-600 border-gray-200 hover:bg-gray-500/20",
   },
   {
     label: "Premium Motors (2. Galeri)",
     email: "owner@premiummotors.com",
     password: "123456",
     role: "GALLERY_OWNER_2",
+    colorKey: "PREMIUM",
     icon: Crown,
-    color: "bg-amber-500/10 text-amber-600 border-amber-200 hover:bg-amber-500/20",
   },
 ]
 
@@ -200,7 +201,7 @@ export default function LoginPage() {
           <Button
             key={user.role}
             variant="outline"
-            className={`w-full justify-start gap-3 h-auto py-3 ${user.color}`}
+            className={`w-full justify-start gap-3 h-auto py-3 ${LOGIN_ROLE_COLORS[user.colorKey]}`}
             disabled={isLoading}
             onClick={() => onQuickLogin(user)}
           >

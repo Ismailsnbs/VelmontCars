@@ -304,7 +304,7 @@ export default function VehiclesPage() {
       key: "fobPrice",
       label: "FOB Fiyat",
       render: (_value, row) => (
-        <span className="text-sm font-medium whitespace-nowrap">
+        <span className="text-sm font-medium tabular-nums whitespace-nowrap">
           {formatCurrency(row.fobPrice, row.fobCurrency)}
         </span>
       ),

@@ -234,6 +234,24 @@ export default function AuditLogsPage() {
           } : undefined}
           onPageChange={setPage}
           emptyState={{ icon: FileText, title: "Henüz işlem kaydı yok", description: "Sistem üzerinde yapılan değişiklikler burada görüntülenir." }}
+          mobileCard={(row) => (
+            <div className="rounded-lg border p-4 space-y-2">
+              <div className="flex items-start justify-between">
+                <div>
+                  <Badge variant={getActionBadgeVariant(row.action)}>
+                    {row.action}
+                  </Badge>
+                  <p className="text-xs text-muted-foreground mt-1">{row.performedBy}</p>
+                </div>
+                <Badge variant={getEntityTypeBadgeVariant(row.entityType)}>
+                  {ENTITY_TYPE_LABEL[row.entityType] || row.entityType}
+                </Badge>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                {format(new Date(row.performedAt), "dd MMM yyyy HH:mm:ss", { locale: tr })}
+              </p>
+            </div>
+          )}
         />
       </div>
     </div>

@@ -235,6 +235,34 @@ export default function CountriesPage() {
             onPageChange={setPage}
             rowKey="id"
             emptyState={{ icon: Globe, title: "Henüz ülke eklenmemiş", description: "Menşe ülkeleri ekleyerek ithalat hesaplamalarına başlayın." }}
+            mobileCard={(row) => (
+              <div className="rounded-lg border p-4 space-y-2">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">{row.flag || "🏳️"}</span>
+                    <div>
+                      <p className="font-semibold text-sm">{row.name}</p>
+                      <p className="text-xs text-muted-foreground font-mono">{row.code}</p>
+                    </div>
+                  </div>
+                  {row.isActive ? (
+                    <Badge variant="success">Aktif</Badge>
+                  ) : (
+                    <Badge variant="secondary">İnaktif</Badge>
+                  )}
+                </div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  {row.isEU ? (
+                    <Badge variant="success">AB Üyesi</Badge>
+                  ) : (
+                    <Badge variant="secondary">AB Değil</Badge>
+                  )}
+                  <span className="text-xs text-muted-foreground">
+                    Gümrük: {Number(row.customsDutyRate).toFixed(1)}%
+                  </span>
+                </div>
+              </div>
+            )}
           />
         </CardContent>
       </Card>

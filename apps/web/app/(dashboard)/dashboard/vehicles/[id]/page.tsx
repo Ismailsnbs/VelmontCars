@@ -25,6 +25,7 @@ import {
   STATUS_LABELS as TOKEN_STATUS_LABELS,
   SEMANTIC_COLORS,
   ACTION_COLORS,
+  VEHICLE_ACTION_COLORS,
 } from "@/lib/design-tokens"
 import { useToast } from "@/components/ui/use-toast"
 import { Button } from "@/components/ui/button"
@@ -321,7 +322,7 @@ export default function VehicleDetailPage() {
             {vehicle.status === "TRANSIT" && (
               <Button
                 variant="outline"
-                className={`gap-2 hover:bg-green-50 ${ACTION_COLORS.successOutline}`}
+                className={`gap-2 ${VEHICLE_ACTION_COLORS.stockIn}`}
                 onClick={() => statusChangeMutation.mutate("IN_STOCK")}
                 disabled={isActionPending}
               >
@@ -333,7 +334,7 @@ export default function VehicleDetailPage() {
             {vehicle.status === "IN_STOCK" && (
               <Button
                 variant="outline"
-                className="gap-2 border-blue-500 text-blue-700 hover:bg-blue-50"
+                className={`gap-2 ${VEHICLE_ACTION_COLORS.reserve}`}
                 onClick={() => statusChangeMutation.mutate("RESERVED")}
                 disabled={isActionPending}
               >
@@ -344,7 +345,7 @@ export default function VehicleDetailPage() {
 
             <Button
               variant="outline"
-              className={`gap-2 border-red-400 ${ACTION_COLORS.destructiveGhost}`}
+              className={`gap-2 ${ACTION_COLORS.destructiveOutline}`}
               onClick={handleDelete}
               disabled={isActionPending}
             >

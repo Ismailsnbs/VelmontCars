@@ -1,7 +1,7 @@
 # 🧠 KKTC Araç Galerisi — Orkestrasyon & Checkpoint
 
 > **Son Güncelleme:** `2026-03-02`
-> **Mevcut Faz:** 🔄 Faz 10 — UX Polish (Smooth Transitions, Quick Login, Seed Data, Test Senaryoları)
+> **Mevcut Faz:** ✅ Faz 10 — Designer 8 Madde Tamamlandı (Hardcoded Renkler, Skeleton, tabular-nums, mobileCard)
 > **Detaylı Spec:** `SPEC.md`
 
 ---
@@ -880,6 +880,43 @@
 - **Sıradaki:** Canlı test ile tüm Quick Login rolleri doğrulama, kalan hardcoded renk → token dönüşümü
 - **Sorunlar:** —
 - **Bağımlılıklar:** nextjs-toploader ^3.9.17
+- **Son Komut:** `npx tsc --noEmit` — EXIT: 0
+
+---
+
+### CHECKPOINT-30 — 2026-03-02 (DESIGNER RAPORU 8/8 MADDE TAMAMLANDI)
+- **Durum:** ✅ Tamamlandı
+- **Tamamlanan:**
+  - **Hardcoded renkler (32 instance → 0):** 7 dosyada tüm hardcoded renkler design token'lara taşındı. `design-tokens.ts`'e 6 yeni export: LOGIN_ROLE_COLORS, REPORT_ICON_COLORS, LOW_STOCK_ALERT, VEHICLE_ACTION_COLORS, CALCULATOR_COLORS genişletmesi, SOURCE_BADGE_COLORS genişletmesi
+  - **Loading skeleton (2 sayfa):** Dashboard ve Finance sayfalarında spinner → skeleton card dönüşümü. Stat card grid, chart alanı, tablo satırları için Skeleton kullanımı
+  - **Empty state (13/13 sayfa):** Tüm DataTable'lar ve custom tablolarda empty state tamamlandı (önceki CP-28-29'da yapılanlar dahil)
+  - **Error state (tüm sayfalar):** ErrorState reusable component kullanımda
+  - **tabular-nums (~59 instance eklendi):** 6 dosyada tüm para birimi/sayısal değer gösterimlerine tabular-nums eklendi — calculator (16), finance (6), sales (14), vehicles (2), products (3), reports (18)
+  - **Kar/zarar renk:** SEMANTIC_COLORS token'ları tutarlı kullanımda
+  - **framer-motion:** PageTransition, MotionCard, CountUp, cardHoverProps çalışıyor. modalVariants Radix UI native animasyonları tercih edildi
+  - **mobileCard (11/11 DataTable):** 6 eksik tabloya mobileCard eklendi — tax-rates, countries, audit-logs, notifications, calculator history, exchange-rates (custom sm:hidden pattern)
+  - **Ek düzeltmeler:** Products NaN (totalStockValue field mismatch), Settings 404 (sayfa oluşturuldu)
+- **Değişen Dosyalar (20+):**
+  - `apps/web/lib/design-tokens.ts` — 6 yeni token export
+  - `apps/web/app/(auth)/login/page.tsx` — LOGIN_ROLE_COLORS
+  - `apps/web/app/(dashboard)/dashboard/page.tsx` — Skeleton loading + STAT_CARD_ACCENTS
+  - `apps/web/app/(dashboard)/dashboard/finance/page.tsx` — Skeleton loading + tabular-nums
+  - `apps/web/app/(dashboard)/dashboard/calculator/page.tsx` — tabular-nums + mobileCard + CALCULATOR_COLORS
+  - `apps/web/app/(dashboard)/dashboard/sales/page.tsx` — tabular-nums (14 instance)
+  - `apps/web/app/(dashboard)/dashboard/vehicles/page.tsx` — tabular-nums
+  - `apps/web/app/(dashboard)/dashboard/vehicles/[id]/page.tsx` — VEHICLE_ACTION_COLORS
+  - `apps/web/app/(dashboard)/dashboard/products/page.tsx` — totalStockValue fix + tabular-nums + SEMANTIC_COLORS.alertIcon
+  - `apps/web/app/(dashboard)/dashboard/reports/page.tsx` — REPORT_ICON_COLORS + LOW_STOCK_ALERT + tabular-nums (18)
+  - `apps/web/app/(dashboard)/dashboard/settings/page.tsx` — YENİ (placeholder)
+  - `apps/web/app/(master)/master/tax-rates/page.tsx` — mobileCard
+  - `apps/web/app/(master)/master/countries/page.tsx` — mobileCard
+  - `apps/web/app/(master)/master/audit-logs/page.tsx` — mobileCard
+  - `apps/web/app/(master)/master/notifications/page.tsx` — mobileCard
+  - `apps/web/app/(master)/master/exchange-rates/page.tsx` — mobileCard (sm:hidden) + SOURCE_BADGE_COLORS
+- **Test Durumu:** 673/673 backend test geçiyor, 0 TypeScript hatası
+- **Sıradaki:** Production build kontrolü, final live test
+- **Sorunlar:** —
+- **Bağımlılıklar:** —
 - **Son Komut:** `npx tsc --noEmit` — EXIT: 0
 
 ---

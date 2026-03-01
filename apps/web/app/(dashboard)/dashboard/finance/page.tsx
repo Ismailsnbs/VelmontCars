@@ -157,7 +157,7 @@ function SummaryCard({
         </div>
       </CardHeader>
       <CardContent>
-        <div className="text-2xl font-bold text-gray-900">{value}</div>
+        <div className="text-2xl font-bold tabular-nums text-gray-900">{value}</div>
         {subtitle && (
           <p className="mt-1 text-xs text-gray-500">{subtitle}</p>
         )}
@@ -422,7 +422,7 @@ export default function FinancePage() {
             </CardHeader>
             <CardContent>
               <div
-                className={`text-2xl font-bold ${
+                className={`text-2xl font-bold tabular-nums ${
                   isProfit ? SEMANTIC_COLORS.profit : SEMANTIC_COLORS.loss
                 }`}
               >
@@ -625,24 +625,24 @@ export default function FinancePage() {
                           {MONTH_NAMES[item.month - 1] ?? `Ay ${item.month}`}
                         </TableCell>
                         <TableCell
-                          className={`text-right ${SEMANTIC_COLORS.revenueCell}`}
+                          className={`text-right tabular-nums ${SEMANTIC_COLORS.revenueCell}`}
                         >
                           {formatUSD(item.salesRevenue)}
                         </TableCell>
                         <TableCell
-                          className={`text-right ${SEMANTIC_COLORS.expenseCell}`}
+                          className={`text-right tabular-nums ${SEMANTIC_COLORS.expenseCell}`}
                         >
                           {formatUSD(item.importCost)}
                         </TableCell>
                         <TableCell
-                          className={`text-right font-semibold ${
+                          className={`text-right font-semibold tabular-nums ${
                             isRowProfit ? SEMANTIC_COLORS.profit : SEMANTIC_COLORS.loss
                           }`}
                         >
                           {formatUSD(item.profit)}
                         </TableCell>
                         <TableCell
-                          className={`text-right text-sm ${
+                          className={`text-right tabular-nums text-sm ${
                             margin >= 0 ? "text-gray-700" : SEMANTIC_COLORS.loss
                           }`}
                         >

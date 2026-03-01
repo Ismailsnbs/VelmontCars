@@ -210,6 +210,7 @@ export const ACTION_COLORS = {
   destructiveText: "text-red-600",
   destructiveGhost: "text-red-500 hover:text-red-700 hover:bg-red-50",
   destructiveFocus: "text-red-600 cursor-pointer focus:text-red-600",
+  destructiveOutline: "border-red-400 text-red-500 hover:text-red-700 hover:bg-red-50",
   successOutline: "text-green-600 border-green-600",
 } as const
 
@@ -229,6 +230,9 @@ export const CALCULATOR_COLORS = {
   taxTotal: "text-red-600",
   savedBadge: "bg-green-100 text-green-800 border-green-200",
   totalCostValue: "text-green-700",
+  cifValue: "text-blue-700",
+  chevronRight: "text-green-400",
+  taxTotalRow: "text-orange-600",
 } as const
 
 // ─── Abonelik Planı Badge Renkleri ──────────────────────────────────────
@@ -245,6 +249,7 @@ export const SUBSCRIPTION_BADGE_COLORS: Record<string, string> = {
 
 export const SOURCE_BADGE_COLORS = {
   api: "bg-blue-100 text-blue-700 border-blue-200",
+  apiWithHover: "bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-100",
 } as const
 
 // ─── Değişiklik Gösterge Renkleri (History) ─────────────────────────────
@@ -252,4 +257,44 @@ export const SOURCE_BADGE_COLORS = {
 export const CHANGE_COLORS = {
   oldValue: "text-red-600",
   newValue: "text-green-600",
+} as const
+
+// ─── Hızlı Giriş Rol Renkleri (Login quick-login panel) ──────────────────
+
+export const LOGIN_ROLE_COLORS: Record<string, string> = {
+  MASTER_ADMIN: "bg-red-500/10 text-red-600 border-red-200 hover:bg-red-500/20",
+  GALLERY_OWNER: "bg-blue-500/10 text-blue-600 border-blue-200 hover:bg-blue-500/20",
+  GALLERY_MANAGER: "bg-green-500/10 text-green-600 border-green-200 hover:bg-green-500/20",
+  SALES: "bg-orange-500/10 text-orange-600 border-orange-200 hover:bg-orange-500/20",
+  ACCOUNTANT: "bg-purple-500/10 text-purple-600 border-purple-200 hover:bg-purple-500/20",
+  STAFF: "bg-gray-500/10 text-gray-600 border-gray-200 hover:bg-gray-500/20",
+  PREMIUM: "bg-amber-500/10 text-amber-600 border-amber-200 hover:bg-amber-500/20",
+}
+
+// ─── Rapor İkon Renkleri ──────────────────────────────────────────────────
+
+export const REPORT_ICON_COLORS: Record<string, string> = {
+  vehicles: "text-blue-500",
+  status: "text-purple-500",
+  costs: "text-orange-500",
+  stock: "text-green-500",
+  sales: "text-emerald-500",
+  financial: "text-indigo-500",
+}
+
+// ─── Düşük Stok Uyarı Renkleri (Raporlar) ────────────────────────────────
+
+export const LOW_STOCK_ALERT = {
+  wrapper: "border-orange-200 bg-orange-50",
+  icon: "text-orange-500",
+  text: "text-orange-700",
+  badge: "border-orange-300 text-orange-700",
+  row: "bg-red-50 hover:bg-red-100",
+} as const
+
+// ─── Araç Detay Aksiyon Butonu Renkleri (durum geçiş) ────────────────────
+
+export const VEHICLE_ACTION_COLORS = {
+  stockIn: "border-green-600 text-green-600 hover:bg-green-50",
+  reserve: "border-blue-500 text-blue-700 hover:bg-blue-50",
 } as const

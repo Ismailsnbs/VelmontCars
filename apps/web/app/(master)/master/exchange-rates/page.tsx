@@ -135,7 +135,7 @@ function SkeletonRow({ cols }: { cols: number }) {
 function SourceBadge({ source }: { source: string }) {
   if (source === "api") {
     return (
-      <Badge className={`${SOURCE_BADGE_COLORS.api} hover:bg-blue-100`}>
+      <Badge className={SOURCE_BADGE_COLORS.apiWithHover}>
         API
       </Badge>
     )
@@ -212,7 +212,8 @@ function CurrentRatesTab() {
         </div>
       </div>
 
-      <div className="rounded-md border border-gray-200">
+      {/* Desktop table */}
+      <div className="hidden sm:block rounded-md border border-gray-200">
         <Table>
           <TableHeader>
             <TableRow>
@@ -264,6 +265,50 @@ function CurrentRatesTab() {
             )}
           </TableBody>
         </Table>
+      </div>
+
+      {/* Mobile card list */}
+      <div className="sm:hidden space-y-2">
+        {isLoading ? (
+          Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="rounded-lg border p-4 space-y-2">
+              <Skeleton className="h-5 w-24" />
+              <Skeleton className="h-4 w-40" />
+              <Skeleton className="h-4 w-32" />
+            </div>
+          ))
+        ) : rates.length === 0 ? (
+          <div className="rounded-lg border p-8 text-center text-sm text-gray-500">
+            Kur verisi bulunamadi
+          </div>
+        ) : (
+          rates.map((rate) => (
+            <div key={rate.id} className="rounded-lg border p-4 space-y-2">
+              <div className="flex items-start justify-between">
+                <div>
+                  <p className="font-mono font-bold text-sm">{rate.currencyCode}</p>
+                  <p className="text-xs text-gray-500">{rate.currencyName}</p>
+                </div>
+                <SourceBadge source={rate.source} />
+              </div>
+              <div className="flex items-center gap-4 text-xs text-gray-500">
+                <span>
+                  Alis:{" "}
+                  <span className="font-mono font-semibold text-gray-900 tabular-nums">
+                    {formatRate(rate.buyRate)}
+                  </span>
+                </span>
+                <span>
+                  Satis:{" "}
+                  <span className="font-mono font-semibold text-gray-900 tabular-nums">
+                    {formatRate(rate.sellRate)}
+                  </span>
+                </span>
+              </div>
+              <p className="text-xs text-gray-400">{formatDate(rate.fetchedAt)}</p>
+            </div>
+          ))
+        )}
       </div>
 
       <BulkUpdateDialog

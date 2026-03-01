@@ -267,7 +267,7 @@ function ActiveRatesPanel({ rates }: { rates: ActiveRates | undefined }) {
             {rates.exchangeRates.map((er) => (
               <div key={er.currency} className="flex justify-between text-xs">
                 <span className="text-gray-600">{er.currency}/TL</span>
-                <span className="font-semibold text-gray-900">
+                <span className="font-semibold tabular-nums text-gray-900">
                   {Number(er.rate).toLocaleString("tr-TR", { minimumFractionDigits: 2 })}
                 </span>
               </div>
@@ -366,7 +366,7 @@ function CalculationResultPanel({
             </div>
             <div className="space-y-0.5">
               <p className="text-xs text-gray-500">CIF (USD)</p>
-              <p className="font-bold text-sm text-blue-700">
+              <p className={`font-bold tabular-nums text-sm ${CALCULATOR_COLORS.cifValue}`}>
                 {formatUSD(result.inputs.cifUsd)}
               </p>
             </div>
@@ -395,7 +395,7 @@ function CalculationResultPanel({
             </span>
             <span>
               Kur:{" "}
-              <strong className="text-gray-700">
+              <strong className="tabular-nums text-gray-700">
                 1 USD ={" "}
                 {Number(result.exchangeRate).toLocaleString("tr-TR", {
                   minimumFractionDigits: 2,
@@ -440,7 +440,7 @@ function CalculationResultPanel({
 
             <div className="flex items-center justify-between font-semibold text-sm">
               <span>Toplam Vergiler</span>
-              <span className={CALCULATOR_COLORS.taxTotal}>{formatUSD(result.totalTaxes)}</span>
+              <span className={`tabular-nums ${CALCULATOR_COLORS.taxTotal}`}>{formatUSD(result.totalTaxes)}</span>
             </div>
           </div>
         </CardContent>
@@ -458,14 +458,14 @@ function CalculationResultPanel({
           <div className="flex flex-col sm:flex-row sm:items-end gap-2">
             <div>
               <p className={`text-xs ${CALCULATOR_COLORS.resultLabel} mb-0.5`}>USD</p>
-              <p className={`text-2xl font-bold ${CALCULATOR_COLORS.resultValue}`}>
+              <p className={`text-2xl font-bold tabular-nums ${CALCULATOR_COLORS.resultValue}`}>
                 {formatUSD(result.totalCost)}
               </p>
             </div>
-            <ChevronRight className="hidden sm:block h-5 w-5 text-green-400 mb-1.5" />
+            <ChevronRight className={`hidden sm:block h-5 w-5 ${CALCULATOR_COLORS.chevronRight} mb-1.5`} />
             <div>
               <p className={`text-xs ${CALCULATOR_COLORS.resultLabel} mb-0.5`}>TL</p>
-              <p className={`text-2xl font-bold ${CALCULATOR_COLORS.resultValue}`}>
+              <p className={`text-2xl font-bold tabular-nums ${CALCULATOR_COLORS.resultValue}`}>
                 {formatTRY(result.totalCostTry)}
               </p>
             </div>
@@ -587,13 +587,13 @@ function HistoryDetailModal({
           <div className="grid grid-cols-2 gap-3 text-sm">
             <div>
               <p className="text-xs text-gray-500">Toplam Maliyet (USD)</p>
-              <p className={`text-lg font-bold ${CALCULATOR_COLORS.totalCostValue}`}>
+              <p className={`text-lg font-bold tabular-nums ${CALCULATOR_COLORS.totalCostValue}`}>
                 {formatUSD(item.totalCost)}
               </p>
             </div>
             <div>
               <p className="text-xs text-gray-500">Toplam Maliyet (TL)</p>
-              <p className={`text-lg font-bold ${CALCULATOR_COLORS.totalCostValue}`}>
+              <p className={`text-lg font-bold tabular-nums ${CALCULATOR_COLORS.totalCostValue}`}>
                 {formatTRY(item.totalCostTry)}
               </p>
             </div>
@@ -1200,6 +1200,51 @@ export default function CalculatorPage() {
                 }
                 onPageChange={setHistoryPage}
                 emptyState={{ icon: Calculator, title: "Henüz hesaplama yapılmamış", description: "İthalat maliyet hesaplayıcısını kullanarak başlayın." }}
+                mobileCard={(row) => (
+                  <div className="rounded-lg border p-4 space-y-2">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <p className="font-semibold text-sm">
+                          {row.vehicleInfo.brand ?? "-"} {row.vehicleInfo.model ?? ""}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {row.vehicleInfo.year} / {row.vehicleInfo.engineCC} cc
+                        </p>
+                      </div>
+                      {row.savedToVehicle ? (
+                        <Badge className={`${CALCULATOR_COLORS.savedBadge} text-xs`}>
+                          Kaydedildi
+                        </Badge>
+                      ) : (
+                        <Badge variant="outline" className="text-xs">
+                          Taslak
+                        </Badge>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                      <span>
+                        FOB:{" "}
+                        <span className="font-mono font-semibold text-foreground tabular-nums">
+                          {formatUSD(row.inputs.fobPrice)}
+                        </span>
+                      </span>
+                      <span>
+                        CIF:{" "}
+                        <span className="font-mono text-foreground tabular-nums">
+                          {formatUSD(row.inputs.cifUsd)}
+                        </span>
+                      </span>
+                    </div>
+                    <div className="text-xs tabular-nums">
+                      <span className={`font-bold ${CALCULATOR_COLORS.totalCostValue}`}>
+                        {formatUSD(row.totalCost)}
+                      </span>
+                      <span className="text-muted-foreground ml-2">
+                        {formatTRY(row.totalCostTry)}
+                      </span>
+                    </div>
+                  </div>
+                )}
               />
             </CardContent>
           </Card>

@@ -331,6 +331,29 @@ export default function NotificationsPage() {
           } : undefined}
           onPageChange={setPage}
           emptyState={{ icon: Bell, title: "Henüz bildirim gönderilmemiş", description: "Platform bildirimlerini buradan yönetebilirsiniz." }}
+          mobileCard={(row) => (
+            <div className="rounded-lg border p-4 space-y-2">
+              <div className="flex items-start justify-between">
+                <p className="font-semibold text-sm flex-1 pr-2">{row.title}</p>
+                <Badge variant={getPriorityBadgeVariant(row.priority)}>
+                  {PRIORITY_LABEL[row.priority]}
+                </Badge>
+              </div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <Badge variant={getTypeBadgeVariant(row.type)}>
+                  {TYPE_LABEL[row.type]}
+                </Badge>
+                <Badge variant={getTargetBadgeVariant(row.targetType as TargetType)}>
+                  {TARGET_LABEL[row.targetType as TargetType]}
+                </Badge>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                {row.sentAt
+                  ? format(new Date(row.sentAt as string), "dd MMM yyyy HH:mm", { locale: tr })
+                  : "—"}
+              </p>
+            </div>
+          )}
         />
       </div>
 

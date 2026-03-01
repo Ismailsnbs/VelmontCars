@@ -762,7 +762,7 @@ export default function ProductsPage() {
       key: "unitPrice",
       label: "Birim Fiyat",
       render: (_v, row) => (
-        <span className="text-sm font-medium">{formatCurrency(row.unitPrice)}</span>
+        <span className="text-sm font-medium tabular-nums">{formatCurrency(row.unitPrice)}</span>
       ),
     },
     {
@@ -890,7 +890,7 @@ export default function ProductsPage() {
                 >
                   {stats.belowMinStockCount}
                 </span>
-                <AlertTriangle className="h-4 w-4 text-red-400" />
+                <AlertTriangle className={`h-4 w-4 ${SEMANTIC_COLORS.alertIcon}`} />
               </div>
             </CardContent>
           </Card>
@@ -915,7 +915,7 @@ export default function ProductsPage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className={`text-2xl font-bold ${SEMANTIC_COLORS.profit}`}>
+              <div className={`text-2xl font-bold tabular-nums ${SEMANTIC_COLORS.profit}`}>
                 {formatCurrency(stats.totalStockValue)}
               </div>
             </CardContent>
@@ -1073,7 +1073,7 @@ export default function ProductsPage() {
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-muted-foreground">Birim Fiyat</span>
-                  <span className="font-medium">{formatCurrency(row.unitPrice)}</span>
+                  <span className="font-medium tabular-nums">{formatCurrency(row.unitPrice)}</span>
                 </div>
               </div>
             )
