@@ -82,6 +82,7 @@
 | T-065 | Final code review | @reviewer | ✅ | 9 | T-064 |
 | T-066 | Tüm dokümantasyon (README, API docs) | @docs | ✅ | 9 | T-065 |
 | — | **SUPERVISOR FİNAL ONAY** | Supervisor | ✅ | 9 | T-066 |
+| T-067 | VehicleImage frontend: Upload UI + gallery manager + lightbox | @coder-heavy | ✅ | 10 | T-033 |
 
 **Durum:** ⬜ Başlamadı | 🔄 Devam | ✅ Tamam | ❌ Hata | ⏸️ Bekleme
 
@@ -972,6 +973,23 @@
 - **Aktif Dosyalar:** 12 dosya (4 controller, 3 route, 2 validation, sale.service, sale.service.test, sidebar)
 - **Bağımlılıklar:** —
 - **Son Komut:** `git commit -m "fix: Apply supervisor v3 mandatory findings"`
+
+---
+
+### CHECKPOINT-34 — 2026-03-02 (VEHICLE IMAGE UPLOAD UI — FRONTEND)
+- **Durum:** ✅ Tamam
+- **Tamamlanan:**
+  - **T-067:** Vehicle image upload & management frontend UI tamamlandı
+  - 7 yeni dosya: `use-vehicle-images.ts` (6 React Query hook), `image-dropzone.tsx` (DnD + click), `image-upload-progress.tsx` (per-file progress), `image-thumbnail.tsx` (hover overlay + actions), `image-lightbox.tsx` (fullscreen Dialog + keyboard nav), `image-gallery-manager.tsx` (orchestrator), `vehicle-image-section.tsx` (tab wrapper)
+  - 3 dosya güncelleme: detail page (`isPrimary`→`isMain` fix, `VehicleImageSection` entegrasyonu, `?tab=` query param), create page (oluştur → images tab redirect), edit page (Görseller card eklendi)
+  - Bug fix: `VehicleImage` interface `isPrimary`→`isMain`, `createdAt`→`order` (Prisma schema uyumu)
+  - Native HTML5 DnD (sıfır dependency), client-side validation (tip/boyut/adet), bulk upload, ArrowUp/Down reorder
+  - **673/673 backend test pass, 0 TS error**
+- **Sıradaki:** Live test (pnpm dev), ek özellikler veya supervisor review
+- **Sorunlar:** —
+- **Aktif Dosyalar:** `hooks/use-vehicle-images.ts`, `components/vehicles/image-*.tsx`, `components/vehicles/vehicle-image-section.tsx`, `vehicles/[id]/page.tsx`, `vehicles/new/page.tsx`, `vehicles/[id]/edit/page.tsx`
+- **Bağımlılıklar:** Yeni dependency yok
+- **Son Komut:** `npx vitest run` — 673/673 pass
 
 ---
 <!-- YENİ CHECKPOINT'LER BURAYA EKLENİR -->

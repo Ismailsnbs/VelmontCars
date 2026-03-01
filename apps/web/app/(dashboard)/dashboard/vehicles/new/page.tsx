@@ -178,13 +178,13 @@ export default function VehicleNewPage() {
       const { data } = await api.post<ApiResponse<{ id: string }>>("/vehicles", payload)
       return data
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       toast({
         title: "Başarılı",
-        description: "Araç başarıyla oluşturuldu.",
+        description: "Araç oluşturuldu. Şimdi görsel ekleyebilirsiniz.",
         variant: "default",
       })
-      router.push("/dashboard/vehicles")
+      router.push(`/dashboard/vehicles/${data.data.id}?tab=images`)
     },
     onError: (error: unknown) => {
       toast({

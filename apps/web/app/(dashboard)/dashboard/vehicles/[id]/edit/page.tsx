@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, ImageIcon } from "lucide-react"
 import { FORM_COLORS, STATUS_LABELS } from "@/lib/design-tokens"
 import api from "@/lib/api"
 import { useToast } from "@/components/ui/use-toast"
@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/select"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
+import { ImageGalleryManager } from "@/components/vehicles/image-gallery-manager"
 
 // ---- Types ---------------------------------------------------------------
 
@@ -650,6 +651,19 @@ export default function VehicleEditPage() {
           </Link>
         </div>
       </form>
+
+      {/* Görseller — form submit'ten bağımsız */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <ImageIcon className="h-5 w-5" />
+            Görseller
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ImageGalleryManager vehicleId={vehicleId} />
+        </CardContent>
+      </Card>
     </div>
   )
 }

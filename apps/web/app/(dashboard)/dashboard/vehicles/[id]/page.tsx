@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { useParams, useRouter } from "next/navigation"
+import { useParams, useRouter, useSearchParams } from "next/navigation"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import {
   ArrowLeft,
@@ -34,6 +34,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { DataTable } from "@/components/shared/data-table"
+import { VehicleImageSection } from "@/components/vehicles/vehicle-image-section"
 
 // ---- Types ---------------------------------------------------------------
 
@@ -46,8 +47,8 @@ interface OriginCountry {
 interface VehicleImage {
   id: string
   url: string
-  isPrimary: boolean
-  createdAt: string
+  isMain: boolean
+  order: number
 }
 
 interface VehicleDocument {
@@ -194,9 +195,10 @@ export default function VehicleDetailPage() {
   const params = useParams()
   const vehicleId = params.id as string
   const router = useRouter()
+  const searchParams = useSearchParams()
   const { toast } = useToast()
   const queryClient = useQueryClient()
-  const [activeTab, setActiveTab] = useState("images")
+  const [activeTab, setActiveTab] = useState(searchParams.get("tab") || "images")
 
   const {
     data: vehicle,
@@ -600,35 +602,7 @@ export default function VehicleDetailPage() {
 
             {/* Görseller */}
             <TabsContent value="images">
-              {isLoading ? (
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {Array.from({ length: 4 }).map((_, i) => (
-                    <Skeleton key={i} className="h-32 w-full rounded-lg" />
-                  ))}
-                </div>
-              ) : vehicle?.images && vehicle.images.length > 0 ? (
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {vehicle.images.map((img) => (
-                    <div key={img.id} className="relative">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={img.url}
-                        alt="Araç görseli"
-                        className="w-full h-32 object-cover rounded-lg border"
-                      />
-                      {img.isPrimary && (
-                        <Badge className="absolute top-1 left-1 text-xs bg-primary">
-                          Ana Görsel
-                        </Badge>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-center text-muted-foreground py-8">
-                  Henüz görsel eklenmemiş
-                </p>
-              )}
+              <VehicleImageSection vehicleId={vehicleId} />
             </TabsContent>
 
             {/* Belgeler */}
