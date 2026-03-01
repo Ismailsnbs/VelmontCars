@@ -1,8 +1,9 @@
 // Shared sidebar — Master Panel ve Galeri Paneli icin ayri nav itemlari
 "use client"
 
+import { useTransition } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import {
   LayoutDashboard,
@@ -81,12 +82,22 @@ interface SidebarProps {
 
 export function Sidebar({ type, className }: SidebarProps) {
   const pathname = usePathname()
+  const router = useRouter()
   const { user } = useAuthStore()
+  const [isPending, startTransition] = useTransition()
   const allItems = type === "master" ? masterNavItems : galleryNavItems
   const title = type === "master" ? "Master Panel" : "Galeri Paneli"
 
   // Rol bazlı filtreleme — roles tanımsızsa herkese açık
   const items = allItems.filter(item => !item.roles || (user?.role && item.roles.includes(user.role)))
+
+  const handleNav = (href: string, e: React.MouseEvent) => {
+    if (pathname === href) return
+    e.preventDefault()
+    startTransition(() => {
+      router.push(href)
+    })
+  }
 
   return (
     <div className={cn("flex h-full flex-col border-r bg-background", className)}>
@@ -107,11 +118,13 @@ export function Sidebar({ type, className }: SidebarProps) {
             <Link
               key={item.href}
               href={item.href}
+              onClick={(e) => handleNav(item.href, e)}
               className={cn(
-                "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-all duration-150",
                 isActive
                   ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                isPending && !isActive && "opacity-60"
               )}
             >
               <item.icon className="h-4 w-4" />
@@ -127,7 +140,17 @@ export function Sidebar({ type, className }: SidebarProps) {
 // Mobile bottom tab bar — lg altında gösterilir
 export function BottomTabBar({ type }: { type: "master" | "gallery" }) {
   const pathname = usePathname()
+  const router = useRouter()
+  const [isPending, startTransition] = useTransition()
   const tabs = type === "gallery" ? galleryBottomTabs : masterBottomTabs
+
+  const handleNav = (href: string, e: React.MouseEvent) => {
+    if (pathname === href) return
+    e.preventDefault()
+    startTransition(() => {
+      router.push(href)
+    })
+  }
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 flex h-16 items-center border-t bg-background lg:hidden">
@@ -141,9 +164,11 @@ export function BottomTabBar({ type }: { type: "master" | "gallery" }) {
           <Link
             key={item.href}
             href={item.href}
+            onClick={(e) => handleNav(item.href, e)}
             className={cn(
-              "flex flex-1 flex-col items-center justify-center gap-1 text-xs transition-colors",
-              isActive ? "text-primary" : "text-muted-foreground"
+              "flex flex-1 flex-col items-center justify-center gap-1 text-xs transition-all duration-150",
+              isActive ? "text-primary" : "text-muted-foreground",
+              isPending && !isActive && "opacity-60"
             )}
           >
             <item.icon className="h-5 w-5" />

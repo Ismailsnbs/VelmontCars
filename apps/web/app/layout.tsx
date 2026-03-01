@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import NextTopLoader from 'nextjs-toploader';
 import './globals.css';
 import { Providers } from './providers';
 import { Toaster } from '@/components/ui/toaster';
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <body className={inter.className}>
+        <NextTopLoader color="hsl(var(--primary))" height={2} showSpinner={false} speed={150} />
         <Providers>
           {children}
           <Toaster />
