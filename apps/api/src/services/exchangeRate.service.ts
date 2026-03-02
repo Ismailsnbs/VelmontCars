@@ -99,17 +99,17 @@ export class ExchangeRateService {
   }
 
   async bulkUpdate(rates: BulkRateInput[], source = 'manual') {
-    const results = [];
-
-    for (const rate of rates) {
-      const result = await this.updateRate(
-        rate.currencyCode,
-        rate.buyRate,
-        rate.sellRate,
-        source,
-      );
-      results.push(result);
-    }
+    // O-3: Parallelize rate updates with Promise.all instead of sequential loop
+    const results = await Promise.all(
+      rates.map((rate) =>
+        this.updateRate(
+          rate.currencyCode,
+          rate.buyRate,
+          rate.sellRate,
+          source,
+        ),
+      ),
+    );
 
     return results;
   }
@@ -138,6 +138,15 @@ export class ExchangeRateService {
   async fetchFromAPI(): Promise<BulkRateInput[]> {
     const apiUrl =
       process.env.EXCHANGE_RATE_API_URL || 'https://api.exchangerate-api.com/v4/latest';
+
+    // O-4: Precedence for API key: environment variable > database setting
+    // This ensures production API keys are never stored as plaintext in the database
+    let apiKey = process.env.EXCHANGE_RATE_API_KEY;
+    if (!apiKey) {
+      // Fall back to database setting only if environment variable is not set
+      const settings = await this.getSettings();
+      apiKey = settings?.apiKey || undefined;
+    }
 
     try {
       const response = await fetch(`${apiUrl}/USD`);

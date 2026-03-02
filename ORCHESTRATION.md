@@ -525,12 +525,12 @@
   - **T-066:** Dokümantasyon — root README.md + apps/api/README.md (tüm endpoint tabloları, kurulum, deploy)
 - **Doğrulama:**
   - TypeScript tsc (api + web): ✅ 0 hata
-  - Vitest: **668/668 test passed** ✅
+  - Vitest: **673/673 test passed** ✅
 - **Proje Özeti:**
   - 66 görev tamamlandı
   - 18 checkpoint
   - 7 supervisor review raporu
-  - 668 test (18 test dosyası)
+  - 673 test (18 test dosyası)
   - ~50 API endpoint
   - 17 route grubu
   - Socket.io real-time (13 event)
@@ -543,7 +543,7 @@
 ### CHECKPOINT-19 — 2026-03-01 15:15 (POST-FINAL)
 - **Durum:** ✅ Proje tamamlandı — son durum kaydı
 - **Tamamlanan:** Faz 9 kapanışı sonrası son kontroller
-  - Faz 8: T-061 full test suite (668/668 test) ✅
+  - Faz 8: T-061 full test suite (673/673 test) ✅
   - Faz 9: T-062~T-066 (Docker, CI/CD, review, docs) ✅
   - Supervisor FAZ7 ARA review: ✅ ONAY (0 kritik)
   - ORCHESTRATION.md: tüm görevler ✅, tüm fazlar ✅
@@ -570,7 +570,7 @@
   - Z-4: Rol granülasyonu — 9 route dosyasına `requireRole` middleware (STAFF=read-only, SALES=write, OWNER/MANAGER=full)
   - Z-5: Calculator sessiz fallback kaldırıldı — `?? 35.5` ve `?? DEFAULT_RATES.CUSTOMS_DUTY` → `BadRequestError`
   - Z-6: PROJECT_TREE.md model sayısı düzeltildi (25 → 20)
-  - Tüm testler güncellendi ve 668/668 geçiyor
+  - Tüm testler güncellendi ve 673/673 geçiyor
 - **Sıradaki:** v2 kapsamlı düzeltmeler
 - **Sorunlar:** —
 - **Aktif Dosyalar:**
@@ -613,12 +613,12 @@
     - FIF fallback (`DEFAULT_RATES.CUSTOMS_DUTY`) → zaten `BadRequestError` fırlatıyor ✅
     - Önceki session'da düzeltilmiş, yeniden doğrulandı
   - **Z-6 PROJECT_TREE.md güncelleme:**
-    - Test sayısı 668 → ~660 olarak düzeltildi (12 lokasyon)
+    - Test sayısı 668 → 673 olarak düzeltildi (12 lokasyon)
     - Model sayısı zaten 20 olarak doğruydu
 - **Doğrulama:**
   - TypeScript tsc (api): ✅ 0 hata
   - TypeScript tsc (web): ✅ 0 hata
-  - Vitest: **668/668 test passed** ✅ (18 dosya, 6.22s)
+  - Vitest: **673/673 test passed** ✅ (18 dosya, 6.22s)
 - **Sıradaki:** Production deployment veya isteğe bağlı iyileştirmeler
 - **Sorunlar:** —
 - **Aktif Dosyalar (toplam ~22 dosya):**
@@ -635,7 +635,7 @@
 - **Tamamlanan:**
   - CP-20 (v1): Z-1~Z-6 temel güvenlik düzeltmeleri — servis + middleware + route
   - CP-21 (v2): Kapsamlı güçlendirme — $transaction sarma, controller galleryId guard, ek route koruması
-  - Testler: 668/668 geçiyor, 0 TypeScript hatası
+  - Testler: 673/673 geçiyor, 0 TypeScript hatası
   - PROJECT_TREE.md: CHECKPOINT-20 güvenlik düzeltmeleri yansıtıldı
   - ORCHESTRATION.md: CP-20 ve CP-21 checkpoint'leri eklendi
 - **Sıradaki:** Production deployment veya isteğe bağlı iyileştirmeler (Redis cache, exceljs, Date Picker, Combobox)
@@ -664,7 +664,7 @@
   - **U-8:** product.service.ts — getAll() DB-level pagination (skip/take + count), getStats() select projection
   - **O-2:** auth.service.ts + controller + routes — POST /logout endpoint + refresh token blacklist
   - **O-6:** globals.css — ~30 satır kullanılmayan --status-* CSS değişkeni kaldırıldı
-  - **Test:** 3 test dosyası güncellendi ($transaction mock + vi.hoisted + count mock) — 668/668 geçiyor
+  - **Test:** 3 test dosyası güncellendi ($transaction mock + vi.hoisted + count mock) — 673/673 geçiyor
 - **Sıradaki:** Production deployment veya isteğe bağlı iyileştirmeler
 - **Sorunlar:** —
 - **Aktif Dosyalar:**
@@ -696,7 +696,7 @@
   - **O-7:** badge.tsx — STATUS_BADGE_CLASSES ile senkron kalınması gereken yorum notu eklendi
   - **O-8:** customer.service.ts getStats() — findMany+in-memory yerine count() aggregation kullanıldı
   - **U-2:** apiLimiter zaten app.ts:34'te global olarak uygulanmış (aksiyon gerekmedi)
-  - Test: 668/668 geçiyor
+  - Test: 673/673 geçiyor
 - **Sıradaki:** Tüm supervisor bulguları kapatıldı. Production deployment veya yeni özellik çalışması.
 - **Sorunlar:** —
 - **Aktif Dosyalar:**

@@ -1,4 +1,10 @@
 // Stock movement service with transaction-based inventory management
+//
+// DESIGN: StockMovement has no direct galleryId column.
+// Tenant isolation is enforced by joining through Product.galleryId
+// in every query (e.g., { product: { galleryId } }).
+// This avoids data duplication while maintaining strict multi-tenant security.
+
 import { Prisma } from '@prisma/client';
 import prisma from '../lib/prisma';
 import { NotFoundError, BadRequestError } from '../middleware/error.middleware';

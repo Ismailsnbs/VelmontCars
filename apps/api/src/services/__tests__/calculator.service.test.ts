@@ -16,6 +16,7 @@ const txMock = {
   taxSnapshot: { create: vi.fn() },
   importCalculation: { create: vi.fn(), findFirst: vi.fn(), update: vi.fn() },
   vehicle: { findFirst: vi.fn(), update: vi.fn() },
+  auditLog: { create: vi.fn() },
 };
 
 vi.mock('../../lib/prisma', () => ({

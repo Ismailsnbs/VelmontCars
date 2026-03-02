@@ -14,6 +14,7 @@ export const calculateSchema = z.object({
   shippingCost: z.number().min(0).default(0),
   insuranceCost: z.number().min(0).default(0),
   vehicleId: z.string().cuid().optional(),
+  preview: z.boolean().optional().default(false),
 });
 
 export const saveToVehicleSchema = z.object({

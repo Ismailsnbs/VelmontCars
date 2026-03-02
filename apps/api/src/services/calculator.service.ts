@@ -51,6 +51,7 @@ export interface CalculateInput {
   galleryId: string;
   calculatedBy: string;
   vehicleId?: string;
+  preview?: boolean;          // O-1: true ise DB'ye yazmadan sonuç döndür
 }
 
 export interface TaxDetail {
@@ -100,8 +101,9 @@ export interface CalculationResult {
     margin20: number;
     margin25: number;
   };
-  taxSnapshotId: string;
+  taxSnapshotId: string | null;
   calculatedAt: string;
+  preview?: boolean;
 }
 
 export interface CurrentRates {
@@ -290,9 +292,43 @@ export class CalculatorService {
     const margin20 = suggestedPrice(totalCostUSD, 20);
     const margin25 = suggestedPrice(totalCostUSD, 25);
 
-    // 9. TaxSnapshot + ImportCalculation — tek atomik transaction (U-VH2)
-    // İkisi de başarılı olmalı; importCalculation başarısız olursa orphan snapshot oluşmaz.
-    const { snapshot, calculation } = await prisma.$transaction(async (tx) => {
+    // 9. Preview modu — DB'ye yazmadan sadece hesaplama sonucunu döndür (O-1)
+    if (input.preview) {
+      return {
+        id: 'preview',
+        input: {
+          fobPrice:      input.fobPrice,
+          fobCurrency:   input.fobCurrency,
+          originCountry: originCountry.name,
+          engineCC:      input.engineCC,
+          vehicleType:   input.vehicleType,
+          modelYear:     input.modelYear,
+          shippingCost:  input.shippingCost,
+          insuranceCost: input.insuranceCost,
+        },
+        exchangeRate: round2(usdToTry),
+        cifValue:     round2(cifUSD),
+        taxes: {
+          customsDuty: { rate: round2(customsDutyRate * 100), amount: round2(customsDutyAmount) },
+          fif:         { rate: round2(fifRate * 100), amount: round2(fifAmount) },
+          kdv:         { rate: round2(kdvRate * 100), amount: round2(kdvAmount) },
+          gkk:         { rate: round2(gkkRate * 100), amount: round2(gkkAmount) },
+          wharfFee:    { rate: round2(wharfRate * 100), amount: round2(wharfAmount) },
+          generalFif:  { ratePerCC: generalFifPerCC, amountTL: round2(generalFifTL), amountUSD: round2(generalFifUSD) },
+          bandrol:     { amountTL: round2(bandrolTL), amountUSD: round2(bandrolUSD) },
+        },
+        totalTaxes:   round2(totalTaxes),
+        totalCostUSD: round2(totalCostUSD),
+        totalCostTL:  round2(totalCostTL),
+        suggestedPrices: { margin15, margin20, margin25 },
+        taxSnapshotId: null,
+        calculatedAt:  new Date().toISOString(),
+        preview: true,
+      };
+    }
+
+    // 10. TaxSnapshot + ImportCalculation + AuditLog — tek atomik transaction (U-VH2, O-2)
+    const { calculation } = await prisma.$transaction(async (tx) => {
       const newSnapshot = await tx.taxSnapshot.create({
         data: {
           rates: activeTaxRates as unknown as Prisma.JsonArray,
@@ -335,29 +371,31 @@ export class CalculatorService {
         },
       });
 
+      // O-2: Audit log inside transaction for atomicity
+      await tx.auditLog.create({
+        data: {
+          action:     'CREATE',
+          entityType: 'ImportCalculation',
+          entityId:   newCalculation.id,
+          newValues: {
+            galleryId:    input.galleryId,
+            vehicleId:    input.vehicleId ?? null,
+            originCountry: originCountry.name,
+            engineCC:     input.engineCC,
+            vehicleType:  input.vehicleType,
+            fobPrice:     round2(fobUSD),
+            fobCurrency:  input.fobCurrency,
+            totalCostUSD: round2(totalCostUSD),
+            totalCostTL:  round2(totalCostTL),
+          },
+          performedBy: input.calculatedBy,
+        },
+      });
+
       return { snapshot: newSnapshot, calculation: newCalculation };
     });
 
-    // 11. Audit log — hesaplama oluşturuldu
-    await auditService.log({
-      action:     'CREATE',
-      entityType: 'ImportCalculation',
-      entityId:   calculation.id,
-      newValues: {
-        galleryId:    input.galleryId,
-        vehicleId:    input.vehicleId ?? null,
-        originCountry: originCountry.name,
-        engineCC:     input.engineCC,
-        vehicleType:  input.vehicleType,
-        fobPrice:     round2(fobUSD),
-        fobCurrency:  input.fobCurrency,
-        totalCostUSD: round2(totalCostUSD),
-        totalCostTL:  round2(totalCostTL),
-      },
-      performedBy: input.calculatedBy,
-    });
-
-    // 12. Sonuç nesnesini döndür
+    // 11. Sonuç nesnesini döndür
     return {
       id: calculation.id,
       input: {
@@ -411,7 +449,7 @@ export class CalculatorService {
         margin20,
         margin25,
       },
-      taxSnapshotId: snapshot.id,
+      taxSnapshotId: calculation.taxSnapshotId,
       calculatedAt:  calculation.calculatedAt.toISOString(),
     };
   }
