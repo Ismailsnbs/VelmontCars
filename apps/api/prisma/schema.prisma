@@ -333,6 +333,8 @@ model Vehicle {
   otherFees       Decimal?
   totalImportCost Decimal?
 
+  purchaseExchangeRate Decimal? // USD/TRY rate at vehicle creation time
+
   additionalExpenses Decimal  @default(0)
   totalCost          Decimal?
   salePrice          Decimal?
@@ -526,4 +528,13 @@ model Sale {
   @@index([galleryId])
   @@index([saleDate])
   @@map("sales")
+}
+
+model SystemSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt
+
+  @@map("system_settings")
 }

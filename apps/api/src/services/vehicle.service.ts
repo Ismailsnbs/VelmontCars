@@ -3,6 +3,7 @@ import { Prisma, VehicleStatus } from '@prisma/client';
 import prisma from '../lib/prisma';
 import { NotFoundError, BadRequestError } from '../middleware/error.middleware';
 import { auditService } from './audit.service';
+import { exchangeRateService } from './exchangeRate.service';
 import {
   CreateVehicleInput,
   UpdateVehicleInput,
@@ -95,10 +96,10 @@ export class VehicleService {
         take: params.limit,
         orderBy: { [params.sortBy ?? 'createdAt']: params.sortOrder ?? 'desc' },
         include: {
-          // Only the main image to keep the list lightweight
+          // Return up to 6 images for grid view with main image first
           images: {
-            where: { isMain: true },
-            take: 1,
+            orderBy: [{ isMain: 'desc' as const }, { order: 'asc' as const }],
+            take: 6,
           },
           originCountry: {
             select: {
@@ -184,6 +185,17 @@ export class VehicleService {
       );
     }
 
+    // Fetch current USD/TRY buy rate if not explicitly provided
+    let purchaseExchangeRate: number | undefined = input.purchaseExchangeRate;
+    try {
+      if (!purchaseExchangeRate) {
+        const usdRate = await exchangeRateService.getByCurrency('USD');
+        purchaseExchangeRate = Number(usdRate.buyRate);
+      }
+    } catch {
+      // If no exchange rate available, leave null — not a blocker
+    }
+
     const vehicle = await prisma.vehicle.create({
       data: {
         brand: input.brand,
@@ -247,6 +259,8 @@ export class VehicleService {
         salePrice: input.salePrice !== undefined
           ? new Prisma.Decimal(input.salePrice)
           : undefined,
+
+        purchaseExchangeRate,
 
         status: (input.status ?? 'TRANSIT') as VehicleStatus,
         estimatedArrival: input.estimatedArrival
@@ -363,6 +377,8 @@ export class VehicleService {
           ...(input.salePrice !== undefined && { salePrice: toDecimal(input.salePrice) }),
           ...(input.profit !== undefined && { profit: toDecimal(input.profit) }),
           ...(input.profitMargin !== undefined && { profitMargin: toDecimal(input.profitMargin) }),
+
+          ...(input.purchaseExchangeRate !== undefined && { purchaseExchangeRate: input.purchaseExchangeRate }),
 
           ...(input.estimatedArrival !== undefined && {
             estimatedArrival: new Date(input.estimatedArrival),

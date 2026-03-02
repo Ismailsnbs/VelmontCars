@@ -298,3 +298,24 @@ export const VEHICLE_ACTION_COLORS = {
   stockIn: "border-green-600 text-green-600 hover:bg-green-50",
   reserve: "border-blue-500 text-blue-700 hover:bg-blue-50",
 } as const
+
+// ── Vehicle Card Tokens ───────────────────────────────────────────────
+export const VEHICLE_CARD = {
+  borderDefault: "border-gray-200",
+  borderReserved: "border-blue-300 ring-1 ring-blue-100",
+  borderTransit: "border-yellow-200",
+  borderSold: "border-gray-300",
+  transitOverlay: "bg-yellow-900/30",
+  soldWatermark: "text-red-600/30",
+  hoverOverlay: "bg-black/40",
+  priceBadge: "bg-white/80 backdrop-blur-sm border border-white/20 shadow-sm",
+  stockAgeWarning: "bg-orange-100 text-orange-800 border-orange-200",
+  stockAgeCritical: "bg-red-100 text-red-800 border-red-200",
+  exchangeRateUp: "text-red-600",
+  exchangeRateDown: "text-green-600",
+  exchangeRateNeutral: "text-gray-500",
+  profitPositive: "text-green-600 bg-green-50",
+  profitNegative: "text-red-600 bg-red-50",
+} as const
+
+export type ViewMode = "table" | "grid"

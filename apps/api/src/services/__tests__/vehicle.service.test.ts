@@ -253,7 +253,7 @@ describe('VehicleService', () => {
       expect(call.where.engineCC).toEqual({ gte: 1000, lte: 2000 });
     });
 
-    it('should include images (main only), originCountry and _count in results', async () => {
+    it('should include images (up to 6, main first), originCountry and _count in results', async () => {
       vi.mocked(prisma.vehicle.findMany).mockResolvedValue([]);
       vi.mocked(prisma.vehicle.count).mockResolvedValue(0);
 
@@ -261,7 +261,8 @@ describe('VehicleService', () => {
 
       const call = vi.mocked(prisma.vehicle.findMany).mock.calls[0][0] as any;
       expect(call.include.images).toBeDefined();
-      expect(call.include.images.where).toEqual({ isMain: true });
+      expect(call.include.images.take).toBe(6);
+      expect(call.include.images.orderBy).toEqual([{ isMain: 'desc' }, { order: 'asc' }]);
       expect(call.include.originCountry).toBeDefined();
       expect(call.include._count).toBeDefined();
     });

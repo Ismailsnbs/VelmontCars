@@ -14,8 +14,9 @@ import { idParamSchema } from '../validations/common.validation';
 
 const router = Router();
 
-// All customer routes require authentication, gallery access, and tenant isolation
-router.use(authenticate, requireGalleryAccess, galleryTenant);
+// All customer routes require authentication, gallery access, role check, and tenant isolation
+// STAFF cannot access customers (per role matrix)
+router.use(authenticate, requireGalleryAccess, requireRole('GALLERY_OWNER', 'GALLERY_MANAGER', 'SALES', 'ACCOUNTANT'), galleryTenant);
 
 // GET /customers       — paginated list with filters and search
 router.get('/', validate({ query: customerQuerySchema }), customerController.getAll.bind(customerController));

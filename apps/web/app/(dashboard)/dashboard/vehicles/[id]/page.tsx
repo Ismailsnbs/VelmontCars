@@ -18,7 +18,11 @@ import {
   FileText,
   Receipt,
   History,
+  Ship,
+  Anchor,
+  MapPin,
 } from "lucide-react"
+import { motion } from "framer-motion"
 import api from "@/lib/api"
 import {
   STATUS_BADGE_CLASSES,
@@ -30,6 +34,7 @@ import {
 import { useToast } from "@/components/ui/use-toast"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { Progress } from "@/components/ui/progress"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -131,7 +136,7 @@ interface ApiResponse<T> {
 // ---- Constants -----------------------------------------------------------
 
 const FUEL_TYPE_LABELS: Record<string, string> = {
-  GASOLINE: "Benzin",
+  PETROL: "Benzin",
   DIESEL: "Dizel",
   HYBRID: "Hibrit",
   ELECTRIC: "Elektrik",
@@ -141,7 +146,7 @@ const FUEL_TYPE_LABELS: Record<string, string> = {
 const TRANSMISSION_LABELS: Record<string, string> = {
   MANUAL: "Manuel",
   AUTOMATIC: "Otomatik",
-  CVT: "CVT",
+  SEMI_AUTO: "Yarı Otomatik",
 }
 
 // ---- Helpers -------------------------------------------------------------
@@ -186,6 +191,119 @@ function InfoRow({ label, value }: { label: string; value: React.ReactNode }) {
       <p className="text-sm text-muted-foreground">{label}</p>
       <p className="font-medium mt-0.5">{value ?? "-"}</p>
     </div>
+  )
+}
+
+// ---- Transit Tracker Component -------------------------------------------
+
+function TransitTracker({
+  originCountry,
+  estimatedArrival,
+  createdAt,
+}: {
+  originCountry: string
+  estimatedArrival: string | null
+  createdAt: string
+}) {
+  let progress = 0
+  let daysRemaining = 0
+
+  if (estimatedArrival) {
+    const created = new Date(createdAt).getTime()
+    const eta = new Date(estimatedArrival).getTime()
+    const now = Date.now()
+    const total = eta - created
+    const elapsed = now - created
+    progress = total > 0 ? Math.min(Math.max((elapsed / total) * 100, 0), 100) : 0
+    daysRemaining = Math.max(0, Math.ceil((eta - now) / (1000 * 60 * 60 * 24)))
+  }
+
+  return (
+    <Card className="border-yellow-200 bg-yellow-50/30">
+      <CardContent className="pt-6">
+        <div className="space-y-4">
+          {/* Route header */}
+          <div className="flex items-center justify-between">
+            <h3 className="flex items-center gap-2 text-sm font-semibold text-yellow-800">
+              <Ship className="h-4 w-4" />
+              Transit Takibi
+            </h3>
+            {estimatedArrival && (
+              <Badge variant="outline" className="border-yellow-300 text-yellow-700">
+                {daysRemaining > 0
+                  ? `${daysRemaining} gün kaldı`
+                  : "Varış bekleniyor"}
+              </Badge>
+            )}
+          </div>
+
+          {/* Animated route visualization */}
+          <div className="relative">
+            {/* Route line */}
+            <div className="flex items-center gap-3">
+              {/* Origin */}
+              <div className="flex flex-col items-center gap-1">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-yellow-200">
+                  <MapPin className="h-4 w-4 text-yellow-700" />
+                </div>
+                <span className="text-xs font-medium text-yellow-700">{originCountry}</span>
+              </div>
+
+              {/* Progress track with animated ship */}
+              <div className="relative flex-1">
+                <div className="h-1 w-full rounded-full bg-yellow-200" />
+                {/* Ship animation — bouncing along the route */}
+                <motion.div
+                  className="absolute top-1/2 -translate-y-1/2"
+                  style={{ left: `${Math.min(progress, 90)}%` }}
+                  animate={{
+                    y: [-2, 2, -2],
+                    rotate: [-2, 2, -2],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <div className="flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-yellow-400 shadow-md">
+                    <Ship className="h-4 w-4 text-yellow-900" />
+                  </div>
+                </motion.div>
+                {/* Filled progress */}
+                <div
+                  className="absolute left-0 top-0 h-1 rounded-full bg-yellow-400 transition-all duration-500"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+
+              {/* Destination */}
+              <div className="flex flex-col items-center gap-1">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-200">
+                  <Anchor className="h-4 w-4 text-green-700" />
+                </div>
+                <span className="text-xs font-medium text-green-700">KKTC</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Progress percentage */}
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            <span>Yolculuk ilerlemesi</span>
+            <span className="font-medium text-yellow-700">{Math.round(progress)}%</span>
+          </div>
+          <Progress value={progress} className="h-2" />
+
+          {/* ETA info */}
+          {estimatedArrival && (
+            <p className="text-xs text-muted-foreground">
+              Tahmini varış:{" "}
+              <span className="font-medium">{formatDate(estimatedArrival)}</span>
+            </p>
+          )}
+        </div>
+      </CardContent>
+    </Card>
   )
 }
 
@@ -357,6 +475,15 @@ export default function VehicleDetailPage() {
           </div>
         )}
       </div>
+
+      {/* Transit Tracker — only for TRANSIT vehicles */}
+      {!isLoading && vehicle?.status === "TRANSIT" && (
+        <TransitTracker
+          originCountry={vehicle.originCountry?.name ?? "?"}
+          estimatedArrival={vehicle.estimatedArrival}
+          createdAt={vehicle.createdAt}
+        />
+      )}
 
       {/* Info Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

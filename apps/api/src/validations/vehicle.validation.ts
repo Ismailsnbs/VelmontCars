@@ -51,6 +51,8 @@ export const createVehicleSchema = z.object({
   totalCost: z.number().min(0).optional(),
   salePrice: z.number().min(0).optional(),
 
+  purchaseExchangeRate: z.number().positive().optional(),
+
   status: z.enum(VEHICLE_STATUSES).optional().default('TRANSIT'),
   estimatedArrival: z.string().datetime().optional(),
   arrivalDate: z.string().datetime().optional(),
@@ -94,6 +96,8 @@ export const updateVehicleSchema = z.object({
   salePrice: z.number().min(0).optional(),
   profit: z.number().optional(),
   profitMargin: z.number().optional(),
+
+  purchaseExchangeRate: z.number().positive().optional(),
 
   estimatedArrival: z.string().datetime().optional(),
   arrivalDate: z.string().datetime().optional(),

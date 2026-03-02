@@ -16,6 +16,7 @@ import stockCountRoutes from './stockCount.routes';
 import dashboardRoutes from './dashboard.routes';
 import reportRoutes from './report.routes';
 import saleRoutes from './sale.routes';
+import systemSettingRoutes from './systemSetting.routes';
 
 const router = Router();
 
@@ -36,5 +37,6 @@ router.use('/stock-alerts', stockAlertRoutes);
 router.use('/stock-count', stockCountRoutes);
 router.use('/reports', reportRoutes);
 router.use('/sales', saleRoutes);
+router.use('/system-settings', systemSettingRoutes);
 
 export default router;

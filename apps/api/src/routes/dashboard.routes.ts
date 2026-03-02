@@ -2,13 +2,14 @@
 import { Router } from 'express';
 import { dashboardController } from '../controllers/dashboard.controller';
 import { authenticate } from '../middleware/auth.middleware';
-import { requireGalleryAccess } from '../middleware/role.middleware';
+import { requireGalleryAccess, requireRole } from '../middleware/role.middleware';
 import { galleryTenant } from '../middleware/gallery.middleware';
 
 const router = Router();
 
-// All dashboard routes require authentication and gallery access
-router.use(authenticate, requireGalleryAccess, galleryTenant);
+// All dashboard routes require authentication, gallery access, and at least ACCOUNTANT role
+// STAFF cannot access dashboard stats (per role matrix)
+router.use(authenticate, requireGalleryAccess, requireRole('GALLERY_OWNER', 'GALLERY_MANAGER', 'SALES', 'ACCOUNTANT'), galleryTenant);
 
 // GET /dashboard
 router.get('/', (req, res, next) => dashboardController.getStats(req, res).catch(next));

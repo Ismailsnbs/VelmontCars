@@ -12,6 +12,8 @@ import {
   Trash2,
   Search,
   Car,
+  LayoutGrid,
+  LayoutList,
 } from "lucide-react"
 import api from "@/lib/api"
 import { MobileFAB } from "@/components/shared/sidebar"
@@ -19,6 +21,7 @@ import { useToast } from "@/components/ui/use-toast"
 import { ErrorState } from "@/components/ui/error-state"
 import { DataTable } from "@/components/shared/data-table"
 import type { Column } from "@/components/shared/data-table"
+import { VehicleGrid } from "@/components/vehicles/vehicle-grid"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
@@ -51,11 +54,13 @@ import {
   STATUS_LABELS as TOKEN_STATUS_LABELS,
   ACTION_COLORS,
   type VehicleStatus,
+  type ViewMode,
 } from "@/lib/design-tokens"
 
 // ---- Constants
 
-const PAGE_SIZE = 10
+const TABLE_PAGE_SIZE = 10
+const GRID_PAGE_SIZE = 12
 
 const STATUS_TAB_VALUE = [
   { value: "ALL", label: "Tümü" },
@@ -123,6 +128,10 @@ interface Vehicle {
   status: VehicleStatus
   totalCost: number | null
   salePrice: number | null
+  profit: number | null
+  profitMargin: number | null
+  estimatedArrival: string | null
+  purchaseExchangeRate: number | null
   galleryId: string
   originCountry?: OriginCountry
   images?: VehicleImage[]
@@ -166,6 +175,7 @@ export default function VehiclesPage() {
 
   // ---- State
   const [page, setPage] = React.useState(1)
+  const [viewMode, setViewMode] = React.useState<ViewMode>("table")
   const [statusTab, setStatusTab] = React.useState("ALL")
   const [searchQuery, setSearchQuery] = React.useState("")
   const [debouncedSearch, setDebouncedSearch] = React.useState("")
@@ -175,6 +185,20 @@ export default function VehiclesPage() {
 
   const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false)
   const [deletingVehicle, setDeletingVehicle] = React.useState<Vehicle | null>(null)
+
+  // ---- Persist view mode
+  React.useEffect(() => {
+    const saved = localStorage.getItem("vehicles-view-mode") as ViewMode | null
+    if (saved) setViewMode(saved)
+  }, [])
+
+  const handleViewModeChange = (mode: ViewMode) => {
+    setViewMode(mode)
+    setPage(1)
+    localStorage.setItem("vehicles-view-mode", mode)
+  }
+
+  const pageSize = viewMode === "grid" ? GRID_PAGE_SIZE : TABLE_PAGE_SIZE
 
   // ---- Debounce search input
   React.useEffect(() => {
@@ -194,7 +218,7 @@ export default function VehiclesPage() {
   const queryParams = React.useMemo(() => {
     const params: Record<string, string | number> = {
       page,
-      limit: PAGE_SIZE,
+      limit: pageSize,
     }
     if (statusTab !== "ALL") params.status = statusTab
     if (debouncedSearch) params.search = debouncedSearch
@@ -202,7 +226,7 @@ export default function VehiclesPage() {
     if (yearFromFilter !== "all") params.yearFrom = yearFromFilter
     if (yearToFilter !== "all") params.yearTo = yearToFilter
     return params
-  }, [page, statusTab, debouncedSearch, brandFilter, yearFromFilter, yearToFilter])
+  }, [page, pageSize, statusTab, debouncedSearch, brandFilter, yearFromFilter, yearToFilter])
 
   // ---- Data fetch
   const { data: response, isLoading, isError, refetch } = useQuery({
@@ -218,6 +242,38 @@ export default function VehiclesPage() {
 
   const vehicles = response?.data ?? []
   const pagination = response?.pagination
+
+  // ---- Stock age warning setting
+  const { data: stockAgeResponse } = useQuery({
+    queryKey: ["system-settings", "stockAgeWarningDays"],
+    queryFn: async () => {
+      const { data } = await api.get("/system-settings/stockAgeWarningDays")
+      return data
+    },
+    staleTime: 5 * 60 * 1000,
+  })
+  const stockAgeWarningDays = parseInt(
+    stockAgeResponse?.data?.value ?? stockAgeResponse?.value ?? "30",
+    10
+  )
+
+  // ---- Current exchange rate for grid view
+  const { data: exchangeRateResponse } = useQuery({
+    queryKey: ["exchange-rates-current", "USD"],
+    queryFn: async () => {
+      const { data } = await api.get("/exchange-rates")
+      return data
+    },
+    staleTime: 60 * 1000,
+    enabled: viewMode === "grid",
+  })
+  const currentExchangeRate = React.useMemo(() => {
+    const rates = exchangeRateResponse?.data ?? exchangeRateResponse ?? []
+    const usdRate = Array.isArray(rates)
+      ? rates.find((r: any) => r.currencyCode === "USD")
+      : null
+    return usdRate ? Number(usdRate.buyRate) : undefined
+  }, [exchangeRateResponse])
 
   // ---- Delete mutation
   const deleteMutation = useMutation({
@@ -389,12 +445,35 @@ export default function VehiclesPage() {
           <h1 className="text-2xl font-bold">Araçlar</h1>
           <p className="text-sm text-gray-500">Araç stoğunuzu yönetin</p>
         </div>
-        <Button asChild className="w-full sm:w-auto">
-          <Link href="/dashboard/vehicles/new">
-            <Plus className="mr-2 h-4 w-4" />
-            Yeni Araç
-          </Link>
-        </Button>
+        <div className="flex items-center gap-2">
+          {/* View toggle */}
+          <div className="flex items-center gap-0.5 rounded-lg border p-1">
+            <Button
+              variant={viewMode === "table" ? "default" : "ghost"}
+              size="sm"
+              onClick={() => handleViewModeChange("table")}
+              className="h-8 w-8 p-0"
+            >
+              <LayoutList className="h-4 w-4" />
+              <span className="sr-only">Tablo Görünümü</span>
+            </Button>
+            <Button
+              variant={viewMode === "grid" ? "default" : "ghost"}
+              size="sm"
+              onClick={() => handleViewModeChange("grid")}
+              className="h-8 w-8 p-0"
+            >
+              <LayoutGrid className="h-4 w-4" />
+              <span className="sr-only">Kart Görünümü</span>
+            </Button>
+          </div>
+          <Button asChild className="w-full sm:w-auto">
+            <Link href="/dashboard/vehicles/new">
+              <Plus className="mr-2 h-4 w-4" />
+              Yeni Araç
+            </Link>
+          </Button>
+        </div>
       </div>
 
       {/* Status Tabs */}
@@ -498,23 +577,63 @@ export default function VehiclesPage() {
         )}
       </div>
 
-      {/* Data Table */}
-      <div className="rounded-lg border">
-        <DataTable
-          columns={columns}
-          data={vehicles}
+      {/* Data View */}
+      {viewMode === "table" ? (
+        <div className="rounded-lg border">
+          <DataTable
+            columns={columns}
+            data={vehicles}
+            isLoading={isLoading}
+            rowKey="id"
+            pagination={
+              pagination
+                ? {
+                    page: pagination.page,
+                    pageSize: pageSize,
+                    total: pagination.total,
+                  }
+                : undefined
+            }
+            onPageChange={setPage}
+            emptyState={{
+              icon: Car,
+              title: "Henüz araç eklenmemiş",
+              description: "Araç stoğunuza yeni araç ekleyerek başlayın.",
+              action: (
+                <Button asChild>
+                  <Link href="/dashboard/vehicles/new">
+                    <Plus className="mr-2 h-4 w-4" />
+                    Yeni Araç
+                  </Link>
+                </Button>
+              ),
+            }}
+            mobileCard={(row) => (
+              <Link href={`/dashboard/vehicles/${row.id}`} className="block rounded-lg border p-4 hover:bg-muted/50">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-semibold text-sm">{row.brand} {row.model}</p>
+                    <p className="text-xs text-muted-foreground">{row.year} &middot; {row.engineCC.toLocaleString("tr-TR")} cc</p>
+                  </div>
+                  <Badge variant={STATUS_BADGE_VARIANT[row.status]} className={STATUS_BADGE_CLASSES[row.status]}>
+                    {TOKEN_STATUS_LABELS[row.status]}
+                  </Badge>
+                </div>
+                <p className="mt-2 text-sm font-medium tabular-nums">{formatCurrency(row.fobPrice, row.fobCurrency)}</p>
+              </Link>
+            )}
+          />
+        </div>
+      ) : (
+        <VehicleGrid
+          vehicles={vehicles}
           isLoading={isLoading}
-          rowKey="id"
-          pagination={
-            pagination
-              ? {
-                  page: pagination.page,
-                  pageSize: PAGE_SIZE,
-                  total: pagination.total,
-                }
-              : undefined
-          }
-          onPageChange={setPage}
+          stockAgeWarningDays={stockAgeWarningDays}
+          currentExchangeRate={currentExchangeRate}
+          onDelete={(vehicle) => {
+            setDeletingVehicle(vehicle as Vehicle)
+            setDeleteDialogOpen(true)
+          }}
           emptyState={{
             icon: Car,
             title: "Henüz araç eklenmemiş",
@@ -528,22 +647,18 @@ export default function VehiclesPage() {
               </Button>
             ),
           }}
-          mobileCard={(row) => (
-            <Link href={`/dashboard/vehicles/${row.id}`} className="block rounded-lg border p-4 hover:bg-muted/50">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-semibold text-sm">{row.brand} {row.model}</p>
-                  <p className="text-xs text-muted-foreground">{row.year} &middot; {row.engineCC.toLocaleString("tr-TR")} cc</p>
-                </div>
-                <Badge variant={STATUS_BADGE_VARIANT[row.status]} className={STATUS_BADGE_CLASSES[row.status]}>
-                  {TOKEN_STATUS_LABELS[row.status]}
-                </Badge>
-              </div>
-              <p className="mt-2 text-sm font-medium tabular-nums">{formatCurrency(row.fobPrice, row.fobCurrency)}</p>
-            </Link>
-          )}
+          pagination={
+            pagination
+              ? {
+                  page: pagination.page,
+                  pageSize: pageSize,
+                  total: pagination.total,
+                }
+              : undefined
+          }
+          onPageChange={setPage}
         />
-      </div>
+      )}
 
       {/* Delete Confirmation Dialog */}
       <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>

@@ -79,8 +79,8 @@ const vehicleSchema = z.object({
   color: z.string().optional().or(z.literal("")),
   mileage: z.coerce.number().optional(),
   bodyType: z.string().optional().or(z.literal("")),
-  fuelType: z.enum(["GASOLINE", "DIESEL", "HYBRID", "ELECTRIC", "LPG"]).optional(),
-  transmission: z.enum(["MANUAL", "AUTOMATIC", "CVT"]).optional(),
+  fuelType: z.enum(["PETROL", "DIESEL", "HYBRID", "ELECTRIC", "LPG"]).optional(),
+  transmission: z.enum(["MANUAL", "AUTOMATIC", "SEMI_AUTO"]).optional(),
   shippingCost: z.coerce.number().optional(),
   insuranceCost: z.coerce.number().optional(),
   status: z.enum(["TRANSIT", "IN_STOCK", "RESERVED", "SOLD"]).optional(),
@@ -93,7 +93,7 @@ type VehicleFormValues = z.infer<typeof vehicleSchema>
 // ---- Constants -----------------------------------------------------------
 
 const FUEL_TYPE_LABELS: Record<string, string> = {
-  GASOLINE: "Benzin",
+  PETROL: "Benzin",
   DIESEL: "Dizel",
   HYBRID: "Hibrit",
   ELECTRIC: "Elektrik",
@@ -103,7 +103,7 @@ const FUEL_TYPE_LABELS: Record<string, string> = {
 const TRANSMISSION_LABELS: Record<string, string> = {
   MANUAL: "Manuel",
   AUTOMATIC: "Otomatik",
-  CVT: "CVT",
+  SEMI_AUTO: "Yarı Otomatik",
 }
 
 const FORM_STATUSES = ["TRANSIT", "IN_STOCK", "RESERVED", "SOLD"] as const

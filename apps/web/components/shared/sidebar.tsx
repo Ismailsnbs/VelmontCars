@@ -41,6 +41,7 @@ const masterNavItems: NavItem[] = [
   { title: "Galeriler", href: "/master/galleries", icon: Building2 },
   { title: "Bildirimler", href: "/master/notifications", icon: Bell },
   { title: "Audit Log", href: "/master/audit-logs", icon: ScrollText },
+  { title: "Ayarlar", href: "/master/settings", icon: Settings },
 ]
 
 // Rol matrisi (CLAUDE.md):
