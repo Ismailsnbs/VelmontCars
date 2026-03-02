@@ -84,6 +84,7 @@
 | — | **SUPERVISOR FİNAL ONAY** | Supervisor | ✅ | 9 | T-066 |
 | T-067 | VehicleImage frontend: Upload UI + gallery manager + lightbox | @coder-heavy | ✅ | 10 | T-033 |
 | T-068 | Bildirim sistemi uçtan uca bağlantı (socket emit + bell badge + galeri sayfası) | @coder-heavy | ✅ | 10 | T-023,T-024 |
+| T-069 | Master Panel Sistem Ayarları sayfası (SystemSetting frontend) | @coder-light | ✅ | 10 | T-068 |
 
 **Durum:** ⬜ Başlamadı | 🔄 Devam | ✅ Tamam | ❌ Hata | ⏸️ Bekleme
 
@@ -1008,6 +1009,20 @@
 - **Aktif Dosyalar:** `apps/api/src/services/notification.service.ts`, `apps/web/hooks/useSocketNotifications.ts`, `apps/web/components/shared/header.tsx`, `apps/web/components/shared/sidebar.tsx`, `apps/web/app/(dashboard)/dashboard/notifications/page.tsx`
 - **Bağımlılıklar:** Yeni dependency yok
 - **Son Komut:** `npx vitest run` — 673/673 pass
+
+### CHECKPOINT-36 — 2026-03-02 (MASTER PANEL SİSTEM AYARLARI SAYFASI)
+- **Durum:** ✅ Tamam
+- **Tamamlanan:**
+  - **Sidebar:** `masterNavItems`'a `{ title: "Ayarlar", href: "/master/settings", icon: Settings }` eklendi
+  - **Settings Page:** `apps/web/app/(master)/master/settings/page.tsx` oluşturuldu — `useQuery` ile `GET /system-settings`, `useMutation` ile `PUT /system-settings/:key`, Card-based UI, Skeleton loading, toast bildirimleri
+  - **SETTING_DEFINITIONS config:** Genişletilebilir yapı — yeni ayar eklemek için sadece config'e tanım eklenmesi yeterli
+  - **Validation:** Min/max kontrolü, disabled button (değişiklik yoksa), saving spinner
+  - **0 TS error** (mevcut e2e hariç)
+- **Sıradaki:** Calculator modülü frontend polish, supervisor review
+- **Sorunlar:** —
+- **Aktif Dosyalar:** `apps/web/components/shared/sidebar.tsx`, `apps/web/app/(master)/master/settings/page.tsx`
+- **Bağımlılıklar:** Yeni dependency yok
+- **Son Komut:** `npx tsc --noEmit` — 0 yeni hata
 
 ---
 <!-- YENİ CHECKPOINT'LER BURAYA EKLENİR -->
