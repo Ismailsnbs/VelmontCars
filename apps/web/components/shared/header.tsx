@@ -4,6 +4,8 @@
 import { Bell, Menu, LogOut, Sun, Moon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useTheme } from "next-themes"
+import { useQuery } from "@tanstack/react-query"
+import api from "@/lib/api"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -22,6 +24,27 @@ export function Header({ sidebarType }: HeaderProps) {
   const handleLogout = () => {
     logout()
     router.push("/login")
+  }
+
+  const { data: unreadData } = useQuery({
+    queryKey: ["notifications", "unread-count"],
+    queryFn: async () => {
+      const { data } = await api.get<{ success: boolean; data: { count: number } }>("/notifications/unread-count")
+      return data.data.count
+    },
+    staleTime: 60_000,
+    refetchInterval: 120_000,
+    enabled: sidebarType === "gallery",
+  })
+
+  const unreadCount = unreadData ?? 0
+
+  const handleBellClick = () => {
+    if (sidebarType === "gallery") {
+      router.push("/dashboard/notifications")
+    } else {
+      router.push("/master/notifications")
+    }
   }
 
   const handleThemeToggle = () => {
@@ -44,8 +67,13 @@ export function Header({ sidebarType }: HeaderProps) {
       </div>
 
       <div className="flex items-center gap-4">
-        <Button variant="ghost" size="icon" className="relative">
+        <Button variant="ghost" size="icon" className="relative" onClick={handleBellClick}>
           <Bell className="h-5 w-5" />
+          {sidebarType === "gallery" && unreadCount > 0 && (
+            <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-destructive text-[10px] font-bold text-destructive-foreground">
+              {unreadCount > 99 ? "99+" : unreadCount}
+            </span>
+          )}
         </Button>
 
         <Button variant="ghost" size="icon" onClick={handleThemeToggle}>

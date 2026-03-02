@@ -2,6 +2,8 @@ import { Prisma } from '@prisma/client';
 import prisma from '../lib/prisma';
 import { auditService } from './audit.service';
 import { NotFoundError, ForbiddenError } from '../middleware/error.middleware';
+import { emitToGallery } from '../socket';
+import { SOCKET_EVENTS } from '../socket/events';
 
 interface GetAllNotificationParams {
   page: number;
@@ -95,6 +97,33 @@ export class NotificationService {
       performedBy: userId,
       ipAddress: ip,
     });
+
+    // Socket emit — galeri panellerine bildirim gönder
+    try {
+      const payload = {
+        id: notification.id,
+        title: notification.title,
+        message: notification.message,
+        type: notification.type,
+        priority: notification.priority,
+      };
+
+      if (data.targetType === 'ALL') {
+        const galleries = await prisma.gallery.findMany({
+          where: { isActive: true },
+          select: { id: true },
+        });
+        for (const gallery of galleries) {
+          emitToGallery(gallery.id, SOCKET_EVENTS.NOTIFICATION_NEW, payload);
+        }
+      } else if (data.targetType === 'GALLERY') {
+        for (const galleryId of data.targetIds) {
+          emitToGallery(galleryId, SOCKET_EVENTS.NOTIFICATION_NEW, payload);
+        }
+      }
+    } catch {
+      // Socket hatası HTTP response'u bozmasın
+    }
 
     return notification;
   }

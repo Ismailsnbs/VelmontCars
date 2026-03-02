@@ -83,6 +83,7 @@
 | T-066 | Tüm dokümantasyon (README, API docs) | @docs | ✅ | 9 | T-065 |
 | — | **SUPERVISOR FİNAL ONAY** | Supervisor | ✅ | 9 | T-066 |
 | T-067 | VehicleImage frontend: Upload UI + gallery manager + lightbox | @coder-heavy | ✅ | 10 | T-033 |
+| T-068 | Bildirim sistemi uçtan uca bağlantı (socket emit + bell badge + galeri sayfası) | @coder-heavy | ✅ | 10 | T-023,T-024 |
 
 **Durum:** ⬜ Başlamadı | 🔄 Devam | ✅ Tamam | ❌ Hata | ⏸️ Bekleme
 
@@ -988,6 +989,23 @@
 - **Sıradaki:** Live test (pnpm dev), ek özellikler veya supervisor review
 - **Sorunlar:** —
 - **Aktif Dosyalar:** `hooks/use-vehicle-images.ts`, `components/vehicles/image-*.tsx`, `components/vehicles/vehicle-image-section.tsx`, `vehicles/[id]/page.tsx`, `vehicles/new/page.tsx`, `vehicles/[id]/edit/page.tsx`
+- **Bağımlılıklar:** Yeni dependency yok
+- **Son Komut:** `npx vitest run` — 673/673 pass
+
+---
+
+### CHECKPOINT-35 — 2026-03-02 (BİLDİRİM SİSTEMİ UÇTAN UCA BAĞLANTI)
+- **Durum:** ✅ Tamam
+- **Tamamlanan:**
+  - **Backend socket emit:** `notification.service.ts` → `create()` sonrası `emitToGallery(NOTIFICATION_NEW)` eklendi (ALL→tüm aktif galerilere, GALLERY→hedef ID'lere, try/catch sarılı)
+  - **Frontend socket invalidation:** `useSocketNotifications.ts` → `NOTIFICATION_NEW` handler'ına `["notifications", "unread-count"]` + `["gallery-notifications"]` invalidation eklendi
+  - **Header bell badge:** `header.tsx` → Gallery panel'de `GET /notifications/unread-count` query (staleTime:60s, refetchInterval:120s), kırmızı badge (99+ cap), onClick navigasyon
+  - **Galeri bildirim sayfası:** `dashboard/notifications/page.tsx` oluşturuldu (liste + okundu işaretle + mavi dot + mobil card), sidebar'a nav item eklendi
+  - **Cleanup:** `SocketProvider.tsx` silindi (dead code — hiçbir yerde import edilmiyordu)
+  - **673/673 backend test pass, 0 TS error**
+- **Sıradaki:** Manuel test (bildirim gönder → galeri panelinde toast + badge), supervisor review
+- **Sorunlar:** —
+- **Aktif Dosyalar:** `apps/api/src/services/notification.service.ts`, `apps/web/hooks/useSocketNotifications.ts`, `apps/web/components/shared/header.tsx`, `apps/web/components/shared/sidebar.tsx`, `apps/web/app/(dashboard)/dashboard/notifications/page.tsx`
 - **Bağımlılıklar:** Yeni dependency yok
 - **Son Komut:** `npx vitest run` — 673/673 pass
 

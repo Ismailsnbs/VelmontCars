@@ -58,6 +58,7 @@ const galleryNavItems: NavItem[] = [
   { title: "Müşteriler", href: "/dashboard/customers", icon: Users, roles: ["GALLERY_OWNER", "GALLERY_MANAGER", "SALES", "ACCOUNTANT"] },
   { title: "Satışlar", href: "/dashboard/sales", icon: ShoppingCart, roles: ["GALLERY_OWNER", "GALLERY_MANAGER", "SALES"] },
   { title: "Raporlar", href: "/dashboard/reports", icon: BarChart3, roles: ["GALLERY_OWNER", "GALLERY_MANAGER", "SALES", "ACCOUNTANT"] },
+  { title: "Bildirimler", href: "/dashboard/notifications", icon: Bell },
   { title: "Ayarlar", href: "/dashboard/settings", icon: Settings, roles: ["GALLERY_OWNER", "GALLERY_MANAGER"] },
 ]
 

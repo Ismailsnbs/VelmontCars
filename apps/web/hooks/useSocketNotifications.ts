@@ -185,6 +185,8 @@ export function useSocketNotifications(): void {
         variant: 'default',
       });
       queryClient.invalidateQueries({ queryKey: ['notifications'] });
+      queryClient.invalidateQueries({ queryKey: ['notifications', 'unread-count'] });
+      queryClient.invalidateQueries({ queryKey: ['gallery-notifications'] });
     });
 
     // Cleanup — tüm listener'ları kaldır
