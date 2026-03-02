@@ -65,7 +65,7 @@ KKTC araç galerileri için multi-tenant yönetim paneli. İki ana panel: **Mast
 - **Prisma 5+** (PostgreSQL)
 - **Redis 7+** (cache + session)
 - **Socket.io 4+** (real-time)
-- **JWT** (access 15dk + refresh 7gün) + **bcrypt**
+- **JWT** (access 30dk + refresh 10gün) + **bcrypt**
 - **Multer** + **Cloudinary** (dosya yükleme)
 - **Node-cron** (döviz kuru güncelleme)
 - **Zod** (API validation)

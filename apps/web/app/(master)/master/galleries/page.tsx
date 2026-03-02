@@ -19,10 +19,8 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { DataTable, Column } from "@/components/shared/data-table"
-import { useApiQuery } from "@/hooks/use-api"
 import { useToast } from "@/components/ui/use-toast"
-import { useQueryClient } from "@tanstack/react-query"
-import { useMutation } from "@tanstack/react-query"
+import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query"
 import api from "@/lib/api"
 import Link from "next/link"
 import GalleryFormDialog from "./components/gallery-form"
@@ -45,12 +43,10 @@ interface Gallery {
 interface GalleriesResponse {
   success: boolean
   data: Gallery[]
-  pagination: {
-    page: number
-    limit: number
-    total: number
-    totalPages: number
-  }
+  total: number
+  page: number
+  limit: number
+  totalPages: number
 }
 
 
@@ -66,20 +62,23 @@ export default function GalleriesPage() {
   const { toast } = useToast()
 
   // Fetch galleries
-  const params: Record<string, any> = {
-    page,
-    limit: 10,
-    ...(search && { search }),
-    ...(subscription && subscription !== "all" && { subscription }),
-    ...(isActive && isActive !== "all" && { isActive: isActive === "true" }),
-  }
+  const { data: galleriesData, isLoading, isError, refetch } = useQuery({
+    queryKey: ["galleries", page, search, subscription, isActive],
+    queryFn: async () => {
+      const params: Record<string, any> = {
+        page,
+        limit: 10,
+        ...(search && { search }),
+        ...(subscription && subscription !== "all" && { subscription }),
+        ...(isActive && isActive !== "all" && { isActive: isActive === "true" }),
+      }
+      const response = await api.get<GalleriesResponse>("/galleries", { params })
+      return response.data
+    },
+  })
 
-  const { data: galleriesDataRaw, isLoading, isError, refetch } = useApiQuery<GalleriesResponse>(
-    ["galleries", String(page), search, subscription, isActive],
-    "/galleries",
-    params as Record<string, any>
-  )
-  const galleriesData = galleriesDataRaw || { success: true, data: [], pagination: { page: 1, limit: 10, total: 0, totalPages: 0 } }
+  const galleries = galleriesData?.data || []
+  const total = galleriesData?.total || 0
 
   // Delete mutation
   const deleteMutation = useMutation({
@@ -251,14 +250,14 @@ export default function GalleriesPage() {
       {/* Data Table */}
       <DataTable<Gallery>
         columns={columns}
-        data={(galleriesData as any)?.data || []}
+        data={galleries}
         isLoading={isLoading}
         searchPlaceholder="Galeri ara..."
         onSearch={setSearch}
         pagination={{
           page,
           pageSize: 10,
-          total: (galleriesData as any)?.pagination?.total || 0,
+          total,
         }}
         onPageChange={setPage}
         rowKey="id"

@@ -146,13 +146,16 @@ export class ExchangeRateService {
         throw new Error(`API responded with status ${response.status}`);
       }
 
-      const data = (await response.json()) as { rates?: Record<string, number> };
+      const data = (await response.json()) as { rates?: Record<string, number>; conversion_rates?: Record<string, number> };
 
-      if (!data.rates) {
-        throw new Error('Invalid API response: missing rates field');
+      // v4 uses "rates", v6 uses "conversion_rates"
+      const ratesMap = data.rates || data.conversion_rates;
+
+      if (!ratesMap) {
+        throw new Error('Invalid API response: missing rates/conversion_rates field');
       }
 
-      const usdToTry = data.rates['TRY'] ?? 35.5;
+      const usdToTry = ratesMap['TRY'] ?? 35.5;
       const rates: BulkRateInput[] = [];
 
       // USD/TRY baz kuru
@@ -166,7 +169,7 @@ export class ExchangeRateService {
       const otherCurrencies = DEFAULT_FETCH_CURRENCIES.filter((c) => c !== 'USD');
 
       for (const code of otherCurrencies) {
-        const usdRate = data.rates[code];
+        const usdRate = ratesMap[code];
         if (!usdRate) continue;
 
         // 1 birim = kac TRY: (TRY/USD) / (KOD/USD) = TRY/KOD
