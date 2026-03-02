@@ -1,4 +1,5 @@
 // Stock movement service with transaction-based inventory management
+import { Prisma } from '@prisma/client';
 import prisma from '../lib/prisma';
 import { NotFoundError, BadRequestError } from '../middleware/error.middleware';
 import { CreateStockMovementInput } from '../validations/stockMovement.validation';
@@ -123,24 +124,23 @@ export class StockMovementService {
    * Reverses the stock adjustment based on movement type
    */
   async delete(id: string, galleryId: string) {
-    // SECURITY: findFirst with compound { id, product: { galleryId } } enforces tenant isolation
-    // atomically at DB level — avoids a separate gallery-check step (TOCTOU koruması).
-    const movement = await prisma.stockMovement.findFirst({
-      where: { id, product: { galleryId } },
-      include: { product: true },
-    });
-
-    if (!movement) {
-      throw new NotFoundError(`Stock movement with ID ${id} not found`);
-    }
-
-    // Execute transaction: delete movement + reverse stock
+    // Execute transaction: findFirst + delete + reverse stock (TOCTOU-safe)
     await prisma.$transaction(async tx => {
+      // SECURITY: findFirst inside tx with compound { id, product: { galleryId } }
+      // enforces tenant isolation atomically (no TOCTOU gap).
+      const movement = await tx.stockMovement.findFirst({
+        where: { id, product: { galleryId } },
+        include: { product: true },
+      });
+
+      if (!movement) {
+        throw new NotFoundError(`Stock movement with ID ${id} not found`);
+      }
       // Delete the movement
       await tx.stockMovement.delete({ where: { id } });
 
       // Reverse the stock adjustment
-      let updateData: any = {};
+      let updateData: Prisma.ProductUpdateInput = {};
       if (movement.type === 'IN') {
         // If it was an IN, decrement to reverse
         updateData = { currentStock: { decrement: movement.quantity } };

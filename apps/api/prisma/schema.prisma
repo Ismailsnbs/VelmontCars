@@ -180,7 +180,6 @@ model ExchangeRate {
   fetchedAt    DateTime @default(now())
   isActive     Boolean  @default(true)
 
-  @@unique([currencyCode, isActive])
   @@index([currencyCode, fetchedAt])
   @@map("exchange_rates")
 }

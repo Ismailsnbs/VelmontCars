@@ -10,6 +10,7 @@ import { NotFoundError, BadRequestError } from '../../middleware/error.middlewar
 const txMock = {
   stockMovement: {
     create: vi.fn(),
+    findFirst: vi.fn(),
     findMany: vi.fn(),
     delete: vi.fn(),
   },
@@ -422,7 +423,7 @@ describe('StockMovementService', () => {
   // ---------------------------------------------------------------- //
   describe('delete', () => {
     it('should delete the movement and return its id', async () => {
-      vi.mocked(prisma.stockMovement.findFirst).mockResolvedValue({
+      txMock.stockMovement.findFirst.mockResolvedValue({
         ...mockMovement,
         type: 'IN',
         product: mockProduct,
@@ -436,13 +437,13 @@ describe('StockMovementService', () => {
     });
 
     it('should throw NotFoundError when movement does not exist', async () => {
-      vi.mocked(prisma.stockMovement.findFirst).mockResolvedValue(null);
+      txMock.stockMovement.findFirst.mockResolvedValue(null);
 
       await expect(service.delete('bad-id', GALLERY_ID)).rejects.toThrow(NotFoundError);
     });
 
     it('should include the movement ID in the NotFoundError message when missing', async () => {
-      vi.mocked(prisma.stockMovement.findFirst).mockResolvedValue(null);
+      txMock.stockMovement.findFirst.mockResolvedValue(null);
 
       await expect(service.delete('missing-movement-id', GALLERY_ID)).rejects.toThrow(
         'missing-movement-id',
@@ -451,21 +452,21 @@ describe('StockMovementService', () => {
 
     it('should throw NotFoundError when movement product belongs to a different gallery (tenant isolation)', async () => {
       // findFirst with compound { id, product: { galleryId } } returns null when gallery mismatches
-      vi.mocked(prisma.stockMovement.findFirst).mockResolvedValue(null);
+      txMock.stockMovement.findFirst.mockResolvedValue(null);
 
       await expect(service.delete(MOVEMENT_ID, GALLERY_ID)).rejects.toThrow(NotFoundError);
     });
 
-    it('should not run the transaction when gallery mismatch is detected', async () => {
-      // findFirst returns null for mismatched gallery — transaction must not be called
-      vi.mocked(prisma.stockMovement.findFirst).mockResolvedValue(null);
+    it('should throw from inside the transaction when gallery mismatch is detected', async () => {
+      // findFirst inside tx returns null for mismatched gallery
+      txMock.stockMovement.findFirst.mockResolvedValue(null);
 
-      await expect(service.delete(MOVEMENT_ID, GALLERY_ID)).rejects.toThrow();
-      expect(prisma.$transaction).not.toHaveBeenCalled();
+      await expect(service.delete(MOVEMENT_ID, GALLERY_ID)).rejects.toThrow(NotFoundError);
+      expect(prisma.$transaction).toHaveBeenCalled();
     });
 
     it('should reverse an IN movement by decrementing stock', async () => {
-      vi.mocked(prisma.stockMovement.findFirst).mockResolvedValue({
+      txMock.stockMovement.findFirst.mockResolvedValue({
         ...mockMovement,
         type: 'IN',
         quantity: 10,
@@ -484,7 +485,7 @@ describe('StockMovementService', () => {
     });
 
     it('should reverse an OUT movement by incrementing stock', async () => {
-      vi.mocked(prisma.stockMovement.findFirst).mockResolvedValue({
+      txMock.stockMovement.findFirst.mockResolvedValue({
         ...mockMovement,
         type: 'OUT',
         quantity: 15,
@@ -503,7 +504,7 @@ describe('StockMovementService', () => {
     });
 
     it('should recalculate stock from remaining movements when deleting an ADJUSTMENT', async () => {
-      vi.mocked(prisma.stockMovement.findFirst).mockResolvedValue({
+      txMock.stockMovement.findFirst.mockResolvedValue({
         ...mockMovement,
         type: 'ADJUSTMENT',
         quantity: 100,
@@ -529,7 +530,7 @@ describe('StockMovementService', () => {
     });
 
     it('should set stock to 0 when no remaining movements exist after deleting an ADJUSTMENT', async () => {
-      vi.mocked(prisma.stockMovement.findFirst).mockResolvedValue({
+      txMock.stockMovement.findFirst.mockResolvedValue({
         ...mockMovement,
         type: 'ADJUSTMENT',
         quantity: 100,
@@ -549,7 +550,7 @@ describe('StockMovementService', () => {
     });
 
     it('should delete movement record within the transaction', async () => {
-      vi.mocked(prisma.stockMovement.findFirst).mockResolvedValue({
+      txMock.stockMovement.findFirst.mockResolvedValue({
         ...mockMovement,
         type: 'IN',
         quantity: 10,

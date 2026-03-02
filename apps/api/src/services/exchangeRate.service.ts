@@ -155,7 +155,10 @@ export class ExchangeRateService {
         throw new Error('Invalid API response: missing rates/conversion_rates field');
       }
 
-      const usdToTry = ratesMap['TRY'] ?? 35.5;
+      const usdToTry = ratesMap['TRY'];
+      if (!usdToTry) {
+        throw new Error('API response missing TRY rate — cannot calculate exchange rates');
+      }
       const rates: BulkRateInput[] = [];
 
       // USD/TRY baz kuru

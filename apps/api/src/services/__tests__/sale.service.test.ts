@@ -12,6 +12,7 @@ const txMock = {
   sale: {
     create: vi.fn(),
     delete: vi.fn(),
+    deleteMany: vi.fn(),
     update: vi.fn(),
     findFirst: vi.fn(),
   },
@@ -663,7 +664,7 @@ describe('SaleService', () => {
 
     it('should cancel the sale and return success message with id', async () => {
       txMock.sale.findFirst.mockResolvedValue(saleForCancel as any);
-      txMock.sale.delete.mockResolvedValue(mockSale);
+      txMock.sale.deleteMany.mockResolvedValue({ count: 1 });
       txMock.vehicle.update.mockResolvedValue(mockVehicle);
 
       const result = await service.cancel(SALE_ID, GALLERY_ID, USER_ID);
@@ -696,17 +697,17 @@ describe('SaleService', () => {
 
     it('should delete the sale record within the transaction', async () => {
       txMock.sale.findFirst.mockResolvedValue(saleForCancel as any);
-      txMock.sale.delete.mockResolvedValue(mockSale);
+      txMock.sale.deleteMany.mockResolvedValue({ count: 1 });
       txMock.vehicle.update.mockResolvedValue(mockVehicle);
 
       await service.cancel(SALE_ID, GALLERY_ID, USER_ID);
 
-      expect(txMock.sale.delete).toHaveBeenCalledWith({ where: { id: SALE_ID } });
+      expect(txMock.sale.deleteMany).toHaveBeenCalledWith({ where: { id: SALE_ID, galleryId: GALLERY_ID } });
     });
 
     it('should update vehicle status back to IN_STOCK within the transaction', async () => {
       txMock.sale.findFirst.mockResolvedValue(saleForCancel as any);
-      txMock.sale.delete.mockResolvedValue(mockSale);
+      txMock.sale.deleteMany.mockResolvedValue({ count: 1 });
       txMock.vehicle.update.mockResolvedValue(mockVehicle);
 
       await service.cancel(SALE_ID, GALLERY_ID, USER_ID);
@@ -721,7 +722,7 @@ describe('SaleService', () => {
 
     it('should clear vehicle sale fields (soldDate, salePrice, profit, profitMargin) on cancel', async () => {
       txMock.sale.findFirst.mockResolvedValue(saleForCancel as any);
-      txMock.sale.delete.mockResolvedValue(mockSale);
+      txMock.sale.deleteMany.mockResolvedValue({ count: 1 });
       txMock.vehicle.update.mockResolvedValue(mockVehicle);
 
       await service.cancel(SALE_ID, GALLERY_ID, USER_ID);
@@ -735,7 +736,7 @@ describe('SaleService', () => {
 
     it('should call auditService.log with CANCEL action after cancellation', async () => {
       txMock.sale.findFirst.mockResolvedValue(saleForCancel as any);
-      txMock.sale.delete.mockResolvedValue(mockSale);
+      txMock.sale.deleteMany.mockResolvedValue({ count: 1 });
       txMock.vehicle.update.mockResolvedValue(mockVehicle);
 
       await service.cancel(SALE_ID, GALLERY_ID, USER_ID);
@@ -751,7 +752,7 @@ describe('SaleService', () => {
 
     it('should emit SALE_CANCELLED socket event after cancellation', async () => {
       txMock.sale.findFirst.mockResolvedValue(saleForCancel as any);
-      txMock.sale.delete.mockResolvedValue(mockSale);
+      txMock.sale.deleteMany.mockResolvedValue({ count: 1 });
       txMock.vehicle.update.mockResolvedValue(mockVehicle);
 
       await service.cancel(SALE_ID, GALLERY_ID, USER_ID);
@@ -765,7 +766,7 @@ describe('SaleService', () => {
 
     it('should not throw when socket emit fails during cancel (graceful error handling)', async () => {
       txMock.sale.findFirst.mockResolvedValue(saleForCancel as any);
-      txMock.sale.delete.mockResolvedValue(mockSale);
+      txMock.sale.deleteMany.mockResolvedValue({ count: 1 });
       txMock.vehicle.update.mockResolvedValue(mockVehicle);
       vi.mocked(emitToGallery).mockImplementation(() => {
         throw new Error('socket timeout');

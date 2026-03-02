@@ -356,7 +356,7 @@ export class SaleService {
       const profitMargin = newSalePrice > 0 ? (profit / newSalePrice) * 100 : 0;
 
       const updatedSale = await tx.sale.update({
-        where: { id },
+        where: { id, galleryId },
         data: {
           ...(data.salePrice !== undefined && {
             salePrice: new Prisma.Decimal(data.salePrice),
@@ -456,8 +456,8 @@ export class SaleService {
         cancelledBy: userId,
       };
 
-      // Satış kaydını sil
-      await tx.sale.delete({ where: { id } });
+      // Satış kaydını sil — galleryId defense-in-depth
+      await tx.sale.deleteMany({ where: { id, galleryId: foundSale.galleryId } });
 
       // Aracı tekrar stoka al — satış bilgilerini temizle
       await tx.vehicle.update({

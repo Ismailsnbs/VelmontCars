@@ -1,4 +1,5 @@
 // Product CRUD service with multi-tenant isolation
+import { Prisma } from '@prisma/client';
 import prisma from '../lib/prisma';
 import { NotFoundError, BadRequestError } from '../middleware/error.middleware';
 import { CreateProductInput, UpdateProductInput } from '../validations/product.validation';
@@ -21,12 +22,12 @@ export class ProductService {
    * Multi-tenant: filtered by galleryId
    */
   async getAll(params: GetAllParams) {
-    const where: any = {
+    const where: Prisma.ProductWhereInput = {
       galleryId: params.galleryId,
     };
 
     if (params.category) {
-      where.category = params.category;
+      where.category = params.category as Prisma.EnumProductCategoryFilter;
     }
 
     if (params.search) {

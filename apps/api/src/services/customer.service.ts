@@ -1,4 +1,5 @@
 // Customer CRUD service with multi-tenant isolation
+import { Prisma } from '@prisma/client';
 import prisma from '../lib/prisma';
 import { NotFoundError, BadRequestError } from '../middleware/error.middleware';
 import { CreateCustomerInput, UpdateCustomerInput } from '../validations/customer.validation';
@@ -19,7 +20,7 @@ export class CustomerService {
    * Multi-tenant: filtered by galleryId
    */
   async getAll(params: GetAllParams) {
-    const where: any = {
+    const where: Prisma.CustomerWhereInput = {
       galleryId: params.galleryId,
     };
 
