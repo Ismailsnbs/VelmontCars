@@ -270,9 +270,21 @@ export default function VehicleEditPage() {
 
   const isPending = updateMutation.isPending
 
-  const onSubmit = handleSubmit((values) => {
-    updateMutation.mutate(values)
-  })
+  const onSubmit = handleSubmit(
+    (values) => {
+      updateMutation.mutate(values)
+    },
+    (fieldErrors) => {
+      const messages = Object.entries(fieldErrors)
+        .map(([field, err]) => `${field}: ${err?.message}`)
+        .join(', ')
+      toast({
+        title: 'Form doğrulama hatası',
+        description: messages || 'Bilinmeyen hata',
+        variant: 'destructive',
+      })
+    }
+  )
 
   const fuelTypeValue = watch("fuelType")
   const transmissionValue = watch("transmission")

@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "api-health": {
+      "command": "./tools/api-health-mcp/node_modules/.bin/tsx",
+      "args": ["tools/api-health-mcp/src/index.ts"],
+      "cwd": "/Users/ismailsnbs/WebstormProjects/gallery"
+    }
+  }
+}
